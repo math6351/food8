@@ -10,14 +10,14 @@
 
 <body>
 
-    <header>
+    <section class="header"></section>
 
-    </header>
 
     <section>
 
     </section>
 
+    <!--
     <template>
         <article>
             <h2 data-header></h2>
@@ -25,37 +25,42 @@
             <p data-beskrivelse></p>
         </article>
     </template>
+-->
+
+
+
+
 
     <script>
-        let jSonUrl = "jsontest.json";
-        let fugle = [];
-        let display = document.querySelector("section");
-        let template = document.querySelector("template");
-
-
-        document.addEventListener("DOMContentLoaded", hentJson);
-
-        async function hentJson() {
-            let dataJson = await fetch(jSonUrl);
-            fugle = await dataJson.json();
-
-            console.log(fugle);
-
-            visFugle();
-        }
-
-        function visFugle() {
-            fugle.forEach(fugl => {
-
-                let klon = template.cloneNode(true).content;
-                console.log(fugl);
-                klon.querySelector("[data-header]").textContent = fugl.header;
-                klon.querySelector("[data-image]").src = fugl.image.url;
-                klon.querySelector("[data-image]").alt = fugl.image.alt;
-                klon.querySelector("[data-beskrivelse]").textContent = fugl.paragraph;
-                display.appendChild(klon);
-            });
-        }
+        //        let jSonUrl = "jsontest.json";
+        //        let fugle = [];
+        //        let display = document.querySelector("section");
+        //        let template = document.querySelector("template");
+        //
+        //
+        //        document.addEventListener("DOMContentLoaded", hentJson);
+        //
+        //        async function hentJson() {
+        //            let dataJson = await fetch(jSonUrl);
+        //            fugle = await dataJson.json();
+        //
+        //            console.log(fugle);
+        //
+        //            visFugle();
+        //        }
+        //
+        //        function visFugle() {
+        //            fugle.forEach(fugl => {
+        //
+        //                let klon = template.cloneNode(true).content;
+        //                console.log(fugl);
+        //                klon.querySelector("[data-header]").textContent = fugl.header;
+        //                klon.querySelector("[data-image]").src = fugl.image.url;
+        //                klon.querySelector("[data-image]").alt = fugl.image.alt;
+        //                klon.querySelector("[data-beskrivelse]").textContent = fugl.paragraph;
+        //                display.appendChild(klon);
+        //            });
+        //        }
 
     </script>
 </body>
