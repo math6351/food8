@@ -1,27 +1,50 @@
 @font-face {
-    font-family: 'banaueregular';
-    src: url('font/') format('woff2'),
-    url('font/banaue-regular-webfont.woff') format('woff');
+    font-family: 'hk_grotesksemibold_legacy';
+    src: url('hkgrotesk-semiboldlegacy-webfont.woff2') format('woff2'),
+    url('hkgrotesk-semiboldlegacy-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'shartoll_lightregular';
-    src: url('font/shartoll_light-webfont.woff2') format('woff2'),
-    url('font/shartoll_light-webfont.woff') format('woff');
+    font-family: 'hk_groteskregular_legacy';
+    src: url('hkgrotesk-regularlegacy-webfont.woff2') format('woff2'),
+    url('hkgrotesk-regularlegacy-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
 }
 
+@font-face {
+    font-family: 'hk_grotesklegacy_italic';
+    src: url('hkgrotesk-legacyitalic-webfont.woff2') format('woff2'),
+    url('hkgrotesk-legacyitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 
-
-
-body {
-    background-color: #fbfaf2;
 }
 
-#logo {
-    background-image: url(http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-content/uploads/2018/04/logo.png);
-}
+@font-face {
+    font-family: 'hk_groteskbold_legacy';
+    src: url('hkgrotesk-boldlegacy-webfont.woff2') format('woff2'),
+    url('hkgrotesk-boldlegacy-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+
+
+
+
+    body {
+        background-color: #fbfaf2;
+    }
+
+    #logo {
+        background-image: url(http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-content/uploads/2018/04/logo.png);
+    }
+
+    #cirkel {
+        width: 20vw;
+        height: 20vw;
+        border-radius: 50%;
+    }
