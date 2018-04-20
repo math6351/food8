@@ -10,10 +10,7 @@
 
 <body>
 
-    <section class="header">
-
-
-        <div id="logo"></div>
+    <section id="header">
 
     </section>
 
@@ -41,6 +38,18 @@
 
 
     <script>
+        let jsonUrl = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2";
+
+        document.addEventListener("DOMContentLoaded", hentHeader);
+
+        async function hentHeader() {
+
+            let headerData = await fetch("header.html");
+            let header = await headerData.text();
+            document.querySelector("#header").innerHTML = header;
+
+        }
+
         //        let jSonUrl = "jsontest.json";
         //        let fugle = [];
         //        let display = document.querySelector("section");

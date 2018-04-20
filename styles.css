@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'hk_grotesksemibold_legacy';
-    src: url('hkgrotesk-semiboldlegacy-webfont.woff2') format('woff2'),
+    src: url('font/hkgrotesk-semiboldlegacy-webfont.woff2') format('woff2'),
     url('hkgrotesk-semiboldlegacy-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
@@ -8,7 +8,7 @@
 
 @font-face {
     font-family: 'hk_groteskregular_legacy';
-    src: url('hkgrotesk-regularlegacy-webfont.woff2') format('woff2'),
+    src: url('font/hkgrotesk-regularlegacy-webfont.woff2') format('woff2'),
     url('hkgrotesk-regularlegacy-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
@@ -17,7 +17,7 @@
 
 @font-face {
     font-family: 'hk_grotesklegacy_italic';
-    src: url('hkgrotesk-legacyitalic-webfont.woff2') format('woff2'),
+    src: url('font/hkgrotesk-legacyitalic-webfont.woff2') format('woff2'),
     url('hkgrotesk-legacyitalic-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
@@ -26,7 +26,7 @@
 
 @font-face {
     font-family: 'hk_groteskbold_legacy';
-    src: url('hkgrotesk-boldlegacy-webfont.woff2') format('woff2'),
+    src: url('font/hkgrotesk-boldlegacy-webfont.woff2') format('woff2'),
     url('hkgrotesk-boldlegacy-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
@@ -39,6 +39,26 @@ body {
     background-color: #fbfaf2;
     /*    width: 100vw;*/
 }
+
+nav ol {
+    list-style-type: none;
+}
+
+nav li {
+    display: inline;
+    text-transform: lowercase;
+    color: #334151;
+    padding: 0 3vw;
+    font-size: 1.7vw;
+    text-transform: uppercase;
+}
+
+a {
+    text-decoration: none;
+    color: #334151;
+    font-family: 'hk_grotesksemibold_legacy';
+}
+
 
 #logo {
     background-image: url(http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-content/uploads/2018/04/logo.png);
