@@ -1,3 +1,8 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
 @font-face {
     font-family: 'hk_grotesksemibold_legacy';
     src: url('font/hkgrotesk-semiboldlegacy-webfont.woff2') format('woff2'),
@@ -33,22 +38,30 @@
 
 }
 
-
-
 body {
     background-color: #fbfaf2;
-    /*    width: 100vw;*/
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+}
+
+#hovedmenu {
+    grid-column: 3/13;
+    grid-row: 2;
 }
 
 nav ol {
     list-style-type: none;
+    padding: 0;
 }
 
 nav li {
     display: inline;
     text-transform: lowercase;
     color: #334151;
-    padding: 0 3vw;
+    padding: 3vw 3vw;
     font-size: 1.7vw;
     text-transform: uppercase;
 }
@@ -59,6 +72,16 @@ a {
     font-family: 'hk_grotesksemibold_legacy';
 }
 
+#header {
+    /*
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+*/
+    /*    grid-template-rows: repeat(2, 1fr);*/
+    grid-column: 1/13;
+    grid-row: 1;
+    padding: 2vw;
+}
 
 #logo {
     background-image: url(http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-content/uploads/2018/04/logo.png);
@@ -66,10 +89,10 @@ a {
     background-repeat: no-repeat;
     width: 50vw;
     height: 20vw;
-    position: absolute;
-    top: 5vw;
-    left: 5vw;
+    margin: 2vw;
 }
+
+#logo:hover {}
 
 #cirkelboks {
     width: 100vw;
@@ -78,6 +101,7 @@ a {
     position: absolute;
     top: 0;
     left: 0;
+    z-index: -1;
 }
 
 #cirkel {
@@ -90,4 +114,13 @@ a {
     left: 40vw;
     background-color: #f6f1e5;
 
+}
+
+
+/* BURGER MENU*/
+
+/**BURGERMENU**/
+
+.burgermenu {
+    display: none;
 }
