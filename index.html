@@ -12,6 +12,39 @@
 
     <section id="header">
 
+        <a href="index.html">
+            <div id="logo"></div>
+        </a>
+
+        <button class="burgermenu">
+           <div class="bar1"></div>
+           <div class="bar2"></div>
+           <div class="bar3"></div>
+        </button>
+
+        <nav id="hovedmenu">
+            <ol>
+
+                <a id="spisude" href="spisude.html">
+                    <li id="spisude_billede">Spis ude</li>
+                </a>
+                <a id="spishjemme" href="spishjemme.html">
+                    <li id="spishjemme_billede">Spis hjemme</li>
+                </a>
+                <a id="bookbord" href="bookbord.html">
+                    <li id="bookbord_billede">Book bord</li>
+                </a>
+                <a id="selskaber" href="selskaber.html">
+                    <li id="selskaber_billede">Skal du holde selskab?</li>
+                </a>
+                <a id="om" href="om.html">
+                    <li id="om_billede">Om Food8</li>
+                </a>
+
+            </ol>
+
+        </nav>
+
     </section>
 
     <div id="cirkelboks">
@@ -59,16 +92,11 @@
         document.addEventListener("DOMContentLoaded", sidenErLoadet);
 
         function sidenErLoadet() {
-            hentHeader();
+            //           hentHeader();
             hentFooter();
             burgermenu();
         }
-
-        async function hentHeader() {
-            let headerData = await fetch("header.html");
-            let header = await headerData.text();
-            document.querySelector("#header").innerHTML = header;
-        }
+        // // async function hentHeader() { // let headerData = await fetch("header.html"); // let header = await headerData.text(); // document.querySelector("#header").innerHTML = header; // }
 
         async function hentFooter() {
             let footerData = await fetch("footer.html");
@@ -80,11 +108,11 @@
         // BURGERMENU
 
         function burgermenu() {
-
             console.log("burgermenu");
-
             document.querySelector(".burgermenu").addEventListener("mouseover", burgerFarveskiftOver);
-            document.querySelector(".burgermenu").addEventListener("mouseout", burgerFarveskiftOut);
+
+            document.querySelector(".burgermenu").addEventListener("mouseout", burgerFarveskiftOut)
+
             document.querySelector(".burgermenu").addEventListener("click", toggleBurgermenu);
             document.querySelector("#hovedmenu").addEventListener("click", toggleBurgermenu);
 
@@ -104,9 +132,9 @@
                 document.querySelector(".burgermenu").classList.toggle("change");
                 document.querySelector(".burgermenu").classList.toggle("skrump");
                 document.querySelector("#hovedmenu").classList.toggle("show");
+
+                //         document.querySelector(".burgermenu").addEventListener("animationend", burgermenuSkrumper);
             }
-
-
         }
 
 
