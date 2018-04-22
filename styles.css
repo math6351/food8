@@ -3,6 +3,8 @@
     margin: 0;
 }
 
+/* FONTS & HEADERE */
+
 @font-face {
     font-family: 'hk_grotesksemibold_legacy';
     src: url('font/hkgrotesk-semiboldlegacy-webfont.woff2') format('woff2'),
@@ -38,6 +40,22 @@
 
 }
 
+h1,
+h2 {
+    font-family: 'hk_groteskbold_legacy';
+    text-align: center;
+}
+
+h3 {
+    font-family: 'hk_grotesksemibold_legacy';
+}
+
+p {
+    font-family: 'hk_groteskregular_legacy';
+}
+
+/* SEMANTIK */
+
 body {
     background-color: #fbfaf2;
     width: 100vw;
@@ -45,43 +63,26 @@ body {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(12, 1fr);
-}
-
-#hovedmenu {
-    grid-column: 3/13;
-    grid-row: 2;
-}
-
-nav ol {
-    list-style-type: none;
-    padding: 0;
-}
-
-nav li {
-    display: inline;
-    text-transform: lowercase;
     color: #334151;
-    padding: 3vw 3vw;
-    font-size: 1.7vw;
-    text-transform: uppercase;
-}
-
-a {
-    text-decoration: none;
-    color: #334151;
-    font-family: 'hk_grotesksemibold_legacy';
 }
 
 #header {
-    /*
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-*/
-    /*    grid-template-rows: repeat(2, 1fr);*/
     grid-column: 1/13;
     grid-row: 1;
     padding: 2vw;
 }
+
+main {
+    grid-column: 1/13;
+    grid-row: 4;
+}
+
+#footer {
+    grid-column: 1/13;
+    grid-row: 7;
+}
+
+/* HOVEDMENU */
 
 #logo {
     background-image: url(http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-content/uploads/2018/04/logo.png);
@@ -92,7 +93,37 @@ a {
     margin: 2vw;
 }
 
-#logo:hover {}
+#logo:hover {
+    transform: scale(1.1);
+}
+
+/*
+#hovedmenu {
+    grid-column: 3/13;
+    grid-row: 2;
+    text-transform: uppercase;
+    font-family: 'hk_grotesksemibold_legacy';
+    text-align: center;
+}
+
+nav ol {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    padding: 3vw 3vw;
+    font-size: 1.7vw;
+
+}
+*/
+
+a {
+    text-decoration: none;
+    color: #334151;
+}
+
 
 #cirkelboks {
     width: 100vw;
@@ -117,10 +148,137 @@ a {
 }
 
 
-/* BURGER MENU*/
-
-/**BURGERMENU**/
+/** BURGERMENU **/
 
 .burgermenu {
-    display: none;
+    display: block;
+    cursor: pointer;
+    background-color: #6fc6b4;
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    z-index: 4;
+    position: absolute;
+    top: 4vw;
+    left: 85vw;
+    transition: 1s ease;
+
+}
+
+.burgermenu:hover {
+    background: #fff;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+    width: 4vw;
+    height: 2.2px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 0.9vw auto;
+    transition: 0.4s ease;
+}
+
+.farveskift {
+    background-color: #6fc6b4;
+}
+
+
+/* ROTERING */
+
+.change .bar1 {
+    transform: rotate(-45deg) translate(-8px, 7px);
+}
+
+.change .bar3 {
+    transform: rotate(45deg) translate(-4px, -4px);
+}
+
+/* FADE */
+
+.change .bar2 {
+    opacity: 0;
+}
+
+.change {
+    transform: scale(1) translate(11vw);
+    transition: 1s ease;
+}
+
+.skrump {
+    transform: scale(0.7) translate(23vw);
+    transition-delay: 1.5s;
+    transition: 1s ease;
+}
+
+#hovedmenu {
+    width: 30vw;
+    height: 100vh;
+    max-height: 100px;
+    min-width: 100px;
+    overflow: hidden;
+    transition: 0.6s ease;
+    background-color: #6fc6b4;
+    margin: 0;
+    text-align: left;
+    position: absolute;
+    top: 0vw;
+    transition: 0.8s ease;
+    text-transform: uppercase;
+    font-family: 'hk_grotesksemibold_legacy';
+    text-align: center;
+}
+
+#hovedmenu.show {
+    /*        border-style: dotted;*/
+    border-color: #f19722;
+    max-width: 95vw;
+    max-height: 100vh;
+    margin: 0;
+}
+
+#hovedmenu ol {
+    padding-left: 7.5vw;
+    padding-top: 15vw;
+}
+
+#hovedmenu li {
+    display: block;
+    margin: 20px 0;
+    color: #f19722;
+}
+
+
+/* FOOTER */
+
+footer {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+#footerlogo {
+    background-image: url(http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-content/uploads/2018/04/logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 15vw;
+    height: 7vw;
+    margin: 0.5vw 0;
+}
+
+#adresse {
+    font-style: normal;
+    grid-column: 2/5;
+}
+
+#links {
+    grid-column: 9/12;
+}
+
+#stroemagency {
+    background-image: url(imgs/stroem.png);
+    background-size: cover;
+    width: 25vw;
+    height: 3vw;
+    margin: 2vw 0;
 }
