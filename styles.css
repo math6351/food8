@@ -70,7 +70,7 @@ body {
 #header {
     grid-column: 1/14;
     grid-row: 1;
-    padding: 2vw;
+    margin: 0;
 }
 
 main {
@@ -385,7 +385,7 @@ textarea {
         position: static;
         overflow: visible;
         min-width: 100%;
-        /*        background-color: clear;*/
+        background-color: transparent;
         text-align: center;
     }
 

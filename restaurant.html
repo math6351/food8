@@ -81,7 +81,6 @@
                     <li class="slide">
                         <img src="food8_imgs/Spisehuset/image/jpeg/Spisehuset.jpg" alt="">
                     </li>
-
                 </ul>
             </div>
 
@@ -89,12 +88,11 @@
             <div id="sliderknap2"></div>
         </section>
 
-        <!--
-<template id="menukort_restaurant">
+        <template id="menukort_restaurant">
             <h1 data-header-menukort></h1>
+               <li class="slide"></li>
                 <img data-menukort>
         </template>
--->
 
     </main>
 
@@ -102,63 +100,49 @@
 
     </section>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="javascript.js"></script>
+
     <script>
-        let jsonUrl = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2";
+        document.addEventListener("DOMContentLoaded", sliderMenukort);
 
-        document.addEventListener("DOMContentLoaded", sidenErLoadet);
-
-        function sidenErLoadet() {
-            //           hentHeader();
-            hentFooter();
-            burgermenu();
-            sliderMenukort();
-        }
-        // // async function hentHeader() { // let headerData = await fetch("header.html"); // let header = await headerData.text(); // document.querySelector("#header").innerHTML = header; // }
-
-        async function hentFooter() {
-            let footerData = await fetch("footer.html");
-            let footer = await footerData.text();
-            document.querySelector("#footer").innerHTML = footer;
-        }
-
-
-        // BURGERMENU
-
-        function burgermenu() {
-            console.log("burgermenu");
-            document.querySelector(".burgermenu").addEventListener("mouseover", burgerFarveskiftOver);
-
-            document.querySelector(".burgermenu").addEventListener("mouseout", burgerFarveskiftOut)
-
-            document.querySelector(".burgermenu").addEventListener("click", toggleBurgermenu);
-            document.querySelector("#hovedmenu").addEventListener("click", toggleBurgermenu);
-
-            function burgerFarveskiftOver() {
-                document.querySelector(".bar1").classList.add("farveskift");
-                document.querySelector(".bar2").classList.add("farveskift");
-                document.querySelector(".bar3").classList.add("farveskift");
-            }
-
-            function burgerFarveskiftOut() {
-                document.querySelector(".bar1").classList.remove("farveskift");
-                document.querySelector(".bar2").classList.remove("farveskift");
-                document.querySelector(".bar3").classList.remove("farveskift");
-            }
-
-            function toggleBurgermenu() {
-                document.querySelector(".burgermenu").classList.toggle("change");
-                document.querySelector(".burgermenu").classList.toggle("skrump");
-                document.querySelector("#hovedmenu").classList.toggle("show");
-            }
-        }
-
+        //
+        //        letjSonUrl = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/restaurant";
+        //
+        //        let restauranter = [];
+        //        let display = document.querySelector("#menukortslides");
+        //        let template = document.querySelector("#slide");
+        //
+        //        document.addEventListener("DOMContentLoaded", hentJson);
+        //
+        //        async function hentJson() {
+        //            let dataJson = await fetch(jsonUrl);
+        //            nyheder = await dataJson.json();
+        //
+        //            console.log(nyheder);
+        //
+        //            visRestaurant();
+        //        }
+        //
+        //        function visRestaurant() {
+        //            nyheder.forEach(restaurant => {
+        //                let klon = template.cloneNode(true).content;
+        //                console.log(nyhed);
+        //                klon.querySelector("[data-header]").textContent = nyhed.acf.nyheds_title;
+        //                klon.querySelector("[data-nyhedsslide]").src = nyhed.acf.billede_materiale.url;
+        //                klon.querySelector("[data-nyhedsslide]").alt = nyhed.acf.billede_materiale.alt;
+        //
+        //                display.appendChild(klon);
+        //
+        //            });
+        //        }
 
         function sliderMenukort() {
 
             var width = 400;
             var widthStor = 600;
             var animationSpeed = 1800;
-            var pause = 4000;
+            var pause = 5000;
             var currentSlide = 1;
 
             var $slider = $("#menukortslider");
@@ -167,7 +151,7 @@
 
             var $tekst = $("#preview-tekst");
 
-            var mq = window.matchMedia('all and (max-width: 900px)');
+            var mq = window.matchMedia('all and (min-width: 900px)');
 
 
             setInterval(function() {
@@ -181,15 +165,13 @@
 
             }, pause);
 
-
             function sliderSlider() {
                 console.log("sliderSlider");
                 console.log("animationspeed er " + animationSpeed);
-                console.log("pause er" + pause)
+                console.log("pause er " + pause)
                 $($slideContainer).animate({
                     "margin-left": "-=" + width
                 }, animationSpeed, reset);
-
             }
 
 

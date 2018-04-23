@@ -60,8 +60,9 @@
             </div>
         </section>
 
-        <template>
-            <li class="nyhedsslide"></li>
+        <template id="nyheder">
+            <h2 data-header></h2>
+            <li class="nyhedsslide" data-nyhedsslide></li>
         </template>
 
         <section id="ugensudvalgte">
@@ -85,59 +86,38 @@
     </template>
 -->
 
-
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="javascript.js"></script>
     <script>
-        let jsonUrl = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2";
+        //        letjSonUrl = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/nyheder";
+        //
+        //        let nyheder = [];
+        //        let display = document.querySelector("#nyhedsfeed");
+        //        let template = document.querySelector("#nyheder");
+        //
+        //        document.addEventListener("DOMContentLoaded", hentJson);
+        //
+        //        async function hentJson() {
+        //            let dataJson = await fetch(jsonUrl);
+        //            nyheder = await dataJson.json();
+        //
+        //            console.log(nyheder);
+        //
+        //            visNyheder();
+        //        }
 
-        document.addEventListener("DOMContentLoaded", sidenErLoadet);
-
-        function sidenErLoadet() {
-            //           hentHeader();
-            hentFooter();
-            burgermenu();
-        }
-        // // async function hentHeader() { // let headerData = await fetch("header.html"); // let header = await headerData.text(); // document.querySelector("#header").innerHTML = header; // }
-
-        async function hentFooter() {
-            let footerData = await fetch("footer.html");
-            let footer = await footerData.text();
-            document.querySelector("#footer").innerHTML = footer;
-        }
-
-
-        // BURGERMENU
-
-        function burgermenu() {
-            console.log("burgermenu");
-            document.querySelector(".burgermenu").addEventListener("mouseover", burgerFarveskiftOver);
-
-            document.querySelector(".burgermenu").addEventListener("mouseout", burgerFarveskiftOut)
-
-            document.querySelector(".burgermenu").addEventListener("click", toggleBurgermenu);
-            document.querySelector("#hovedmenu").addEventListener("click", toggleBurgermenu);
-
-            function burgerFarveskiftOver() {
-                document.querySelector(".bar1").classList.add("farveskift");
-                document.querySelector(".bar2").classList.add("farveskift");
-                document.querySelector(".bar3").classList.add("farveskift");
-            }
-
-            function burgerFarveskiftOut() {
-                document.querySelector(".bar1").classList.remove("farveskift");
-                document.querySelector(".bar2").classList.remove("farveskift");
-                document.querySelector(".bar3").classList.remove("farveskift");
-            }
-
-            function toggleBurgermenu() {
-                document.querySelector(".burgermenu").classList.toggle("change");
-                document.querySelector(".burgermenu").classList.toggle("skrump");
-                document.querySelector("#hovedmenu").classList.toggle("show");
-            }
-        }
-
-
-
-
+        //        function visNyheder() {
+        //            nyheder.forEach(nyhed => {
+        //                let klon = template.cloneNode(true).content;
+        //                console.log(nyhed);
+        //                klon.querySelector("[data-header]").textContent = nyhed.acf.nyheds_title;
+        //                klon.querySelector("[data-nyhedsslide]").src = nyhed.acf.billede_materiale.url;
+        //                klon.querySelector("[data-nyhedsslide]").alt = nyhed.acf.billede_materiale.alt;
+        //
+        //                display.appendChild(klon);
+        //
+        //            });
+        //        }
 
 
 
