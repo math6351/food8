@@ -1,12 +1,12 @@
 <?php
-$to="ms.oldorf@mathildeoldorf.dk";
+$to="ms.oldorf@gmail.dk";
 $navn="Mathilde";
 $emne="Hej";
 $besked="Vil du med i biffen?";
-$subject="Besked fra" . $navn . ": ". $email;
+$subject="Besked fra" . $navn . ": ". $to;
 $message= "<h1 style='color:red'>" . $emne . "</h1> " . $besked;
 $header = "Content-type: text/html; charset=utf-8" . "\r\n";
-$header.="from:ms.oldorf@gmail.com";
+$header.="from:ms.oldorf@mathildeoldorf.dk";
 
 mail($to, $subject, $message, $header);
 ?>
