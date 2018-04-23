@@ -350,6 +350,7 @@ input {
     font-family: 'hk_groteskregular_legacy';
     font-size: 3.5vw;
     margin: 0 3.5vw 1vw 3.5vw;
+    max-width: 250px;
 }
 
 textarea {
@@ -422,6 +423,38 @@ textarea {
         list-style-type: none;
         width: 600px;
         height: 400px;
+    }
+
+    /*OM*/
+    form {
+/*        width: 300px;*/
+        grid-column: 2/12;
+        margin: 1vw;
+        color: #fff;
+    }
+
+    input {
+        font-family: 'hk_groteskregular_legacy';
+        font-size: 3.5vw;
+        margin: 0 3.5vw 1vw 3.5vw;
+/*        max-width: 250px;*/
+    }
+
+    textarea {
+        font-family: 'hk_groteskregular_legacy';
+        font-size: 3.5vw;
+        margin: 0 3.5vw 1vw 3.5vw;
+        width: 260px;
+    }
+
+    #header_kontakt {
+        text-align: center;
+        padding: 1vw;
+    }
+
+    .type {
+        font-family: 'hk_grotesksemibold_legacy';
+        padding-left: 3.5vw;
     }
 
 }
