@@ -14,5 +14,5 @@ $header = "Content-type: text/html; charset=utf-8" . "\r\n";
 $header.="from:ms.oldorf@mathildeoldorf.dk";
 
 mail($to, $subject, $message, $header);
-header("Location: om.html");
+header("Location: omfood8.html");
 ?>

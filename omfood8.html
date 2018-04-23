@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <section id="header"></section>
+
+    <main>
+
+        <form id="nyhedsbrev" action="sendmail.php">
+            <h2 id="header_kontakt">Få nyheder fra Food8</h2>
+            <input type="text" name="navn" placeholder="Navn" required><br><span class="type">Restaurant</span>
+            <input type="radio" name="type" value="restaurant" required><span class="type"> Butik</span>
+            <input type="radio" name="type" value="butik" required><br>
+
+            <input type="tel" name="telefon" placeholder="Telefonnummer" min="8" max="8" required>
+            <input type="email" name="email" placeholder="E-mail" required>
+            <textarea rows="4" cols="50" name="besked" placeholder="Din besked" required></textarea>
+            <input type="submit" value="Send">
+
+        </form>
+
+        <form id="kontakt" action="sendmail.php">
+            <h2 id="header_kontakt">Join Food8</h2>
+            <input type="text" name="navn" placeholder="Navn" required><br>
+            <input type="number" name="cvr" required placeholder="CVR">
+            <span class="type">Restaurant</span>
+            <input type="radio" name="type" value="restaurant" required><span class="type"> Butik</span>
+            <input type="radio" name="type" value="butik" required><br>
+
+            <input type="tel" name="telefon" placeholder="Telefonnummer" min="8" max="8" required>
+            <input type="email" name="email" placeholder="E-mail" required>
+            <textarea rows="4" cols="50" name="besked" placeholder="Din besked" required></textarea>
+            <input type="submit" value="Send">
+
+        </form>
+
+    </main>
+
+    <div id="cirkelboks">
+        <div id="cirkel"></div>
+    </div>
+
+    <script src="js.javascript"></script>
+</body>
+
+</html>
