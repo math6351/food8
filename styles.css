@@ -54,6 +54,7 @@ h3 {
 
 p {
     font-family: 'hk_groteskregular_legacy';
+    padding: 2vw;
 }
 
 /* SEMANTIK */
@@ -371,9 +372,12 @@ footer {
 
 /* OM FOOD8 */
 
+#om_beskrivelse {
+    grid-column: 3/12;
+}
+
 form {
-    width: 300px;
-    grid-column: 4/7;
+    grid-column: 3/12;
     margin: 1vw;
     color: #fff;
 }
@@ -396,16 +400,16 @@ form {
 
 input {
     font-family: 'hk_groteskregular_legacy';
-    font-size: 3.5vw;
-    margin: 0 3.5vw 1vw 3.5vw;
-    max-width: 250px;
+    font-size: 2.5vw;
+    margin: 0 6.5vw 2vw 6.5vw;
+    width: 80%;
 }
 
 textarea {
     font-family: 'hk_groteskregular_legacy';
-    font-size: 3.5vw;
-    margin: 0 3.5vw 1vw 3.5vw;
-    max-width: 250px;
+    font-size: 2.5vw;
+    margin: 0 6.5vw 1vw 6.5vw;
+    width: 80%;
 }
 
 #header_kontakt {
@@ -415,8 +419,25 @@ textarea {
 
 .type {
     font-family: 'hk_grotesksemibold_legacy';
-    padding-left: 3.5vw;
+    font-size: 2.5vw;
+    padding-left: 6.5vw;
 }
+
+input[type=radio] {
+    width: 5%;
+    margin: 0 0 2vw 0;
+    cursor: pointer;
+}
+
+input[type=submit] {
+    cursor: pointer;
+    /*    width: 10vw;*/
+}
+
+
+
+
+
 
 /* MEDIAQUIERIES */
 
@@ -429,7 +450,7 @@ textarea {
         text-transform: uppercase;
         font-family: 'hk_grotesksemibold_legacy';
         text-align: center;
-        max-height: 100px;
+        max-height: 50px;
         position: static;
         overflow: visible;
         min-width: 100%;
@@ -498,13 +519,13 @@ textarea {
 
     /*OM*/
     form {
-        /*        width: 300px;*/
         margin: 1vw;
         color: #fff;
+        height: 55vw;
     }
 
     #kontakt {
-        grid-column: 3/6;
+        grid-column: 2/7;
         grid-row: 2;
     }
 
@@ -514,30 +535,25 @@ textarea {
     }
 
     input {
-        font-family: 'hk_groteskregular_legacy';
-        font-size: 3vw;
-        margin: 0 3.5vw 1vw 3.5vw;
+        font-size: 2vw;
+        margin: 1.5vw 3.5vw 0 3.5vw;
         width: 80%;
-        /*        max-width: 250px;*/
     }
 
     textarea {
-        font-family: 'hk_groteskregular_legacy';
-        font-size: 3.5vw;
-        margin: 0 3.5vw 1vw 3.5vw;
+        font-size: 2vw;
+        margin: 1.5vw 3.5vw 0 3.5vw;
         width: 80%;
-    }
-
-    #header_kontakt {
-        text-align: center;
-        padding: 1vw;
     }
 
     .type {
         font-family: 'hk_grotesksemibold_legacy';
+        font-size: 2vw;
         padding-left: 3.5vw;
     }
 
-    input[type=radio] {}
+    input[type=radio] {
+        margin: 1.5vw 0 0 0;
+    }
 
 }

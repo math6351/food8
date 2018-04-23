@@ -53,21 +53,23 @@
 
     <main>
 
+        <section id="om">
+            <h1 data-header>Om Food8</h1>
+            <p id="om_beskrivelse" data-beskrivelse>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam fugiat excepturi numquam unde enim dicta iste eos optio minus vitae nobis aspernatur tenetur ea, asperiores reiciendis perferendis cupiditate dolorem accusantium!</p>
+        </section>
+
         <form id="nyhedsbrev" action="sendmail.php">
             <h2 id="header_kontakt">Få nyheder fra Food8</h2>
-            <input type="text" name="navn" placeholder="Navn" required><br><span class="type">Restaurant</span>
-            <input type="radio" name="type" required><span class="type"> Butik</span>
-            <input type="radio" name="type" required><br>
-
-            <input type="tel" name="telefon" placeholder="Telefonnummer" min="8" max="8" value="Telefonnummer" required>
+            <p>Så er du altid opdateret på hvad der rør sig på Københavns kulinariske scene</p>
+            <input type="text" name="navn" placeholder="Navn" required><br>
             <input type="email" name="email" placeholder="E-mail" required>
-            <textarea rows="4" cols="50" name="besked" placeholder="Din besked" required></textarea>
             <input type="submit" value="Send">
 
         </form>
 
         <form id="kontakt" action="sendmail.php">
             <h2 id="header_kontakt">Join Food8</h2>
+            <p>Og bliv en del af...</p>
             <input type="text" name="navn" placeholder="Navn" required><br>
             <input type="number" name="cvr" required placeholder="CVR">
             <span class="type">Restaurant</span>
