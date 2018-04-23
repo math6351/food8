@@ -48,20 +48,17 @@
     </section>
 
     <main>
-        <h1 id="overskrift" data-overskrift>
-        </h1>
+        <!--<h1 id="overskrift" data-overskrift>
+        </h1>-->
         <section class="liste" data-liste>
-
         </section>
     </main>
 
 
-    <template class="template" data-template>
+    <template class="restauranter" data-template>
         <article class="restaurant" data-restaurant>
             <h2 class="navn" data-navn></h2>
-            <div class="billede-container">
-            <div class="billede"><img src="" alt="" data-billede></div>
-            </div>
+            ><img class="billede" src="" alt="" data-billede>
         </article>
     </template>
 
@@ -75,32 +72,32 @@
     </section>
 
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
     <script src="javascript.js"></script>
     <script>
-        letjSonUrl = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/restaurant";
-        let nyheder = [];
-        let display = document.querySelector("[data-template]");
-        let template = document.querySelector("[data-liste]");
 
-
+        let jSonUrl = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/restaurant";
+        let restauranter = [];
+        let display = document.querySelector("[data-liste]");
+        let template = document.querySelector("[data-template]");
         document.addEventListener("DOMContentLoaded", hentJson);
+
+
         async function hentJson() {
             let dataJson = await fetch(jsonUrl);
             restauranter = await dataJson.json();
-            console.log(nyheder);
             visRestauranter();
         }
 
         function visRestauranter() {
+            console.log(restauranter);
             restauranter.forEach(restaurant => {
                 let klon = template.cloneNode(true).content;
                 console.log(restaurant);
 
-                klon.querySelector("[data-navn]").textContent = ;
-
-                klon.querySelector("[data-billede]").src = ;
-                klon.querySelector("[data-billede]").alt = ;
+                klon.querySelector("[data-navn]").textContent = restaurant.acf.restaurant_navn;
+                klon.querySelector("[data-billede]").src = restaurant.acf.splash_billed;
+                klon.querySelector("[data-billede]").alt = restaurant.acf.splash_billed;
 
                 display.appendChild(klon);
             });
