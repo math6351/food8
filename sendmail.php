@@ -3,11 +3,12 @@ $to="ms.oldorf@gmail.com";
 
 $navn=$_REQUEST['navn'];
 $email=$_REQUEST['email'];
-$emne=$_REQUEST['emne'];
+$telefon=$_REQUEST['telefon'];
+$cvr=$_REQUEST['cvr'];
 
 $besked=$_REQUEST['besked'];
-$subject="Besked fra" . $navn . ": ". $to;
-$message= "<h1 style='color:red'>" . $emne . "</h1> " . $besked;
+$subject="Besked fra" . $navn . ": ". $email;
+$message= $navn . $cvr . $besked . $telefon;
 
 $header = "Content-type: text/html; charset=utf-8" . "\r\n";
 $header.="from:ms.oldorf@mathildeoldorf.dk";
