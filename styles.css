@@ -256,7 +256,7 @@ a {
 }
 
 
-/* FOOTER */
+/*** FOOTER ***/
 
 footer {
     display: grid;
@@ -293,7 +293,7 @@ footer {
     color: #ec9dad;
 }
 
-/* FORSIDE */
+/*** FORSIDE ***/
 
 .om_header {
     font-family: 'hk_groteskregular_legacy';
@@ -305,9 +305,9 @@ footer {
     border-style: solid;
 }
 
-/* SLIDERE */
+/*** SLIDERE ***/
 
-/* NYHEDSSLIDER */
+/*NYHEDSSLIDER*/
 
 #nyhedsslider {
     margin: 0 auto;
@@ -331,7 +331,7 @@ footer {
     height: 150px;
 }
 
-/*MENUKORT SLIDER */
+/*MENUKORT SLIDER*/
 
 #menukortslider {
     grid-column: 3/12;
@@ -353,7 +353,13 @@ footer {
     height: 300px;
 }
 
-/* RESTAURANTER */
+/*** SPIS UDE - KATEGORI ***/
+
+#kategori {
+    grid-column: 2/13;
+}
+
+/*** SPIS UDE ***/
 
 .liste {
     display: grid;
@@ -368,7 +374,15 @@ footer {
     overflow: hidden;
 }
 
-/* OM FOOD8 */
+/*** RESTAURANT ***/
+
+/*** SPIS HJEMME ***/
+
+/*** BUTIK ***/
+
+/*** NYHED ***/
+
+/*** OM FOOD8 ***/
 
 #om_beskrivelse {
     grid-column: 3/12;
