@@ -1,5 +1,5 @@
 <?php
-$to="ms.oldorf@gmail.dk";
+$to="ms.oldorf@gmail.com";
 $navn="Mathilde";
 $emne="Hej";
 $besked="Vil du med i biffen?";
