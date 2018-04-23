@@ -9,7 +9,7 @@ $cvr=$_REQUEST['cvr'];
 
 $besked=$_REQUEST['besked'];
 $subject="Besked fra " . $navn . ": ". $email;
-$message= $type . " " . $navn . "<br>" . $cvr . "<br>" . $besked . "<br>". $telefon;
+$message= $type . " " . $navn . "<br> CVR nr. " . $cvr . "<br>" . $besked . "<br>". "Telefon nr. " $telefon;
 
 $header = "Content-type: text/html; charset=utf-8" . "\r\n";
 $header.="from:ms.oldorf@mathildeoldorf.dk";

@@ -10,18 +10,57 @@
 
 <body>
 
-    <section id="header"></section>
+    <section id="header">
+        <a href="index.html">
+            <div id="logo"></div>
+        </a>
+
+        <button class="burgermenu">
+           <div class="bar1"></div>
+           <div class="bar2"></div>
+           <div class="bar3"></div>
+        </button>
+
+        <nav id="hovedmenu">
+            <ul>
+
+                <a id="spisude" href="spisude.html">
+                    <li id="spisude_billede">Spis ude</li>
+                </a>
+                <a id="spishjemme" href="spishjemme.html">
+                    <li id="spishjemme_billede">Spis hjemme</li>
+                </a>
+                <a id="bookbord" href="bookbord.html">
+                    <li id="bookbord_billede">Book bord</li>
+                </a>
+                <a id="selskaber" href="selskaber.html">
+                    <li id="selskaber_billede">Skal du holde selskab?</li>
+                </a>
+                <a id="om" href="omfood8.html">
+                    <li id="om_billede">Om Food8</li>
+                </a>
+
+            </ul>
+
+        </nav>
+
+    </section>
+
+    <div id="cirkelboks">
+        <div id="cirkel"></div>
+    </div>
+
 
     <main>
 
         <form id="nyhedsbrev" action="sendmail.php">
             <h2 id="header_kontakt">Få nyheder fra Food8</h2>
             <input type="text" name="navn" placeholder="Navn" required><br><span class="type">Restaurant</span>
-            <input type="radio" name="type" value="Restaurant " required><span class="type"> Butik</span>
-            <input type="radio" name="type" value="Butik " required><br>
+            <input type="radio" name="type" required><span class="type"> Butik</span>
+            <input type="radio" name="type" required><br>
 
             <input type="tel" name="telefon" placeholder="Telefonnummer" min="8" max="8" value="Telefonnummer" required>
-            <input type="email" name="email" placeholder="E-mail" value="E-mail" required>
+            <input type="email" name="email" placeholder="E-mail" required>
             <textarea rows="4" cols="50" name="besked" placeholder="Din besked" required></textarea>
             <input type="submit" value="Send">
 
@@ -47,6 +86,8 @@
     <div id="cirkelboks">
         <div id="cirkel"></div>
     </div>
+
+    <section id="footer"></section>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="javascript.js"></script>
