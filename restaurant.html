@@ -62,25 +62,24 @@
                <div id="banner">
                    <img data-banner src="" alt="">
                </div>
-                <h1 data-header-restaurant></h1>
+                <h1 data-header></h1>
                 <p data-beskrivelse></p>
             </article>
         </template>
 
         <section id="menukort">
-            <div id="menukortslider">
+            <div id="menukortslider" data-menukortslider>
                 <h1></h1>
-                <ul id="menukortslides">
-                    <li class="slide">
-                        <img src="food8_imgs/Spisehuset/image/jpeg/IMG-0654.jpg" alt="">
-                    </li>
-                    <li class="slide">
-                        <img src="food8_imgs/Spisehuset/image/jpeg/IMG-1659.jpg" alt="">
-                    </li>
+                <ul id="menukortslides" data-menukortslides>
 
-                    <li class="slide">
-                        <img src="food8_imgs/Spisehuset/image/jpeg/Spisehuset.jpg" alt="">
-                    </li>
+                    <li class="menukortslide" data-slide>
+                        <img src="food8_imgs/Spisehuset/image/jpeg/IMG-0654.jpg" alt=""> </li>
+
+                    <li class="menukortslide">
+                        <img src="food8_imgs/Spisehuset/image/jpeg/IMG-1659.jpg" alt=""> </li>
+
+                    <li class="menukortslide">
+                        <img src="food8_imgs/Spisehuset/image/jpeg/spisehuset3.jpg" alt=""> </li>
                 </ul>
             </div>
 
@@ -88,10 +87,10 @@
             <div id="sliderknap2"></div>
         </section>
 
-        <template id="menukort_restaurant">
+        <template id="menukorttemplate" data-menukorttemplate>
             <h1 data-header-menukort></h1>
-               <li class="slide"></li>
-                <img data-menukort>
+               <li class="menukortslide" data-menukortslide></li>
+                <img data-menukortimg>
         </template>
 
     </main>
@@ -104,50 +103,73 @@
     <script src="javascript.js"></script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", sliderMenukort);
-
-        //
-        //        letjSonUrl = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/restaurant";
-        //
-        //        let restauranter = [];
-        //        let display = document.querySelector("#menukortslides");
-        //        let template = document.querySelector("#slide");
-        //
         //        document.addEventListener("DOMContentLoaded", hentJson);
+
+        // // let jSonUrl = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/restaurant"; // let restauranter = []; // let display = document.querySelector("[data-menukortslides]"); // let template = document.querySelector("[data-menukorttemplate]"); // document.addEventListener("DOMContentLoaded", hentJson); // // async function hentJson() { // let dataJson = await fetch(jSonUrl); // restauranter = await dataJson.json(); // console.log(restauranter); // // visMenukort(); // sliderMenukort(); // } // // function visMenukort() { // console.log(restauranter); // restauranter.forEach(restaurant => { // let klon = template.cloneNode(true).content; // console.log(restaurant); // // klon.querySelector("[data-header]").textContent = nyhed.acf.nyheds_title; // // klon.querySelector("[data-menukortslide] img").src = restaurant.acf.supplerende_billedemateriale2; // console.log(klon.querySelector("[data-menukortslide]")); // klon.querySelector("[data-menukortslide]").alt = "Billede af " + restaurant.acf.menukategorier; // display.appendChild(klon); // }); // }
+
+        //        function sliderNyheder() {
+        //            var width = 530;
+        //            var widthStor = 825;
+        //            var animationSpeed = 1800;
+        //            var pause = 5000;
+        //            var currentSlide = 1;
+        //            var $slider = $("#nyhedsslider");
+        //            var $slideContainer = $slider.find("#nyhedsslides");
+        //            var $slides = $slideContainer.find(".nyhedsslide");
+        //            var $tekst = $("#preview-tekst");
+        //            var mq = window.matchMedia('all and (min-width: 900px)');
+        //            setInterval(function() {
+        //                if (mq.matches) {
+        //                    sliderSliderStor();
+        //                } else {
+        //                    sliderSlider();
+        //                }
+        //            }, pause);
         //
-        //        async function hentJson() {
-        //            let dataJson = await fetch(jsonUrl);
-        //            nyheder = await dataJson.json();
+        //            function sliderSlider() {
+        //                console.log("sliderSlider");
+        //                console.log("animationspeed er " + animationSpeed);
+        //                console.log("pause er " + pause);
+        //                $($slideContainer).animate({
+        //                    "margin-left": "-=" + width
+        //                }, animationSpeed, reset);
+        //            }
         //
-        //            console.log(nyheder);
-        //
-        //            visRestaurant();
+        //            function reset() {
+        //                currentSlide++;
+        //                if (currentSlide === $slides.length) {
+        //                    console.log("currentSlide = length");
+        //                    currentSlide = 1;
+        //                    $slideContainer.css({
+        //                        "margin-left": "0"
+        //                    });
+        //                }
+        //            }
+
+        /** MEDIA QUIERY **/
+
+        //            function sliderSliderStor() {
+        //                console.log("sliderSliderStor");
+        //                console.log("animationspeed er " + animationSpeed);
+        //                console.log("pause er" + pause);
+        //                $($slideContainer).animate({
+        //                    "margin-left": "-=" + widthStor
+        //                }, animationSpeed, reset);
+        //            }
         //        }
-        //
-        //        function visRestaurant() {
-        //            nyheder.forEach(restaurant => {
-        //                let klon = template.cloneNode(true).content;
-        //                console.log(nyhed);
-        //                klon.querySelector("[data-header]").textContent = nyhed.acf.nyheds_title;
-        //                klon.querySelector("[data-nyhedsslide]").src = nyhed.acf.billede_materiale.url;
-        //                klon.querySelector("[data-nyhedsslide]").alt = nyhed.acf.billede_materiale.alt;
-        //
-        //                display.appendChild(klon);
-        //
-        //            });
-        //        }
+
 
         function sliderMenukort() {
 
-            var width = 400;
-            var widthStor = 600;
+            var width = 450;
+            var widthStor = 650;
             var animationSpeed = 1800;
             var pause = 5000;
             var currentSlide = 1;
 
             var $slider = $("#menukortslider");
             var $slideContainer = $slider.find("#menukortslides");
-            var $slides = $slideContainer.find(".slide");
+            var $slides = $slideContainer.find(".menukortslide");
 
             var $tekst = $("#preview-tekst");
 

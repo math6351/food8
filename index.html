@@ -52,21 +52,31 @@
     </div>
 
     <main>
+        <section id="om">
+            <h1 class="om_header">Velkommen til en verden af madoplevelser! </h1>
+            <h2 class="om_header">Oplev Københavns kulinariske perler hos Food8<br> - din virtuelle foodcourt</h2>
+        </section>
 
-        <section id="nyhedsfeed">
+        <section id="nyhedsfeed" data-nyhedsfeed>
             <h1>Nyheder</h1>
-            <div id="nyhedsfeed-slider">
-                <ul id="nyhedsfeed-slides"></ul>
+            <div id="nyhedsslider" data-nyhedsslider>
+                <ul id="nyhedsslides" data-nyhedsslides>
+
+                </ul>
             </div>
         </section>
 
-        <template id="nyheder">
-            <h2 data-header></h2>
-            <li class="nyhedsslide" data-nyhedsslide></li>
+        <template id="nyheder" data-nyheder>
+<!--            <p class="nyhedstitel" data-header></p>-->
+<!--           Skal linkes til den specifikke nyhedsside + ordnes at den blinker til sidst-->
+            <li class="nyhedsslide" data-nyhedsslide>
+                <img src="" alt="">
+            </li>
         </template>
 
         <section id="ugensudvalgte">
             <h1>Ugens udvalgte</h1>
+            <div id="ugensudvalgte_container"></div>
         </section>
 
     </main>
@@ -76,83 +86,91 @@
 
     </section>
 
-    <!--
-    <template>
-        <article>
-            <h2 data-header></h2>
-            <img data-image src="" alt="">
-            <p data-beskrivelse></p>
-        </article>
-    </template>
--->
-
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js">
+    </script>
     <script src="javascript.js"></script>
     <script>
-        //        letjSonUrl = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/nyheder";
-        //
-        //        let nyheder = [];
-        //        let display = document.querySelector("#nyhedsfeed");
-        //        let template = document.querySelector("#nyheder");
-        //
-        //        document.addEventListener("DOMContentLoaded", hentJson);
-        //
-        //        async function hentJson() {
-        //            let dataJson = await fetch(jsonUrl);
-        //            nyheder = await dataJson.json();
-        //
-        //            console.log(nyheder);
-        //
-        //            visNyheder();
-        //        }
+        let jSonUrl = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/nyheder";
+        let nyheder = [];
+        let display = document.querySelector("[data-nyhedsslides]");
+        let template = document.querySelector("[data-nyheder]");
+        document.addEventListener("DOMContentLoaded", hentJson);
 
-        //        function visNyheder() {
-        //            nyheder.forEach(nyhed => {
-        //                let klon = template.cloneNode(true).content;
-        //                console.log(nyhed);
-        //                klon.querySelector("[data-header]").textContent = nyhed.acf.nyheds_title;
-        //                klon.querySelector("[data-nyhedsslide]").src = nyhed.acf.billede_materiale.url;
-        //                klon.querySelector("[data-nyhedsslide]").alt = nyhed.acf.billede_materiale.alt;
-        //
-        //                display.appendChild(klon);
-        //
-        //            });
-        //        }
+        async function hentJson() {
+            let dataJson = await fetch(jSonUrl);
+            nyheder = await dataJson.json();
+            console.log(nyheder);
+            visNyheder();
+            sliderNyheder();
+        }
+
+        function visNyheder() {
+            console.log(nyheder);
+            nyheder.forEach(nyhed => {
+                let klon = template.cloneNode(true).content;
+                console.log(nyhed);
+                //                klon.querySelector("[data-header]").textContent = nyhed.acf.nyheds_title;
 
 
+                klon.querySelector("[data-nyhedsslide] img").src = nyhed.acf.billede_materiale;
+                console.log(klon.querySelector("[data-nyhedsslide]"));
+                klon.querySelector("[data-nyhedsslide]").alt = "Billede af " + nyhed.acf.nyheds_title;
+                display.appendChild(klon);
+            });
+        }
 
+        function sliderNyheder() {
+            var width = 530;
+            var widthStor = 825;
+            var animationSpeed = 1800;
+            var pause = 5000;
+            var currentSlide = 1;
+            var $slider = $("#nyhedsslider");
+            var $slideContainer = $slider.find("#nyhedsslides");
+            var $slides = $slideContainer.find(".nyhedsslide");
+            var $tekst = $("#preview-tekst");
+            var mq = window.matchMedia('all and (min-width: 900px)');
+            setInterval(function() {
+                if (mq.matches) {
+                    sliderSliderStor();
+                } else {
+                    sliderSlider();
+                }
+            }, pause);
 
+            function sliderSlider() {
+                console.log("sliderSlider");
+                console.log("animationspeed er " + animationSpeed);
+                console.log("pause er " + pause);
+                $($slideContainer).animate({
+                    "margin-left": "-=" + width
+                }, animationSpeed, reset);
+            }
 
-        //        let jSonUrl = "jsontest.json";
-        //        let fugle = [];
-        //        let display = document.querySelector("section");
-        //        let template = document.querySelector("template");
-        //
-        //
-        //        document.addEventListener("DOMContentLoaded", hentJson);
-        //
-        //        async function hentJson() {
-        //            let dataJson = await fetch(jSonUrl);
-        //            fugle = await dataJson.json();
-        //
-        //            console.log(fugle);
-        //
-        //            visFugle();
-        //        }
-        //
-        //        function visFugle() {
-        //            fugle.forEach(fugl => {
-        //
-        //                let klon = template.cloneNode(true).content;
-        //                console.log(fugl);
-        //                klon.querySelector("[data-header]").textContent = fugl.header;
-        //                klon.querySelector("[data-image]").src = fugl.image.url;
-        //                klon.querySelector("[data-image]").alt = fugl.image.alt;
-        //                klon.querySelector("[data-beskrivelse]").textContent = fugl.paragraph;
-        //                display.appendChild(klon);
-        //            });
-        //        }
+            function reset() {
+                currentSlide++;
+                if (currentSlide === $slides.length) {
+                    console.log("currentSlide = length");
+                    currentSlide = 1;
+                    $slideContainer.css({
+                        "margin-left": "0"
+                    });
+                }
+            }
+
+            /** MEDIA QUIERY **/
+
+            function sliderSliderStor() {
+                console.log("sliderSliderStor");
+                console.log("animationspeed er " + animationSpeed);
+                console.log("pause er" + pause);
+                $($slideContainer).animate({
+                    "margin-left": "-=" + widthStor
+                }, animationSpeed, reset);
+            }
+        }
     </script>
+
 </body>
 
 </html>
