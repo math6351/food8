@@ -44,6 +44,7 @@ h1,
 h2 {
     font-family: 'hk_groteskbold_legacy';
     text-align: center;
+    grid-column: 1/13;
 }
 
 h3 {
@@ -74,12 +75,30 @@ body {
 
 main {
     grid-column: 1/13;
-    grid-row: 4;
+    grid-row: 3;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+section {
+    grid-column: 1/13;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    margin: 1vw;
 }
 
 #footer {
     grid-column: 1/13;
     grid-row: 7;
+    display: block;
+}
+
+ul {
+    list-style-type: none;
+}
+
+img {
+    width: 100%;
 }
 
 /* HOVEDMENU */
@@ -96,28 +115,6 @@ main {
 #logo:hover {
     transform: scale(1.1);
 }
-
-/*
-#hovedmenu {
-    grid-column: 3/13;
-    grid-row: 2;
-    text-transform: uppercase;
-    font-family: 'hk_grotesksemibold_legacy';
-    text-align: center;
-}
-
-nav ol {
-    list-style-type: none;
-    padding: 0;
-}
-
-nav li {
-    display: inline;
-    padding: 3vw 3vw;
-    font-size: 1.7vw;
-
-}
-*/
 
 a {
     text-decoration: none;
@@ -241,9 +238,8 @@ a {
     margin: 0;
 }
 
-#hovedmenu ol {
-    padding-left: 7.5vw;
-    padding-top: 15vw;
+#hovedmenu ul {
+    padding-top: 20vw;
 }
 
 #hovedmenu li {
@@ -285,4 +281,147 @@ footer {
     width: 25vw;
     height: 3vw;
     margin: 2vw 0;
+}
+
+.linkshover:hover {
+    color: #ec9dad;
+}
+
+/* SLIDERE */
+
+#menukortslider {
+    grid-column: 3/10;
+    width: 400px;
+    height: 300px;
+    overflow: hidden;
+}
+
+#menukortslides {
+    display: block;
+    width: 8000px;
+    margin: 0;
+    padding: 0;
+}
+
+.slide {
+    float: left;
+    list-style-type: none;
+    width: 400px;
+    height: 300px;
+}
+
+/*
+
+.slide img {
+    border-radius: 0;
+}
+
+.slide img:hover {
+    opacity: 0.9;
+}
+*/
+
+/* OM FOOD8 */
+
+form {
+    width: 300px;
+    grid-column: 4/7;
+    margin: 1vw;
+    color: #fff;
+}
+
+#kontakt {
+    background-color: #ec9dad;
+}
+
+#kontakt input {
+    color: #ec9dad;
+}
+
+#nyhedsbrev {
+    background-color: #3456a6;
+}
+
+#nyhedsbrev input {
+    color: #3456a6;
+}
+
+input {
+    font-family: 'hk_groteskregular_legacy';
+    font-size: 3.5vw;
+    margin: 0 3.5vw 1vw 3.5vw;
+}
+
+textarea {
+    font-family: 'hk_groteskregular_legacy';
+    font-size: 3.5vw;
+    margin: 0 3.5vw 1vw 3.5vw;
+    width: 260px;
+}
+
+#header_kontakt {
+    text-align: center;
+    padding: 1vw;
+}
+
+.type {
+    font-family: 'hk_grotesksemibold_legacy';
+    padding-left: 3.5vw;
+}
+
+/* MEDIAQUIERIES */
+
+@media screen and (min-width: 900px) {
+
+    /*HOVEDMENU*/
+    #hovedmenu {
+        grid-column: 1/13;
+        grid-row: 2;
+        text-transform: uppercase;
+        font-family: 'hk_grotesksemibold_legacy';
+        text-align: center;
+        max-height: 100px;
+        position: static;
+        overflow: visible;
+        min-width: 100%;
+        /*        background-color: clear;*/
+        text-align: center;
+    }
+
+    #hovedmenu ul {
+        padding: 0;
+    }
+
+    #hovedmenu li {
+        display: inline;
+        padding: 3vw 3vw;
+        font-size: 1.7vw;
+        color: #334151;
+    }
+
+    .burgermenu {
+        display: none;
+    }
+
+    /* RESTAURANTSIDRE */
+    #menukortslider {
+        width: 600px;
+        height: 400px;
+        overflow: hidden;
+    }
+
+    #menukortslides {
+        display: block;
+        width: 8000px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .slide {
+        float: left;
+        list-style-type: none;
+        width: 600px;
+        height: 400px;
+    }
+
 }

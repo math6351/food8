@@ -4,19 +4,221 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>FOOD8 - Spis ude</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-    <section id="header"></section>
+    <section id="header">
+
+        <a href="index.html">
+            <div id="logo"></div>
+        </a>
+
+        <button class="burgermenu">
+           <div class="bar1"></div>
+           <div class="bar2"></div>
+           <div class="bar3"></div>
+        </button>
+
+        <nav id="hovedmenu">
+            <ul>
+
+                <a id="spisude" href="spisude.html">
+                    <li id="spisude_billede">Spis ude</li>
+                </a>
+                <a id="spishjemme" href="spishjemme.html">
+                    <li id="spishjemme_billede">Spis hjemme</li>
+                </a>
+                <a id="bookbord" href="bookbord.html">
+                    <li id="bookbord_billede">Book bord</li>
+                </a>
+                <a id="selskaber" href="selskaber.html">
+                    <li id="selskaber_billede">Skal du holde selskab?</li>
+                </a>
+                <a id="om" href="om.html">
+                    <li id="om_billede">Om Food8</li>
+                </a>
+
+            </ul>
+
+        </nav>
+
+    </section>
 
     <div id="cirkelboks">
         <div id="cirkel"></div>
     </div>
 
-    <script src="js.javascript"></script>
+    <main>
+
+        <section id="om">
+            <h1>OM</h1>
+        </section>
+
+        <template id="om_restaurant">
+            <article>
+               <div id="banner">
+                   <img data-banner src="" alt="">
+               </div>
+                <h1 data-header-restaurant></h1>
+                <p data-beskrivelse></p>
+            </article>
+        </template>
+
+        <section id="menukort">
+            <div id="menukortslider">
+                <h1></h1>
+                <ul id="menukortslides">
+                    <li class="slide">
+                        <img src="food8_imgs/Spisehuset/image/jpeg/IMG-0654.jpg" alt="">
+                    </li>
+                    <li class="slide">
+                        <img src="food8_imgs/Spisehuset/image/jpeg/IMG-1659.jpg" alt="">
+                    </li>
+
+                    <li class="slide">
+                        <img src="food8_imgs/Spisehuset/image/jpeg/Spisehuset.jpg" alt="">
+                    </li>
+
+                </ul>
+            </div>
+
+            <div id="sliderknap1"></div>
+            <div id="sliderknap2"></div>
+        </section>
+
+        <!--
+<template id="menukort_restaurant">
+            <h1 data-header-menukort></h1>
+                <img data-menukort>
+        </template>
+-->
+
+    </main>
+
+    <section id="footer">
+
+    </section>
+
+    <script>
+        let jsonUrl = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2";
+
+        document.addEventListener("DOMContentLoaded", sidenErLoadet);
+
+        function sidenErLoadet() {
+            //           hentHeader();
+            hentFooter();
+            burgermenu();
+            sliderMenukort();
+        }
+        // // async function hentHeader() { // let headerData = await fetch("header.html"); // let header = await headerData.text(); // document.querySelector("#header").innerHTML = header; // }
+
+        async function hentFooter() {
+            let footerData = await fetch("footer.html");
+            let footer = await footerData.text();
+            document.querySelector("#footer").innerHTML = footer;
+        }
+
+
+        // BURGERMENU
+
+        function burgermenu() {
+            console.log("burgermenu");
+            document.querySelector(".burgermenu").addEventListener("mouseover", burgerFarveskiftOver);
+
+            document.querySelector(".burgermenu").addEventListener("mouseout", burgerFarveskiftOut)
+
+            document.querySelector(".burgermenu").addEventListener("click", toggleBurgermenu);
+            document.querySelector("#hovedmenu").addEventListener("click", toggleBurgermenu);
+
+            function burgerFarveskiftOver() {
+                document.querySelector(".bar1").classList.add("farveskift");
+                document.querySelector(".bar2").classList.add("farveskift");
+                document.querySelector(".bar3").classList.add("farveskift");
+            }
+
+            function burgerFarveskiftOut() {
+                document.querySelector(".bar1").classList.remove("farveskift");
+                document.querySelector(".bar2").classList.remove("farveskift");
+                document.querySelector(".bar3").classList.remove("farveskift");
+            }
+
+            function toggleBurgermenu() {
+                document.querySelector(".burgermenu").classList.toggle("change");
+                document.querySelector(".burgermenu").classList.toggle("skrump");
+                document.querySelector("#hovedmenu").classList.toggle("show");
+            }
+        }
+
+
+        function sliderMenukort() {
+
+            var width = 400;
+            var widthStor = 600;
+            var animationSpeed = 1800;
+            var pause = 4000;
+            var currentSlide = 1;
+
+            var $slider = $("#menukortslider");
+            var $slideContainer = $slider.find("#menukortslides");
+            var $slides = $slideContainer.find(".slide");
+
+            var $tekst = $("#preview-tekst");
+
+            var mq = window.matchMedia('all and (max-width: 900px)');
+
+
+            setInterval(function() {
+
+                if (mq.matches) {
+                    sliderSliderStor();
+                } else {
+                    sliderSlider();
+                }
+
+
+            }, pause);
+
+
+            function sliderSlider() {
+                console.log("sliderSlider");
+                console.log("animationspeed er " + animationSpeed);
+                console.log("pause er" + pause)
+                $($slideContainer).animate({
+                    "margin-left": "-=" + width
+                }, animationSpeed, reset);
+
+            }
+
+
+            function reset() {
+
+                currentSlide++;
+                if (currentSlide === $slides.length) {
+                    console.log("currentSlide = length");
+                    currentSlide = 1;
+                    $slideContainer.css({
+                        "margin-left": "0"
+                    });
+                }
+            }
+
+
+            /** MEDIA QUIERY **/
+
+            function sliderSliderStor() {
+                console.log("sliderSliderStor");
+                console.log("animationspeed er " + animationSpeed);
+                console.log("pause er" + pause)
+                $($slideContainer).animate({
+                    "margin-left": "-=" + widthStor
+                }, animationSpeed, reset);
+            }
+
+        }
+    </script>
 </body>
 
 </html>
