@@ -9,5 +9,4 @@ $header = "Content-type: text/html; charset=utf-8" . "\r\n";
 $header.="from:ms.oldorf@gmail.com";
 
 mail($to, $subject, $message, $header);
-
-;?>
+?>
