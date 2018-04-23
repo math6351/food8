@@ -7,8 +7,8 @@ $telefon=$_REQUEST['telefon'];
 $cvr=$_REQUEST['cvr'];
 
 $besked=$_REQUEST['besked'];
-$subject="Besked fra" . $navn . ": ". $email;
-$message= $navn . $cvr . $besked . $telefon;
+$subject="Besked fra " . $navn . ": ". $email;
+$message= $navn "\r\n" . $cvr "\r\n" . $besked "\r\n" . $telefon;
 
 $header = "Content-type: text/html; charset=utf-8" . "\r\n";
 $header.="from:ms.oldorf@mathildeoldorf.dk";
