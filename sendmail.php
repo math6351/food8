@@ -8,7 +8,7 @@ $telefon=$_REQUEST['telefon'];
 $cvr=$_REQUEST['cvr'];
 
 $besked=$_REQUEST['besked'];
-$subject="Besked fra " . $navn . ": ". $email;
+$subject="Besked fra Restaurant" . $navn . ": ". $email;
 $message= $type . " " . $navn . "<br> CVR nr. " . $cvr . "<br>" . $besked . "<br>". "Telefon nr. " . $telefon;
 
 $header = "Content-type: text/html; charset=utf-8" . "\r\n";

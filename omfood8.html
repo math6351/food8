@@ -55,6 +55,7 @@
 
         <section id="om">
             <h1 data-header>Om Food8</h1>
+            <img src="" alt="" data-billede>
             <p id="om_beskrivelse" data-beskrivelse>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam fugiat excepturi numquam unde enim dicta iste eos optio minus vitae nobis aspernatur tenetur ea, asperiores reiciendis perferendis cupiditate dolorem accusantium!</p>
         </section>
 
@@ -73,8 +74,8 @@
             <input type="text" name="navn" placeholder="Navn" required><br>
             <input type="number" name="cvr" required placeholder="CVR">
             <span class="type">Restaurant</span>
-            <input type="radio" name="type" value="restaurant" required><span class="type"> Butik</span>
-            <input type="radio" name="type" value="butik" required><br>
+            <input type="radio" name="type" value="Restaurant" required><span class="type"> Butik</span>
+            <input type="radio" name="type" value="Butik" required><br>
 
             <input type="tel" name="telefon" placeholder="Telefonnummer" min="8" max="8" required>
             <input type="email" name="email" placeholder="E-mail" required>
@@ -93,6 +94,24 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="javascript.js"></script>
+    <script>
+        let jSonUrl = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/om";
+
+        document.addEventListener("DOMContentLoaded", hentJson);
+
+        async function hentJson() {
+            let dataJson = await fetch(jSonUrl);
+            info = await dataJson.json();
+
+            visInfo();
+        }
+
+        function visInfo() {
+            document.querySelector("[databeskrivelse]").innerHTML = info.acf.om_langbeskrivelse;
+            document.querySelector("[data-billede]").src = info.acf.food8_billede;
+            document.querySelector("[data-billede]").alt = info.acf.om_kortbeskrivelse;
+        }
+    </script>
 </body>
 
 </html>
