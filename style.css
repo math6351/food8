@@ -335,43 +335,62 @@ footer {
     height: 150px;
 }
 
-/*MENUKORT SLIDER*/
+/*MENUKORT + IMAGE SLIDER*/
 
-#menukortslider {
-    grid-column: 3/12;
-    height: 300px;
+#slider {
+    grid-column: 2/13;
+    max-width: 560px;
+    height: 500px;
     overflow: hidden;
 }
 
-#menukortslides {
+#slider.images {
+    height: 150px;
+}
+
+#slides {
     display: block;
     width: 8000px;
     margin: 0;
     padding: 0;
 }
 
-.menukortslide {
+.slide {
     float: left;
     list-style-type: none;
-    width: 465px;
+    width: 565px;
     height: 300px;
 }
 
-/*** SPIS UDE ***/
+/*** SPIS UDE + SPIS UDE - KATEGORI + SPIS HJEMME ***/
 
-/*** SPIS UDE - KATEGORI ***/
-
-/*** SPIS HJEMME ***/
-
-.kategori {
+#kategori {
     grid-column: 2/13;
     height: 30vw;
     background-size: cover;
-    background-position: ;
-    font-family: 'hk_grotesksemibold_legacy';
-    font-size: 5vw;
-    color: #fff;
+    background-position: 0% 25%;
     text-transform: uppercase;
+    margin: 1vw;
+    cursor: pointer;
+}
+
+#kategori_tekst {
+    position: relative;
+    width: 28%;
+    height: 70%;
+    left: 35%;
+    padding: 6.5vw 1vw;
+    text-align: center;
+    background-color: rgba(251, 250, 242, 0.90);
+    font-family: 'hk_grotesksemibold_legacy';
+    font-size: 2.7vw;
+    color: #4d5966;
+
+}
+
+#kategori:nth-child(2),
+#kategori:nth-child(3) {
+    padding-top: 2.3vw;
 }
 
 .liste {
@@ -387,13 +406,28 @@ footer {
     overflow: hidden;
 }
 
-.butik {
+.butik,
+.restaurant,
+.restaurant_single {
     grid-column: 2/14;
+    cursor: pointer;
 }
 
-.restaurant {
-    grid-column: 2/14;
+#restaurant_single_container {
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    grid-gap: 2vw;
+}
 
+#sted_adresse,
+#sted_hours,
+#sted_header {
+    grid-column: 2/7;
+}
+
+#sted_header {
+    text-align: left;
+    margin: 0;
 }
 
 /*** RESTAURANT ***/
@@ -529,13 +563,13 @@ input[type=submit] {
     }
 
     /*MENUKORT SLIDER*/
-    #menukortslider {
+    #slider {
         width: 600px;
         height: 400px;
         overflow: hidden;
     }
 
-    #menukortslides {
+    #slides {
         display: block;
         width: 8000px;
         margin: 0;
@@ -588,4 +622,16 @@ input[type=submit] {
         margin: 1.5vw 0 0 0;
     }
 
+}
+
+@media screen and (min-width: 750px) {
+    #slider {
+        grid-column: 3/12;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    #slider {
+        grid-column: 4/11;
+    }
 }

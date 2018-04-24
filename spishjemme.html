@@ -47,7 +47,8 @@
 
     <main>
         <section id="filter_kategorier" data-kategorier>
-            <button class="kategori" data-kategori>
+            <button id="kategori" class="takeaway" data-kategori>
+            <div id="kategori_tekst" data-tekst></div>
             </button>
         </section>
 
@@ -109,7 +110,7 @@
 
             document.querySelector("[data-kategori]").alt = "Billede af" + kategorier.acf.kategori_titel;
 
-            document.querySelector("[data-kategori]").textContent = kategorier.acf.kategori_titel;
+            document.querySelector("[data-tekst]").textContent = kategorier.acf.kategori_titel;
         }
 
         function visButikker() {

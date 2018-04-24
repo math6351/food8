@@ -58,8 +58,11 @@
 
         <template id="kategori_temp" data-template>
 
-            <button class="kategori" data-kategori>
+            <button id="kategori" data-kategori>
+            <div id="kategori_tekst" data-tekst></div>
             </button>
+
+
 
         </template>
 
@@ -95,13 +98,13 @@
             console.log(kategorier);
             kategorier.forEach(kategori => {
                 let klon = template.cloneNode(true).content;
-                console.log("wtsetrwtv", klon.querySelector("[data-kategori]"));
+                console.log(klon.querySelector("[data-kategori]"));
 
                 klon.querySelector("[data-kategori]").style.backgroundImage = "url('" + kategori.acf.kategori_billede + "')";
 
                 klon.querySelector("[data-kategori]").alt = "Billede af" + kategori.acf.kategori_titel;
 
-                klon.querySelector("[data-kategori]").textContent = kategori.acf.kategori_titel;
+                klon.querySelector("[data-tekst]").textContent = kategori.acf.kategori_titel;
 
                 display.appendChild(klon);
             });

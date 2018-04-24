@@ -53,49 +53,76 @@
 
     <main>
 
-        <!--
-<section id="om">
-    <h1>OM</h1>
-</sectrestaurant
--->
-
         <section class="liste" data-liste>
-            <article>
-                <div id="banner">
-                    <img data-banner src="" alt="">
-                </div>
-                <h1 data-header></h1>
-                <!--                <h2 data-manchet></h2>-->
+            <article class="restaurant_single">
+                <img class="billede" data-banner src="" alt="">
+                <h2 data-manchet></h2>
                 <p data-beskrivelse></p>
             </article>
         </section>
 
-        <section id="menukort">
-            <div id="menukortslider" data-menukortslider>
-                <h1></h1>
-                <ul id="menukortslides" data-menukortslides>
 
-                    <li class="menukortslide" data-slide>
+        <section id="images">
+            <h1 id="data-header">Vores verden</h1>
+
+            <div id="slider" class="images" data-slider>
+
+                <ul id="slides" data-slides>
+
+                    <li class="slide" data-slide>
                         <img src="food8_imgs/Spisehuset/image/jpeg/IMG-0654.jpg" alt=""> </li>
 
-                    <li class="menukortslide">
+                    <li class="slide" data-slide>
                         <img src="food8_imgs/Spisehuset/image/jpeg/IMG-1659.jpg" alt=""> </li>
 
-                    <li class="menukortslide">
+                    <li class="slide" data-slide>
                         <img src="food8_imgs/Spisehuset/image/jpeg/spisehuset3.jpg" alt=""> </li>
                 </ul>
             </div>
 
+        </section>
+
+        <section class="info" data-info>
+            <article class="restaurant_single">
+                <div id="restaurant_single_container">
+                    <h2 id="sted_header" data-header></h2>
+                    <p id="sted_adresse" data-adresse></p>
+                    <p id="sted_hours" data-hours></p>
+                </div>
+            </article>
+        </section>
+
+
+        <section id="menukort">
+            <h1 id="data-header">Menukort</h1>
+
+            <div id="slider" data-slider>
+
+                <ul id="slides" data-slides>
+
+                    <li class="slide" data-slide>
+                        <img src="food8_imgs/Spisehuset/image/jpeg/IMG-0654.jpg" alt=""> </li>
+
+                    <li class="slide" data-slide>
+                        <img src="food8_imgs/Spisehuset/image/jpeg/IMG-1659.jpg" alt=""> </li>
+
+                    <li class="slide" data-slide>
+                        <img src="food8_imgs/Spisehuset/image/jpeg/spisehuset3.jpg" alt=""> </li>
+                </ul>
+            </div>
+
+            <!--
             <div id="sliderknap1"></div>
             <div id="sliderknap2"></div>
+-->
 
         </section>
 
         <!--
-        <template id="menukorttemplate" data-menukorttemplate>
+        <template id="menukort_template" data-template>
             <h1 data-header-menukort></h1>
-               <li class="menukortslide" data-menukortslide></li>
-                <img data-menukortimg>
+               <li class="menukort_slide" data-slide></li>
+                <img data-billede>
         </template>
 -->
 
@@ -109,119 +136,70 @@
     <script src="javascript.js"></script>
 
     <script>
-        //        document.addEventListener("DOMContentLoaded", hentJson);
-
-        //        let jSonUrl = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/restaurant";
-
-        //        document.addEventListener("DOMContentLoaded", hentJson);
-        //        async function hentJson() {
-        //            let dataJson = await fetch(jSonUrl);
-        //
-        //            console.log(restauranter);
-        //            //                visMenukort();
-        //            sliderMenukort();
-        //        }
-
-
         let url = new URL(window.location.href);
         let searchParams = new URLSearchParams(url.search);
         let id = searchParams.get("id");
-        let apiURL = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/restaurant/" + id;
+        let jSonUrl = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/restaurant/" + id;
         let restaurant = {};
 
         document.addEventListener("DOMContentLoaded", hentJson);
 
         async function hentJson() {
-            let dataJson = await fetch(apiURL);
+            let dataJson = await fetch(jSonUrl);
             restaurant = await dataJson.json();
             console.log("It's so fetch to be single, Gretchen!");
             visRestaurant();
+            hentInfo();
+            //            visMenukort();
+            sliderImages();
         };
 
         function visRestaurant() {
             let display = document.querySelector("[data-liste]");
-
-            display.querySelector("[data-header]").textContent = restaurant.acf.restaurant_navn;
             display.querySelector("[data-banner]").src = restaurant.acf.splash_billed;
-            //            display.querySelector("[data-manchet]").innerHTML = restaurant.acf.manchet;
+            display.querySelector("[data-manchet]").innerHTML = restaurant.acf.manchet;
             display.querySelector("[data-beskrivelse]").innerHTML = restaurant.acf.restaurant_beskrivelse;
             console.log("You're now in singleview!")
         };
 
+        function hentInfo() {
+            let display = document.querySelector("[data-info]");
+            display.querySelector("[data-header]").textContent = restaurant.acf.restaurant_navn;
+            display.querySelector("[data-adresse]").innerHTML = restaurant.acf.adresse;
+            display.querySelector("[data-hours]").innerHTML = restaurant.acf.aabningstider;
 
-        //          function visMenukort() {
-        //               console.log(restauranter);
-        //                    restauranter = await dataJson.json();
-        //        let restauranter = [];
-        //        let display = document.querySelector("[data-menukortslides]");
-        //        let template = document.querySelector("[data-menukorttemplate]");
-        //               restauranter.forEach(restaurant => { // let klon = template.cloneNode(true).content; // console.log(restaurant); // // klon.querySelector("[data-header]").textContent = nyhed.acf.nyheds_title; // // klon.querySelector("[data-menukortslide] img").src = restaurant.acf.supplerende_billedemateriale2; // console.log(klon.querySelector("[data-menukortslide]")); // klon.querySelector("[data-menukortslide]").alt = "Billede af " + restaurant.acf.menukategorier; // display.appendChild(klon); // }); // }
+        }
 
-        //        function sliderNyheder() {
-        //            var width = 530;
-        //            var widthStor = 825;
-        //            var animationSpeed = 1800;
-        //            var pause = 5000;
-        //            var currentSlide = 1;
-        //            var $slider = $("#nyhedsslider");
-        //            var $slideContainer = $slider.find("#nyhedsslides");
-        //            var $slides = $slideContainer.find(".nyhedsslide");
-        //            var $tekst = $("#preview-tekst");
-        //            var mq = window.matchMedia('all and (min-width: 900px)');
-        //            setInterval(function() {
-        //                if (mq.matches) {
-        //                    sliderSliderStor();
-        //                } else {
-        //                    sliderSlider();
-        //                }
-        //            }, pause);
+
+        //        function visMenukort() {
+        //            console.log(restauranter);
         //
-        //            function sliderSlider() {
-        //                console.log("sliderSlider");
-        //                console.log("animationspeed er " + animationSpeed);
-        //                console.log("pause er " + pause);
-        //                $($slideContainer).animate({
-        //                    "margin-left": "-=" + width
-        //                }, animationSpeed, reset);
-        //            }
-        //
-        //            function reset() {
-        //                currentSlide++;
-        //                if (currentSlide === $slides.length) {
-        //                    console.log("currentSlide = length");
-        //                    currentSlide = 1;
-        //                    $slideContainer.css({
-        //                        "margin-left": "0"
-        //                    });
-        //                }
-        //            }
-
-        /** MEDIA QUIERY **/
-
-        //            function sliderSliderStor() {
-        //                console.log("sliderSliderStor");
-        //                console.log("animationspeed er " + animationSpeed);
-        //                console.log("pause er" + pause);
-        //                $($slideContainer).animate({
-        //                    "margin-left": "-=" + widthStor
-        //                }, animationSpeed, reset);
-        //            }
+        //            let display = document.querySelector("[data-menukortslides]");
+        //            let template = document.querySelector("[data-menukorttemplate]");
+        //            restauranter.forEach(restaurant => {
+        //                let klon = template.cloneNode(true).content;
+        //                console.log(restaurant);
+        //                klon.querySelector("[data-header]").textContent = nyhed.acf.nyheds_title;
+        //                klon.querySelector("[data-menukortslide] img").src = restaurant.acf.supplerende_billedemateriale2;
+        //                console.log(klon.querySelector("[data-menukortslide]"));
+        //                klon.querySelector("[data-menukortslide]").alt = "Billede af " + restaurant.acf.menukategorier;
+        //                display.appendChild(klon);
+        //            });
         //        }
 
+        function sliderImages() {
 
-        function sliderMenukort() {
-
-            var width = 465;
-            var widthStor = 650;
-            var animationSpeed = 1800;
+            var width = 565;
+            var widthStor = 750;
+            var animationSpeed = 1200;
             var pause = 5000;
             var currentSlide = 1;
 
-            var $slider = $("#menukortslider");
-            var $slideContainer = $slider.find("#menukortslides");
-            var $slides = $slideContainer.find(".menukortslide");
+            var $slider = $("[data-slider]");
+            var $slideContainer = $slider.find("[data-slides]");
+            var $slides = $slideContainer.find("[data-slide]");
 
-            var $tekst = $("#preview-tekst");
+            //           var $tekst = $("#preview-tekst");
 
             var mq = window.matchMedia('all and (min-width: 900px)');
 
@@ -272,6 +250,7 @@
             }
 
         }
+
     </script>
 </body>
 

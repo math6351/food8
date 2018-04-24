@@ -58,7 +58,6 @@
 
     <template class="restauranter" data-template>
         <article class="restaurant" data-restaurant>
-            <h2 class="navn" data-navn></h2>
             <img class="billede" src="" alt="" data-billede>
         </article>
     </template>
@@ -96,7 +95,6 @@
                 let template = document.querySelector("[data-template]");
                 let klon = template.cloneNode(true).content;
                 console.log(restaurant);
-                klon.querySelector("[data-navn]").textContent = restaurant.acf.restaurant_navn;
                 klon.querySelector("[data-billede]").src = restaurant.acf.splash_billed;
                 klon.querySelector("[data-billede]").alt = "Billede af " + restaurant.acf.restaurant_navn + "'s logo";
                 klon.querySelector("[data-billede]").addEventListener("click", () => {
