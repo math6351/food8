@@ -422,7 +422,7 @@ footer {
 #sted_adresse,
 #sted_hours,
 #sted_header {
-    grid-column: 2/7;
+    grid-column: 1/14;
 }
 
 #sted_header {
@@ -581,6 +581,13 @@ input[type=submit] {
         list-style-type: none;
         width: 650px;
         height: 400px;
+    }
+
+    /*RESTAURANT*/
+    #sted_adresse,
+    #sted_hours,
+    #sted_header {
+        grid-column: 1/7;
     }
 
     /*OM*/

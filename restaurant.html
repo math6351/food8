@@ -82,17 +82,6 @@
 
         </section>
 
-        <section class="info" data-info>
-            <article class="restaurant_single">
-                <div id="restaurant_single_container">
-                    <h2 id="sted_header" data-header></h2>
-                    <p id="sted_adresse" data-adresse></p>
-                    <p id="sted_hours" data-hours></p>
-                </div>
-            </article>
-        </section>
-
-
         <section id="menukort">
             <h1 id="data-header">Menukort</h1>
 
@@ -116,6 +105,17 @@
             <div id="sliderknap2"></div>
 -->
 
+        </section>
+
+        <section class="info" data-info>
+            <article class="restaurant_single">
+                <div id="restaurant_single_container">
+                    <h2 id="sted_header" data-header></h2>
+                    <p id="sted_adresse" data-adresse></p>
+                    <p id="sted_hours" data-hours></p>
+<!--                    <a href="" data-link><img id="smiley" data-smiley src="" alt=""></a>-->
+                </div>
+            </article>
         </section>
 
         <!--
@@ -167,6 +167,7 @@
             display.querySelector("[data-header]").textContent = restaurant.acf.restaurant_navn;
             display.querySelector("[data-adresse]").innerHTML = restaurant.acf.adresse;
             display.querySelector("[data-hours]").innerHTML = restaurant.acf.aabningstider;
+            display.querySelector("[data-smiley]").src = restaurant.acf.kontrolrapport_billede;
 
         }
 
