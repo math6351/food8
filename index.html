@@ -53,8 +53,8 @@
 
     <main>
         <section id="om">
-            <h1 class="om_header">Velkommen til en verden af madoplevelser! </h1>
-            <h2 class="om_header">Oplev Københavns kulinariske perler hos Food8<br> - din virtuelle foodcourt</h2>
+            <h1 class="om_header" data-om></h1>
+
         </section>
 
         <section id="nyhedsfeed" data-nyhedsfeed>
@@ -67,7 +67,7 @@
         </section>
 
         <template id="nyheder" data-nyheder>
-<!--            <p class="nyhedstitel" data-header></p>-->
+<!--<p class="nyhedstitel" data-header></p>-->
 <!--           Skal linkes til den specifikke nyhedsside + ordnes at den blinker til sidst-->
             <li class="nyhedsslide" data-nyhedsslide>
                 <img src="" alt="">
@@ -90,18 +90,33 @@
     </script>
     <script src="javascript.js"></script>
     <script>
-        let jSonUrl = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/nyheder";
+        let jSonUrlNyheder = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/nyheder";
+        let jSonUrlOm = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/om/354";
+
         let nyheder = [];
+
+        let om = {};
+
         let display = document.querySelector("[data-nyhedsslides]");
         let template = document.querySelector("[data-nyheder]");
         document.addEventListener("DOMContentLoaded", hentJson);
 
         async function hentJson() {
-            let dataJson = await fetch(jSonUrl);
-            nyheder = await dataJson.json();
+            let dataJsonNyheder = await fetch(jSonUrlNyheder);
+            let dataJsonOm = await fetch(jSonUrlOm);
+
+            nyheder = await dataJsonNyheder.json();
+
+            om = await dataJsonOm.json();
+
             console.log(nyheder);
             visNyheder();
-            sliderNyheder();
+            hentIndhold();
+        }
+
+        function hentIndhold() {
+            console.log(om);
+            document.querySelector("[data-om]").innerHTML = om.acf.om_kortbeskrivelse;
         }
 
         function visNyheder() {
@@ -117,57 +132,60 @@
                 klon.querySelector("[data-nyhedsslide] img").alt = "Billede af " + nyhed.acf.nyheds_title;
                 display.appendChild(klon);
             });
-        }
 
-        function sliderNyheder() {
-            var width = 530;
-            var widthStor = 825;
-            var animationSpeed = 1800;
-            var pause = 4500;
-            var currentSlide = 1;
-            var $slider = $("#nyhedsslider");
-            var $slideContainer = $slider.find("#nyhedsslides");
-            var $slides = $slideContainer.find(".nyhedsslide");
-            var $tekst = $("#preview-tekst");
-            var mq = window.matchMedia('all and (min-width: 900px)');
-            setInterval(function() {
-                if (mq.matches) {
-                    sliderSliderStor();
-                } else {
-                    sliderSlider();
+            sliderNyheder();
+
+            function sliderNyheder() {
+                var width = 530;
+                var widthStor = 825;
+                var animationSpeed = 1800;
+                var pause = 4500;
+                var currentSlide = 1;
+                var $slider = $("#nyhedsslider");
+                var $slideContainer = $slider.find("#nyhedsslides");
+                var $slides = $slideContainer.find(".nyhedsslide");
+                var $tekst = $("#preview-tekst");
+                var mq = window.matchMedia('all and (min-width: 900px)');
+                setInterval(function() {
+                    if (mq.matches) {
+                        sliderSliderStor();
+                    } else {
+                        sliderSlider();
+                    }
+                }, pause);
+
+                function sliderSlider() {
+                    console.log("sliderSlider");
+                    console.log("animationspeed er " + animationSpeed);
+                    console.log("pause er " + pause);
+                    $($slideContainer).animate({
+                        "margin-left": "-=" + width
+                    }, animationSpeed, reset);
                 }
-            }, pause);
 
-            function sliderSlider() {
-                console.log("sliderSlider");
-                console.log("animationspeed er " + animationSpeed);
-                console.log("pause er " + pause);
-                $($slideContainer).animate({
-                    "margin-left": "-=" + width
-                }, animationSpeed, reset);
-            }
+                function reset() {
+                    currentSlide++;
+                    if (currentSlide === $slides.length) {
+                        console.log("currentSlide = length");
+                        currentSlide = 1;
+                        $slideContainer.css({
+                            "margin-left": "0"
+                        });
+                    }
+                }
 
-            function reset() {
-                currentSlide++;
-                if (currentSlide === $slides.length) {
-                    console.log("currentSlide = length");
-                    currentSlide = 1;
-                    $slideContainer.css({
-                        "margin-left": "0"
-                    });
+                /** MEDIA QUIERY **/
+
+                function sliderSliderStor() {
+                    console.log("sliderSliderStor");
+                    console.log("animationspeed er " + animationSpeed);
+                    console.log("pause er" + pause);
+                    $($slideContainer).animate({
+                        "margin-left": "-=" + widthStor
+                    }, animationSpeed, reset);
                 }
             }
 
-            /** MEDIA QUIERY **/
-
-            function sliderSliderStor() {
-                console.log("sliderSliderStor");
-                console.log("animationspeed er " + animationSpeed);
-                console.log("pause er" + pause);
-                $($slideContainer).animate({
-                    "margin-left": "-=" + widthStor
-                }, animationSpeed, reset);
-            }
         }
     </script>
 

@@ -295,6 +295,10 @@ footer {
 
 /*** FORSIDE ***/
 
+#om {
+    grid-column: 2/13;
+}
+
 .om_header {
     font-family: 'hk_groteskregular_legacy';
 }
@@ -355,8 +359,15 @@ footer {
 
 /*** SPIS UDE - KATEGORI ***/
 
-#kategori {
+.kategori {
     grid-column: 2/13;
+    height: 20vw;
+    background-size: cover;
+    background-position: ;
+    font-family: 'hk_grotesksemibold_legacy';
+    font-size: 5vw;
+    color: #fff;
+    text-transform: uppercase;
 }
 
 /*** SPIS UDE ***/

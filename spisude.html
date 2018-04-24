@@ -4,14 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>FOOD8 - forside</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <section id="header">
-
 
         <a href="index.html">
             <div id="logo"></div>
@@ -45,62 +44,71 @@
             </ul>
 
         </nav>
+
     </section>
-
-    <main>
-        <!--<h1 id="overskrift" data-overskrift>
-        </h1>-->
-        <section class="liste" data-liste>
-        </section>
-    </main>
-
-
-    <template class="restauranter" data-template>
-        <article class="restaurant" data-restaurant>
-            <h2 class="navn" data-navn></h2>
-            <img class="billede" src="" alt="" data-billede>
-        </article>
-    </template>
-
 
     <div id="cirkelboks">
         <div id="cirkel"></div>
     </div>
 
+    <main>
+        <section id="filter_kategorier" data-kategorier>
+
+        </section>
+
+        <template id="kategori_temp" data-kategori_temp>
+
+            <button class="kategori" data-kategori>
+            </button>
+
+        </template>
+
+    </main>
+
     <section id="footer">
 
     </section>
 
-
-
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="javascript.js"></script>
     <script>
-        let jSonUrl = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/nyheder";
-        let restauranter = [];
-        let display = document.querySelector("[data-liste]");
-        let template = document.querySelector("[data-template]");
+        let jSonUrl = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/kategorier";
+
+        let kategorier = [];
+
+        let display = document.querySelector("[data-kategorier]");
+        let template = document.querySelector("[data-kategori_temp]");
         document.addEventListener("DOMContentLoaded", hentJson);
 
-
         async function hentJson() {
-            let dataJson = await fetch(jsonUrl);
-            restauranter = await dataJson.json();
-            visRestauranter();
+            let dataJson = await fetch(jSonUrl);
+
+            kategorier = await dataJson.json();
+
+            console.log(kategorier);
+            visKategorier();
+
         }
 
-        function visRestauranter() {
-            console.log(restauranter);
-            restauranter.forEach(restaurant => {
+        //        function hentIndhold() {
+        //            console.log(om);
+        //            document.querySelector("[data-om]").innerHTML = om.acf.om_kortbeskrivelse;
+        //        }
+
+        function visKategorier() {
+            console.log(kategorier);
+            kategorier.forEach(kategori => {
                 let klon = template.cloneNode(true).content;
-                console.log(restaurant);
-                klon.querySelector("[data-navn]").textContent = restaurant.acf.restaurant_navn;
-                klon.querySelector("[data-billede]").src = restaurant.acf.splash_billed;
-                klon.querySelector("[data-billede]").alt = "Billede af " + restaurant.acf.restaurant_navn + "'s logo";
+                console.log("wtsetrwtv", klon.querySelector("[data-kategori]"));
+
+                klon.querySelector("[data-kategori]").style.backgroundImage = "url('" + kategori.acf.kategori_billede + "')"; //kategori.acf.kategori_billede;
+
+                klon.querySelector("[data-kategori]").alt = "Billede af" + kategori.acf.kategori_titel;
+
+                klon.querySelector("[data-kategori]").textContent = kategori.acf.kategori_titel;
+
                 display.appendChild(klon);
             });
         }
+
     </script>
-
-</body>
-
-</html>
