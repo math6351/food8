@@ -357,11 +357,15 @@ footer {
     height: 300px;
 }
 
+/*** SPIS UDE ***/
+
 /*** SPIS UDE - KATEGORI ***/
+
+/*** SPIS HJEMME ***/
 
 .kategori {
     grid-column: 2/13;
-    height: 20vw;
+    height: 30vw;
     background-size: cover;
     background-position: ;
     font-family: 'hk_grotesksemibold_legacy';
@@ -370,11 +374,9 @@ footer {
     text-transform: uppercase;
 }
 
-/*** SPIS UDE ***/
-
 .liste {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(13, 1fr);
     grid-gap: 1.5vw;
     grid-column: 1/13;
 }
@@ -385,9 +387,16 @@ footer {
     overflow: hidden;
 }
 
-/*** RESTAURANT ***/
+.butik {
+    grid-column: 2/14;
+}
 
-/*** SPIS HJEMME ***/
+.restaurant {
+    grid-column: 2/14;
+
+}
+
+/*** RESTAURANT ***/
 
 /*** BUTIK ***/
 

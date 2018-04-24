@@ -56,7 +56,7 @@
 
         </section>
 
-        <template id="kategori_temp" data-kategori_temp>
+        <template id="kategori_temp" data-template>
 
             <button class="kategori" data-kategori>
             </button>
@@ -72,12 +72,12 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="javascript.js"></script>
     <script>
-        let jSonUrl = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/kategorier";
+        let jSonUrl = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/kategori_restaurant";
 
         let kategorier = [];
 
         let display = document.querySelector("[data-kategorier]");
-        let template = document.querySelector("[data-kategori_temp]");
+        let template = document.querySelector("[data-template]");
         document.addEventListener("DOMContentLoaded", hentJson);
 
         async function hentJson() {
@@ -90,10 +90,6 @@
 
         }
 
-        //        function hentIndhold() {
-        //            console.log(om);
-        //            document.querySelector("[data-om]").innerHTML = om.acf.om_kortbeskrivelse;
-        //        }
 
         function visKategorier() {
             console.log(kategorier);
@@ -101,7 +97,7 @@
                 let klon = template.cloneNode(true).content;
                 console.log("wtsetrwtv", klon.querySelector("[data-kategori]"));
 
-                klon.querySelector("[data-kategori]").style.backgroundImage = "url('" + kategori.acf.kategori_billede + "')"; //kategori.acf.kategori_billede;
+                klon.querySelector("[data-kategori]").style.backgroundImage = "url('" + kategori.acf.kategori_billede + "')";
 
                 klon.querySelector("[data-kategori]").alt = "Billede af" + kategori.acf.kategori_titel;
 

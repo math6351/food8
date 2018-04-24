@@ -53,19 +53,22 @@
 
     <main>
 
-        <section id="om">
-            <h1>OM</h1>
-        </section>
+        <!--
+<section id="om">
+    <h1>OM</h1>
+</sectrestaurant
+-->
 
-        <template id="om_restaurant">
+        <section class="liste" data-liste>
             <article>
-               <div id="banner">
-                   <img data-banner src="" alt="">
-               </div>
+                <div id="banner">
+                    <img data-banner src="" alt="">
+                </div>
                 <h1 data-header></h1>
+                <!--                <h2 data-manchet></h2>-->
                 <p data-beskrivelse></p>
             </article>
-        </template>
+        </section>
 
         <section id="menukort">
             <div id="menukortslider" data-menukortslider>
@@ -88,11 +91,13 @@
 
         </section>
 
+        <!--
         <template id="menukorttemplate" data-menukorttemplate>
             <h1 data-header-menukort></h1>
                <li class="menukortslide" data-menukortslide></li>
                 <img data-menukortimg>
         </template>
+-->
 
     </main>
 
@@ -104,25 +109,44 @@
     <script src="javascript.js"></script>
 
     <script>
+        //        document.addEventListener("DOMContentLoaded", hentJson);
+
+        //        let jSonUrl = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/restaurant";
+
+        //        document.addEventListener("DOMContentLoaded", hentJson);
+        //        async function hentJson() {
+        //            let dataJson = await fetch(jSonUrl);
+        //
+        //            console.log(restauranter);
+        //            //                visMenukort();
+        //            sliderMenukort();
+        //        }
+
+
+        let url = new URL(window.location.href);
+        let searchParams = new URLSearchParams(url.search);
+        let id = searchParams.get("id");
+        let apiURL = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/restaurant/" + id;
+        let restaurant = {};
+
         document.addEventListener("DOMContentLoaded", hentJson);
 
-        let jSonUrl = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/restaurant";
-
-        document.addEventListener("DOMContentLoaded", hentJson);
         async function hentJson() {
-            let dataJson = await fetch(jSonUrl);
+            let dataJson = await fetch(apiURL);
+            restaurant = await dataJson.json();
+            console.log("It's so fetch to be single, Gretchen!");
+            visRestaurant();
+        };
 
-            console.log(restauranter);
-            //                visMenukort();
-            sliderMenukort();
-        }
+        function visRestaurant() {
+            let display = document.querySelector("[data-liste]");
 
-        async function hentInfo() {
-
-        }
-
-
-
+            display.querySelector("[data-header]").textContent = restaurant.acf.restaurant_navn;
+            display.querySelector("[data-banner]").src = restaurant.acf.splash_billed;
+            //            display.querySelector("[data-manchet]").innerHTML = restaurant.acf.manchet;
+            display.querySelector("[data-beskrivelse]").innerHTML = restaurant.acf.restaurant_beskrivelse;
+            console.log("You're now in singleview!")
+        };
 
 
         //          function visMenukort() {

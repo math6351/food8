@@ -46,22 +46,27 @@
     </section>
 
     <main>
-        <h1 id="overskrift" data-overskrift>
-        </h1>
+        <section id="filter_kategorier" data-kategorier>
+            <button class="kategori" data-kategori>
+            </button>
+        </section>
+
+
+        <!--<h1 id="overskrift" data-overskrift>
+        </h1>-->
         <section class="liste" data-liste>
 
         </section>
     </main>
 
 
-    <template class="template" data-template>
-        <article class="restaurant" data-restaurant>
+    <template class="butikker" data-template>
+        <article class="butik" data-butik>
             <h2 class="navn" data-navn></h2>
-            <div class="billede-container">
-            <div class="billede"><img src="" alt="" data-billede></div>
-            </div>
+            <img class="billede" src="" alt="" data-billede>
         </article>
     </template>
+
 
 
     <div id="cirkelboks">
@@ -76,31 +81,52 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="javascript.js"></script>
     <script>
-        letjSonUrl = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/restaurant";
-        let nyheder = [];
-        let display = document.querySelector("[data-template]");
-        let template = document.querySelector("[data-liste]");
+        let jSonUrlButikker = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/butikker";
+        let butikker = [];
 
+        let jSonUrlKategori = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/kategori_butik/403";
+        let kategorier = {};
 
         document.addEventListener("DOMContentLoaded", hentJson);
+
+
         async function hentJson() {
-            let dataJson = await fetch(jsonUrl);
-            restauranter = await dataJson.json();
-            console.log(nyheder);
-            visRestauranter();
+            let dataJsonButikker = await fetch(jSonUrlButikker);
+            butikker = await dataJsonButikker.json();
+
+            let dataJsonKategori = await fetch(jSonUrlKategori);
+            kategorier = await dataJsonKategori.json();
+
+            console.log("fetching happened");
+            visButikker();
+            hentIndhold();
         }
 
-        function visRestauranter() {
-            restauranter.forEach(restaurant => {
+
+        function hentIndhold() {
+            console.log(om);
+            document.querySelector("[data-kategori]").style.backgroundImage = "url('" + kategorier.acf.kategori_billede + "')";
+
+            document.querySelector("[data-kategori]").alt = "Billede af" + kategorier.acf.kategori_titel;
+
+            document.querySelector("[data-kategori]").textContent = kategorier.acf.kategori_titel;
+        }
+
+        function visButikker() {
+            butikker.forEach(butik => {
+                console.log(butikker);
+                let display = document.querySelector("[data-liste]");
+                let template = document.querySelector("[data-template]");
                 let klon = template.cloneNode(true).content;
-                console.log(restaurant);
-
-                klon.querySelector("[data-navn]").textContent = ;
-
-                klon.querySelector("[data-billede]").src = ;
-                klon.querySelector("[data-billede]").alt = ;
-
+                console.log(butik);
+                klon.querySelector("[data-navn]").textContent = butik.acf.butik_navn;
+                klon.querySelector("[data-billede]").src = butik.acf.splash_billed;
+                klon.querySelector("[data-billede]").alt = "Billede af " + butik.acf.butik_navn + "'s logo";
+                klon.querySelector("[data-billede]").addEventListener("click", () => {
+                    location.href = "butik.html?id=" + butik.id;
+                });
                 display.appendChild(klon);
+
             });
         }
     </script>
