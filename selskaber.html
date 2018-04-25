@@ -50,15 +50,68 @@
         <div id="cirkel"></div>
     </div>
 
+    <main>
 
-    <div id="cirkelboks">
-        <div id="cirkel"></div>
-    </div>
+        <div id="cirkelboks">
+            <div id="cirkel"></div>
+        </div>
 
-    <section id="footer"></section>
+        <section class="liste" data-liste></section>
+
+    </main>
+
+
+    <template class="butikker" data-template>
+        <article class="butik" data-butik>
+            <p data-menu_genre></p>
+            <p data-kapacitet></p>
+            <p data-kuvert_pris></p>
+            <img class="billede" src="" alt="" data-billede>
+        </article>
+    </template>
+
+    <section id="footer">
+
+    </section>
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="javascript.js"></script>
+    <script>
+        let jSonUrlSelskaber = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/selskaber";
+        let selskaber = [];
+
+        document.addEventListener("DOMContentLoaded", hentJson);
+
+
+        async function hentJson() {
+            let dataJsonSelskaber = await fetch(jSonUrlSelskaber);
+            selskaber = await dataJsonSelskaber.json();
+
+            console.log("fetching happened");
+            visSelskaber();
+        }
+
+        function visSelskaber() {
+            selskaber.forEach(selskab => {
+                console.log(selskaber);
+                let display = document.querySelector("[data-liste]");
+                let template = document.querySelector("[data-template]");
+                let klon = template.cloneNode(true).content;
+                console.log(selskab);
+                klon.querySelector("[data-menu_genre]").textContent = selskab.acf.menu_genre;
+                klon.querySelector("[data-kapacitet]").textContent = selskab.acf.kapacitet;
+                klon.querySelector("[data-kuvert_pris]").textContent = selskab.acf.kuvert_pris;
+                klon.querySelector("[data-billede]").src = selskab.acf.splash_billed;
+                klon.querySelector("[data-billede]").alt = "Billede af " + selskab.acf.butik_navn + "'s logo";
+                klon.querySelector("[data-billede]").addEventListener("click", () => {
+                    location.href = "selskab.html?id=" + selskab.id;
+                });
+                display.appendChild(klon);
+
+            });
+        }
+    </script>
 </body>
 
 </html>
