@@ -56,7 +56,8 @@
         <section id="om">
             <h1 data-header>Om Food8</h1>
             <img src="" alt="" data-billede>
-            <p id="om_beskrivelse" data-beskrivelse>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam fugiat excepturi numquam unde enim dicta iste eos optio minus vitae nobis aspernatur tenetur ea, asperiores reiciendis perferendis cupiditate dolorem accusantium!</p>
+            <p id="om_beskrivelse" data-beskrivelse></p>
+            <p id="om_langbeskrivelse" data-langbeskrivelse></p>
         </section>
 
         <form id="nyhedsbrev" action="sendmail.php">
@@ -107,8 +108,9 @@
         }
 
         function visInfo() {
-            document.querySelector("[databeskrivelse]").innerHTML = info.acf.om_langbeskrivelse;
-            document.querySelector("[data-billede]").src = info.acf.food8_billede;
+            document.querySelector("[databeskrivelse]").innerHTML = info.acf.om_kortbeskrivelse;
+            document.querySelector("[data-langbeskrivelse]").innerHTML = info.acf.om_langbeskrivelse;
+            document.querySelector("[data-billede]").src = info.acf.food8_billede.url;
             document.querySelector("[data-billede]").alt = info.acf.om_kortbeskrivelse;
         }
     </script>

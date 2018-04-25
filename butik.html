@@ -66,18 +66,15 @@
 
             <ul id="slides" data-slides>
 
-                <li class="slide" data-slide>
-                    <img src="food8_imgs/Spisehuset/image/jpeg/IMG-0654.jpg" alt=""> </li>
-
-                <li class="slide" data-slide>
-                    <img src="food8_imgs/Spisehuset/image/jpeg/IMG-1659.jpg" alt=""> </li>
-
-                <li class="slide" data-slide>
-                    <img src="food8_imgs/Spisehuset/image/jpeg/spisehuset3.jpg" alt=""> </li>
             </ul>
         </div>
-
     </section>
+
+    <template id="images-template" data-template>
+            <li class="slide" data-slide>
+                <img src="" alt="">
+            </li>
+    </template>
 
     <section class="info" data-info>
         <article class="restaurant_single">
@@ -101,6 +98,8 @@
         let id = searchParams.get("id");
         let jSonUrl = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/butikker/" + id;
         let butik = {};
+        let sliderImages = [];
+        let sliderImagesAlt = [];
 
         document.addEventListener("DOMContentLoaded", hentJson);
 
@@ -111,12 +110,116 @@
             visButik();
             hentInfo();
             //            visMenukort();
-            sliderImages();
+
+            hentSliderImages();
+            placerSliderImages();
+            startSliderImages();
         };
+
+        function hentSliderImages() {
+            console.log(sliderImages);
+            if (butik.acf.indholds_billeder.url) {
+                sliderImages.push(butik.acf.indholds_billeder.url),
+                    sliderImagesAlt.push(butik.acf.indholds_billeder.alt);
+            }
+
+            if (butik.acf.indholds_billeder_1.url) {
+                sliderImages.push(butik.acf.indholds_billeder_1.url),
+                    sliderImagesAlt.push(butik.acf.indholds_billeder_1.alt);
+            }
+
+            if (butik.acf.indholds_billeder_2.url) {
+                sliderImages.push(butik.acf.indholds_billeder_2.url),
+                    sliderImagesAlt.push(butik.acf.indholds_billeder_2.alt);
+            }
+
+            if (butik.acf.indholds_billeder_3.url) {
+                sliderImages.push(butik.acf.indholds_billeder_3.url),
+                    sliderImagesAlt.push(butik.acf.indholds_billeder_3.alt);
+            }
+            if (butik.acf.indholds_billeder_4) {
+                sliderImages.push(butik.acf.indholds_billeder_4.url),
+                    sliderImagesAlt.push(butik.acf.indholds_billeder_4.alt);
+            }
+            if (butik.acf.indholds_billeder_5) {
+                sliderImages.push(butik.acf.indholds_billeder_5.url),
+                    sliderImagesAlt.push(butik.acf.indholds_billeder_5.alt);
+            }
+
+            if (butik.acf.indholds_billeder_6) {
+                sliderImages.push(butik.acf.indholds_billeder_6.url),
+                    sliderImagesAlt.push(butik.acf.indholds_billeder_6.alt);
+            }
+
+            if (butik.acf.indholds_billeder_7.url) {
+                sliderImages.push(butik.acf.indholds_billeder_7.url),
+                    sliderImagesAlt.push(butik.acf.indholds_billeder_7.alt);
+            }
+
+            if (butik.acf.indholds_billeder_8.url) {
+                sliderImages.push(butik.acf.indholds_billeder_8.url),
+                    sliderImagesAlt.push(butik.acf.indholds_billeder_8.alt);
+            }
+
+            if (butik.acf.indholds_billeder_9.url) {
+                sliderImages.push(butik.acf.indholds_billeder_9.url),
+                    sliderImagesAlt.push(butik.acf.indholds_billeder_9.alt);
+            }
+            if (butik.acf.indholds_billeder_10.url) {
+                sliderImages.push(butik.acf.indholds_billeder_10.url),
+                    sliderImagesAlt.push(butik.acf.indholds_billeder_10.alt);
+            }
+
+            if (butik.acf.indholds_billeder_11.url) {
+                sliderImages.push(butik.acf.indholds_billeder_11.url),
+                    sliderImagesAlt.push(butik.acf.indholds_billeder_11.alt);
+            }
+
+            if (butik.acf.indholds_billeder_12.url) {
+                sliderImages.push(butik.acf.indholds_billeder_12.url),
+                    sliderImagesAlt.push(butik.acf.indholds_billeder_12.alt);
+            }
+
+            if (butik.acf.indholds_billeder_13.url) {
+                sliderImages.push(butik.acf.indholds_billeder_13.url),
+                    sliderImagesAlt.push(butik.acf.indholds_billeder_13.alt);
+            }
+
+            if (butik.acf.indholds_billeder_14.url) {
+                sliderImages.push(butik.acf.indholds_billeder_14.url),
+                    sliderImagesAlt.push(butik.acf.indholds_billeder_14.alt);
+            }
+
+            if (butik.acf.indholds_billeder_15.url) {
+                sliderImages.push(butik.acf.indholds_billeder_15.url),
+                    sliderImagesAlt.push(butik.acf.indholds_billeder_15.alt);
+            }
+        }
+
+        function placerSliderImages() {
+            let display = document.querySelector("[data-slides]");
+
+            let template = document.querySelector("[data-template]");
+
+            console.log(sliderImages);
+
+            sliderImages.forEach(sliderImage => {
+                let klon = template.cloneNode(true).content;
+                console.log(sliderImage);
+
+                klon.querySelector("[data-slide] img").src = sliderImage;
+
+
+                klon.querySelector("[data-slide] img").alt = "Billede af " + sliderImagesAlt;
+
+                display.appendChild(klon);
+            });
+        }
 
         function visButik() {
             let display = document.querySelector("[data-liste]");
-            display.querySelector("[data-banner]").src = butik.acf.splash_billed;
+            display.querySelector("[data-banner]").src = butik.acf.splash_billed.url;
+            display.querySelector("[data-banner]").alt = butik.acf.splash_billed.alt;
             display.querySelector("[data-manchet]").innerHTML = butik.acf.manchet;
             display.querySelector("[data-beskrivelse]").innerHTML = butik.acf.butik_beskrivelse;
             console.log("You're now in singleview!")
@@ -127,7 +230,7 @@
             display.querySelector("[data-header]").textContent = butik.acf.butik_navn;
             display.querySelector("[data-adresse]").innerHTML = butik.acf.adresse;
             display.querySelector("[data-hours]").innerHTML = butik.acf.åbningstider;
-//            display.querySelector("[data-smiley]").src = butik.acf.kontrolrapport;
+            //            display.querySelector("[data-smiley]").src = butik.acf.kontrolrapport;
 
         }
 
@@ -148,7 +251,7 @@
         //            });
         //        }
 
-        function sliderImages() {
+        function startSliderImages() {
 
             var width = 565;
             var widthStor = 750;
@@ -184,7 +287,6 @@
                     "margin-left": "-=" + width
                 }, animationSpeed, reset);
             }
-
 
             function reset() {
 

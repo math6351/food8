@@ -127,9 +127,9 @@
                 //                klon.querySelector("[data-header]").textContent = nyhed.acf.nyheds_title;
 
 
-                klon.querySelector("[data-nyhedsslide] img").src = nyhed.acf.billede_materiale;
+                klon.querySelector("[data-nyhedsslide] img").src = nyhed.acf.billede_materiale.url;
                 console.log(klon.querySelector("[data-nyhedsslide]"));
-                klon.querySelector("[data-nyhedsslide] img").alt = "Billede af " + nyhed.acf.nyheds_title;
+                klon.querySelector("[data-nyhedsslide] img").alt = "Billede af " + nyhed.acf.billede_materiale.alt;
                 display.appendChild(klon);
             });
 

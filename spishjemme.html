@@ -104,9 +104,9 @@
 
         function hentIndhold() {
             console.log(om);
-            document.querySelector("[data-kategori]").style.backgroundImage = "url('" + kategorier.acf.kategori_billede + "')";
+            document.querySelector("[data-kategori]").style.backgroundImage = "url('" + kategorier.acf.kategori_billede.url + "')";
 
-            document.querySelector("[data-kategori]").alt = "Billede af" + kategorier.acf.kategori_titel;
+            document.querySelector("[data-kategori]").alt = "Billede af" + kategorier.acf.kategori_billede.alt;
 
             document.querySelector("[data-tekst]").textContent = kategorier.acf.kategori_titel;
         }
@@ -118,9 +118,8 @@
                 let template = document.querySelector("[data-template]");
                 let klon = template.cloneNode(true).content;
                 console.log(butik);
-                klon.querySelector("[data-navn]").textContent = butik.acf.butik_navn;
-                klon.querySelector("[data-billede]").src = butik.acf.splash_billed;
-                klon.querySelector("[data-billede]").alt = "Billede af " + butik.acf.butik_navn + "'s logo";
+                klon.querySelector("[data-billede]").src = butik.acf.splash_billed.url;
+                klon.querySelector("[data-billede]").alt = "Billede af " + butik.acf.splash_billed.alt;
                 klon.querySelector("[data-billede]").addEventListener("click", () => {
                     location.href = "butik.html?id=" + butik.id;
                 });

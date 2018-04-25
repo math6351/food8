@@ -345,7 +345,21 @@ footer {
 }
 
 #slider.images {
-    height: 150px;
+    height: 300px;
+}
+
+.sliderknap {
+    width: 2vw;
+    height: 2vw;
+    background-color: #ec9dad;
+    /*    position: relative;*/
+}
+
+.sliderknap.1 {}
+
+.sliderknap.2 {
+    position: absolute;
+    top: -30vw;
 }
 
 #slides {
