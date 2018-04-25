@@ -348,18 +348,31 @@ footer {
     height: 300px;
 }
 
-.sliderknap {
-    width: 2vw;
-    height: 2vw;
-    background-color: #ec9dad;
-    /*    position: relative;*/
+.prev,
+.next {
+    cursor: pointer;
+    color: #fff;
+    position: relative;
+    padding: 18px;
+    /*
+    background-color: rgba(255, 255, 255, 0.50);
+*/
+    transform: scale(2);
 }
 
-.sliderknap.1 {}
+.prev:hover,
+.next:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
 
-.sliderknap.2 {
-    position: absolute;
-    top: -30vw;
+.prev {
+    top: 37vw;
+    left: 1.8vw;
+}
+
+.next {
+    top: 37vw;
+    left: 65.5vw;
 }
 
 #slides {
