@@ -77,6 +77,7 @@
 
         <template id="images-template" data-template>
             <li class="slide" data-slide>
+
                 <img src="" alt="">
             </li>
         </template>
@@ -85,7 +86,7 @@
         <section id="menukort">
             <h1 id="header" data-menuheader>Menukort</h1>
 
-            <div id="slider" data-menuslider>
+            <div id="slider" class="menukort" data-menuslider>
 
                 <a class="prev">&#10094;</a>
                 <a class="next">&#10095;</a>
@@ -111,7 +112,8 @@
                     <h2 id="sted_header" data-header></h2>
                     <p id="sted_adresse" data-adresse></p>
                     <p id="sted_hours" data-hours></p>
-                    <!--                    <a href="" data-link><img id="smiley" data-smiley src="" alt=""></a>-->
+                    <img id="smiley" data-smiley src="" alt="">
+                    <!--                    <div id="map" data-map></div>-->
                 </div>
             </article>
         </section>
@@ -132,7 +134,11 @@
         let jSonUrl = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/restaurant/" + id;
         let restaurant = {};
         let sliderImages = [];
+        let sliderImagesMenukort = [];
         let sliderImagesAlt = [];
+
+        //        let map;
+
 
         document.addEventListener("DOMContentLoaded", hentJson);
 
@@ -151,6 +157,59 @@
             placerSliderImagesMenukort();
             startSliderImagesMenukort();
         };
+
+
+
+        function visRestaurant() {
+            let display = document.querySelector("[data-liste]");
+            display.querySelector("[data-banner]").src = restaurant.acf.splash_billed.url;
+            // indsæt alt
+            display.querySelector("[data-manchet]").innerHTML = restaurant.acf.manchet;
+            display.querySelector("[data-beskrivelse]").innerHTML = restaurant.acf.restaurant_beskrivelse;
+            console.log("You're now in singleview!")
+
+        };
+
+        function hentInfo() {
+            let display = document.querySelector("[data-info]");
+            display.querySelector("[data-header]").textContent = restaurant.acf.restaurant_navn;
+            display.querySelector("[data-adresse]").innerHTML = restaurant.acf.adresse;
+            display.querySelector("[data-hours]").innerHTML = restaurant.acf.aabningstider;
+            display.querySelector("[data-smiley]").src = restaurant.acf.kontrolrapport_billede;
+            //            display.querySelector("data-link").href = restaurant.acf.kontrolrapport_link;
+
+        }
+
+
+        //        function initMap() {
+        //            let adresse = restaurant.acf.adresse;
+        //            var centrum = {
+        //                lat: 55.675914,
+        //                lng: 12.569129
+        //            };
+        //            map = new google.maps.Map(document.querySelector)("#map"), {
+        //                zoom: 11,
+        //                center: centrum
+        //            };
+        //            codeAdress();
+        //        }
+        //
+        //        function codeAdress() {
+        //            let geocoder = new google.maps.Geocoder();
+        //            geocoder.geocode({
+        //                'adress': adresse
+        //            }, function(results, status) {
+        //                if (status == 'OK') {
+        //                    var marker = new google.maps.Marker({
+        //                        map: map,
+        //                        position: results[0].geometry.location
+        //                    });
+        //                } else {
+        //                    alert('Geocode was not succesful for the following reason:' + status);
+        //                }
+        //            });
+        //        }
+
 
         function hentSliderImages() {
             console.log(sliderImages);
@@ -252,31 +311,36 @@
         // SLIDER MENUKORT
 
         function hentSliderImagesMenukort() {
-            console.log(sliderImages);
-            if (restaurant.acf.morgenmad_og_brunch_menu.url) {
-                sliderImages.push(restaurant.acf.morgenmad_og_brunch_menu.url),
-                    sliderImagesAlt.push(restaurant.acf.morgenmad_og_brunch_menu.alt);
+            console.log(sliderImagesMenukort);
+            if (restaurant.acf.morgenmad_og_brunch_menu_1.url) {
+                sliderImagesMenukort.push(restaurant.acf.morgenmad_og_brunch_menu_1.url),
+                    sliderImagesAlt.push(restaurant.acf.morgenmad_og_brunch_menu_1.alt);
+            }
+
+            if (restaurant.acf.morgenmad_og_brunch_menu_2.url) {
+                sliderImagesMenukort.push(restaurant.acf.morgenmad_og_brunch_menu_2.url),
+                    sliderImagesAlt.push(restaurant.acf.morgenmad_og_brunch_menu_2.alt);
             }
 
             if (restaurant.acf.frokost_menu.url) {
-                sliderImages.push(restaurant.acf.frokost_menu.url),
+                sliderImagesMenukort.push(restaurant.acf.frokost_menu.url),
                     sliderImagesAlt.push(restaurant.acf.frokost_menu.alt);
             }
 
             if (restaurant.acf.aftenmenu_1.url) {
-                sliderImages.push(restaurant.acf.aftenmenu.url), sliderImagesAlt.push(restaurant.acf.aftenmenu.alt);
+                sliderImagesMenukort.push(restaurant.acf.aftenmenu_1.url), sliderImagesAlt.push(restaurant.acf.aftenmenu_1.alt);
             }
 
             if (restaurant.acf.aftenmenu_2.url) {
-                sliderImages.push(restaurant.acf.aftenmenu_2.url),
+                sliderImagesMenukort.push(restaurant.acf.aftenmenu_2.url),
                     sliderImagesAlt.push(restaurant.acf.aftenmenu_2.alt);
             }
             if (restaurant.acf.drikkekort_1.url) {
-                sliderImages.push(restaurant.acf.drikkekort.url),
+                sliderImagesMenukort.push(restaurant.acf.drikkekort.url),
                     sliderImagesAlt.push(restaurant.acf.drikkekort_5.alt);
             }
             if (restaurant.acf.drikkekort_2.url) {
-                sliderImages.push(restaurant.acf.drikkekort_2.url),
+                sliderImagesMenukort.push(restaurant.acf.drikkekort_2.url),
                     sliderImagesAlt.push(restaurant.acf.drikkekort_2.alt);
             }
 
@@ -287,61 +351,22 @@
 
             let template = document.querySelector("[data-menutemplate]");
 
-            console.log(sliderImages);
+            console.log(sliderImagesMenukort);
 
-            sliderImages.forEach(sliderImage => {
+            sliderImagesMenukort.forEach(sliderImageMenukort => {
                 let klon = template.cloneNode(true).content;
-                console.log(sliderImage);
+                console.log(sliderImageMenukort);
 
-                klon.querySelector("[data-menuslide] img").src = sliderImage;
+                klon.querySelector("[data-menuslide] img").src = sliderImageMenukort;
 
 
-                klon.querySelector("[data-menuslide] img").alt = "Billede af " + sliderImage.alt;
+                klon.querySelector("[data-menuslide] img").alt = "Billede af " + sliderImageMenukort.alt;
 
                 display.appendChild(klon);
             });
         }
 
 
-        function visRestaurant() {
-            let display = document.querySelector("[data-liste]");
-            display.querySelector("[data-banner]").src = restaurant.acf.splash_billed.url;
-            // indsæt alt
-            display.querySelector("[data-manchet]").innerHTML = restaurant.acf.manchet;
-            display.querySelector("[data-beskrivelse]").innerHTML = restaurant.acf.restaurant_beskrivelse;
-            console.log("You're now in singleview!")
-        };
-
-        function hentInfo() {
-            let display = document.querySelector("[data-info]");
-            display.querySelector("[data-header]").textContent = restaurant.acf.restaurant_navn;
-            display.querySelector("[data-adresse]").innerHTML = restaurant.acf.adresse;
-            display.querySelector("[data-hours]").innerHTML = restaurant.acf.aabningstider;
-            //            display.querySelector("[data-smiley]").src = restaurant.acf.kontrolrapport_billede;
-
-        }
-
-        //        function visImageslider() {
-        //            let display = document.querySelector("[data-imagesslides]");
-        //            display.querySelector("[data-header]").textContent = restaurant.acf.restaurant_navn + " - Vores verden";
-        //        }
-
-
-        //        function visMenukort() {
-        //            console.log(restauranter);
-        //
-        //            let display = document.querySelector("[data-menukortslides]");
-        //            let template = document.querySelector("[data-menukorttemplate]");
-        //            restauranter.forEach(restaurant => {
-        //                let klon = template.cloneNode(true).content;
-        //                console.log(restaurant);
-        //                klon.querySelector("[data-header]").textContent = nyhed.acf.nyheds_title;
-        //                klon.querySelector("[data-menukortslide] img").src = restaurant.acf.supplerende_billedemateriale2;
-        //                console.log(klon.querySelector("[data-menukortslide]"));
-        //                klon.querySelector("[data-menukortslide]").alt = "Billede af " + restaurant.acf.menukategorier;
-        //                display.appendChild(klon);
-        //            });
-        //        }
 
         function startSliderImages() {
 
@@ -354,8 +379,6 @@
             var $slider = $("[data-slider]");
             var $slideContainer = $slider.find("[data-slides]");
             var $slides = $slideContainer.find("[data-slide]");
-
-            //           var $tekst = $("#preview-tekst");
 
             var mq = window.matchMedia('all and (min-width: 900px)');
 
@@ -415,7 +438,7 @@
 
             console.log("der slides");
 
-            var width = 565;
+            var width = 700;
             var widthStor = 750;
             var animationSpeed = 1200;
             var currentSlide = 1;
@@ -437,7 +460,7 @@
                 console.log("animationspeed er " + animationSpeed);
 
                 $($slideContainer).animate({
-                    "margin-left": "-=" + width
+                    "margin-top": "-=" + width
                 }, animationSpeed, reset);
             }
 
@@ -446,7 +469,7 @@
                 console.log("animationspeed er " + animationSpeed);
 
                 $($slideContainer).animate({
-                    "margin-left": "+=" + width
+                    "margin-top": "+=" + width
                 }, animationSpeed, reset);
 
             }
@@ -478,6 +501,8 @@
         }
 
     </script>
+
+    <!--    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxHk7lwMVRAwWJDH2HPzjN4RJs6ta3k3s&callback=initMap" async defer></script>-->
 </body>
 
 </html>

@@ -348,13 +348,29 @@ footer {
     height: 300px;
 }
 
+#slider.menukort {
+    height: 680px;
+}
+
+/*
+.menukort_slide {
+    display: inline;
+}
+*/
+
+.menukort_slide img {
+    width: 80vw;
+}
+
+
 .prev,
 .next {
     cursor: pointer;
-    color: #fff;
+    color: #000;
     position: relative;
-    padding: 18px;
+    padding: 20px;
     /*
+
     background-color: rgba(255, 255, 255, 0.50);
 */
     transform: scale(2);
@@ -362,17 +378,18 @@ footer {
 
 .prev:hover,
 .next:hover {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
+/*    border-radius: 50%;*/
 }
 
 .prev {
-    top: 37vw;
+    top: 57vw;
     left: 1.8vw;
 }
 
 .next {
-    top: 37vw;
-    left: 65.5vw;
+    top: 57vw;
+    left: 61vw;
 }
 
 #slides {

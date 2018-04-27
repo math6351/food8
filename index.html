@@ -59,6 +59,7 @@
 
         <section id="nyhedsfeed" data-nyhedsfeed>
             <h1>Nyheder</h1>
+            <h2 id="nyhedsoverskrift" data-nyhedsoverskrift></h2>
             <div id="nyhedsslider" data-nyhedsslider>
                 <ul id="nyhedsslides" data-nyhedsslides>
 
@@ -123,13 +124,14 @@
             console.log(nyheder);
             nyheder.forEach(nyhed => {
                 let klon = template.cloneNode(true).content;
-                console.log(nyhed);
+                console.log(nyhed.acf.nyheds_title);
                 //                klon.querySelector("[data-header]").textContent = nyhed.acf.nyheds_title;
 
 
                 klon.querySelector("[data-nyhedsslide] img").src = nyhed.acf.billede_materiale.url;
                 console.log(klon.querySelector("[data-nyhedsslide]"));
                 klon.querySelector("[data-nyhedsslide] img").alt = "Billede af " + nyhed.acf.billede_materiale.alt;
+                //                klon.querySelector("[data-nyhedsoverskrift]").textContent = nyhed.acf.nyheds_title;
                 display.appendChild(klon);
             });
 

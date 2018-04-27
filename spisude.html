@@ -59,7 +59,7 @@
         <template id="kategori_temp" data-template>
 
             <button id="kategori" data-kategori>
-            <div id="kategori_tekst" data-tekst></div>
+
             </button>
 
 
@@ -83,10 +83,15 @@
         let template = document.querySelector("[data-template]");
         document.addEventListener("DOMContentLoaded", hentJson);
 
+        let filternavn;
+        let filtertype;
+
         async function hentJson() {
             let dataJson = await fetch(jSonUrl);
 
             kategorier = await dataJson.json();
+
+
 
             console.log(kategorier);
             visKategorier();
@@ -104,10 +109,17 @@
 
                 klon.querySelector("[data-kategori]").alt = "Billede af" + kategori.acf.kategori_billede.alt;
 
-                klon.querySelector("[data-tekst]").textContent = kategori.acf.kategori_titel;
+                klon.querySelector("[data-kategori]").textContent = kategori.acf.kategori_titel;
 
-                display.appendChild(klon);
+                //                        lavFiltrering();
+
+                console.log(filternavn);
+
             });
         }
+
+        //                    function lavFiltrering() {
+        //                        document.querySelector("[data-tekst]").textContent = filternavn;
+        //                    }
 
     </script>
