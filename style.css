@@ -40,7 +40,16 @@
 
 }
 
-h1,
+h1 {
+    font-size: 8vw;
+    font-family: 'hk_groteskregular_legacy';
+    /*    text-transform: uppercase;*/
+    text-align: center;
+    grid-column: 1/14;
+    margin-bottom: 2vw;
+    /*    color: #ec9dad;*/
+}
+
 h2 {
     font-family: 'hk_groteskbold_legacy';
     text-align: center;
@@ -48,8 +57,17 @@ h2 {
     margin-bottom: 2vw;
 }
 
+.h2_om {
+    font-family: 'hk_groteskregular_legacy';
+    text-decoration: overline;
+    text-decoration-style: solid;
+}
+
 h3 {
     font-family: 'hk_grotesksemibold_legacy';
+    grid-column: 1/14;
+    margin-bottom: 2.5vw;
+    text-align: center;
 }
 
 p {
@@ -109,7 +127,7 @@ img {
 
 /* HOVEDMENU */
 
-#logo {
+.logo {
     background-image: url(http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-content/uploads/2018/04/logo.png);
     background-size: contain;
     background-repeat: no-repeat;
@@ -118,8 +136,18 @@ img {
     margin: 2vw;
 }
 
-#logo:hover {
-    transform: scale(1.1);
+.logo_om {
+    background-image: url(http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-content/uploads/2018/04/logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 35vw;
+    height: 19vw;
+    grid-column: 7/8;
+}
+
+.logo:hover {
+    transform: scale(1.04);
+    transition: ease-in-out;
 }
 
 a {
@@ -164,12 +192,14 @@ a {
     position: absolute;
     top: 4vw;
     left: 85vw;
-    transition: 1s ease;
+    transition: 0.5s ease-in-out;
 
 }
 
 .burgermenu:hover {
     background: #fff;
+    transform: scale(1.2);
+
 }
 
 .bar1,
@@ -180,13 +210,12 @@ a {
     background-color: #fff;
     border-radius: 10px;
     margin: 0.9vw auto;
-    transition: 0.4s ease;
+    transition: 0.8s ease-in-out;
 }
 
 .farveskift {
     background-color: #6fc6b4;
 }
-
 
 /* ROTERING */
 
@@ -379,7 +408,7 @@ footer {
 .prev:hover,
 .next:hover {
     background-color: rgba(0, 0, 0, 0.5);
-/*    border-radius: 50%;*/
+    /*    border-radius: 50%;*/
 }
 
 .prev {
@@ -412,29 +441,16 @@ footer {
     grid-column: 2/13;
     height: 30vw;
     background-size: cover;
-    background-position: 0% 25%;
+    background-position: 0% 45%;
     text-transform: uppercase;
     margin: 1vw;
     cursor: pointer;
-}
-
-#kategori_tekst {
-    position: relative;
-    width: 28%;
-    height: 70%;
-    left: 35%;
-    padding: 6.5vw 1vw;
-    text-align: center;
-    background-color: rgba(251, 250, 242, 0.90);
-    font-family: 'hk_grotesksemibold_legacy';
-    font-size: 2.7vw;
-    color: #4d5966;
-
-}
-
-#kategori:nth-child(2),
-#kategori:nth-child(3) {
-    padding-top: 2.3vw;
+    font-family: 'hk_groteskbold_legacy';
+    font-size: 5.5vw;
+    color: #f1ede4;
+    text-decoration: overline;
+    text-decoration-style: solid;
+    text-decoration-color: #f1ede4;
 }
 
 .liste {
@@ -480,6 +496,30 @@ footer {
 
 /*** NYHED ***/
 
+/*** BOOK BORD ***/
+
+#booking {
+    /*    background-color: #4d5966;*/
+    background-color: #6fc6b4;
+    height: 100%;
+}
+
+select {
+    margin: 0 6.5vw 2vw 6.5vw;
+    font-family: 'hk_groteskregular_legacy';
+    font-size: 2.5vw;
+}
+
+#booking input {
+    /*    color: #4d5966;*/
+    color: #6fc6b4;
+}
+
+#booking textarea {
+    /*    color: #4d5966;*/
+    color: #6fc6b4;
+}
+
 /*** OM FOOD8 ***/
 
 #om_beskrivelse {
@@ -490,10 +530,25 @@ form {
     grid-column: 3/12;
     margin: 1vw;
     color: #fff;
+    font-size: 4.2vw;
+}
+
+form h2 {
+    text-decoration: overline;
+    text-decoration-style: solid;
+    margin: 2vw;
+}
+
+form p {
+    margin: 0 6.5vw 2vw 6.5vw;
 }
 
 #kontakt {
     background-color: #ec9dad;
+}
+
+#kontakt input {
+    color: #ec9dad;
 }
 
 #kontakt input {
@@ -611,7 +666,9 @@ input[type=submit] {
         width: 600px;
         height: 400px;
         overflow: hidden;
+        grid-column: 4/11;
     }
+
 
     #slides {
         display: block;
@@ -657,10 +714,18 @@ input[type=submit] {
         width: 80%;
     }
 
+    select {
+        margin: 2vw 2vw 0 3.5vw;
+    }
+
     textarea {
         font-size: 2vw;
         margin: 1.5vw 3.5vw 0 3.5vw;
         width: 80%;
+    }
+
+    form p {
+        margin: 1vw 3.5vw 0 3.5vw;
     }
 
     .type {
@@ -675,14 +740,18 @@ input[type=submit] {
 
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 600px) {
     #slider {
         grid-column: 3/12;
     }
-}
 
-@media screen and (min-width: 900px) {
-    #slider {
-        grid-column: 4/11;
+    .change .bar1 {
+        transform: rotate(-45deg) translate(-6px, 5px);
+        background-color: #6fc6b4;
+    }
+
+    .change .bar3 {
+        transform: rotate(45deg) translate(-6px, -5px);
+        background-color: #6fc6b4;
     }
 }

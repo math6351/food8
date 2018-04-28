@@ -12,7 +12,7 @@
 
     <section id="header">
         <a href="index.html">
-            <div id="logo"></div>
+            <div class="logo"></div>
         </a>
 
         <button class="burgermenu">
@@ -50,10 +50,37 @@
         <div id="cirkel"></div>
     </div>
 
+    <section id="book_bord">
 
-    <div id="cirkelboks">
-        <div id="cirkel"></div>
-    </div>
+        <form id="booking" action="sendmail.php">
+            <h2 id="header_kontakt">Food8 - Bordbooking</h2>
+            <p>Skal du ud og spise i aften? Bliv inspireret og book venuet her med få klik!</p> <br>
+            <input type="text" name="navn" placeholder="Navn" required><br>
+
+            <input type="tel" name="telefon" placeholder="Telefonnummer" min="8" max="8" required>
+            <input type="email" name="email" placeholder="E-mail" required> ￼
+            <p>Hvornår?</p>
+            <input type="datetime-local" name="dato"> <br>
+            <p>Hvor mange bliver I?</p>
+            <select name="personer">
+                <option value="1">1 person</option>
+                <option value="2">2 personer</option>
+                <option value="3">3 personer</option>
+                <option value="4">4 personer</option>
+                <option value="5">5 personer</option>
+                <option value="6">6 personer</option>
+                <option value="7">7 personer</option>
+                <option value="8">8 personer</option>
+                <option value="9">9 personer</option>
+                <option value="10">10 personer</option>
+            </select>
+            <p>Er der noget særligt vi skal vide?</p>
+            <textarea rows="4" cols="50" name="besked" placeholder="Din besked" required></textarea>
+            <input type="submit" value="Send">
+
+        </form>
+
+    </section>
 
     <section id="footer"></section>
 

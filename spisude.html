@@ -1,44 +1,44 @@
 <!DOCTYPE html>
-<html lang="">
+<html data-brackets-id='3913' lang="">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FOOD8 - forside</title>
-    <link rel="stylesheet" href="style.css">
+<head data-brackets-id='3914'>
+    <meta data-brackets-id='3915' charset="utf-8">
+    <meta data-brackets-id='3916' name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-brackets-id='3917'>FOOD8 - forside</title>
+    <link data-brackets-id='3918' rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body data-brackets-id='3919'>
 
-    <section id="header">
+    <section data-brackets-id='3920' id="header">
 
-        <a href="index.html">
-            <div id="logo"></div>
+        <a data-brackets-id='3921' href="index.html">
+            <div data-brackets-id='3922' class="logo"></div>
         </a>
 
-        <button class="burgermenu">
-           <div class="bar1"></div>
-           <div class="bar2"></div>
-           <div class="bar3"></div>
+        <button data-brackets-id='3923' class="burgermenu">
+           <div data-brackets-id='3924' class="bar1"></div>
+           <div data-brackets-id='3925' class="bar2"></div>
+           <div data-brackets-id='3926' class="bar3"></div>
         </button>
 
-        <nav id="hovedmenu">
-            <ul>
+        <nav data-brackets-id='3927' id="hovedmenu">
+            <ul data-brackets-id='3928'>
 
-                <a id="spisude" href="spisude.html">
-                    <li id="spisude_billede">Spis ude</li>
+                <a data-brackets-id='3929' id="spisude" href="spisude.html">
+                    <li data-brackets-id='3930' id="spisude_billede">Spis ude</li>
                 </a>
-                <a id="spishjemme" href="spishjemme.html">
-                    <li id="spishjemme_billede">Spis hjemme</li>
+                <a data-brackets-id='3931' id="spishjemme" href="spishjemme.html">
+                    <li data-brackets-id='3932' id="spishjemme_billede">Spis hjemme</li>
                 </a>
-                <a id="bookbord" href="bookbord.html">
-                    <li id="bookbord_billede">Book bord</li>
+                <a data-brackets-id='3933' id="bookbord" href="bookbord.html">
+                    <li data-brackets-id='3934' id="bookbord_billede">Book bord</li>
                 </a>
-                <a id="selskaber" href="selskaber.html">
-                    <li id="selskaber_billede">Skal du holde selskab?</li>
+                <a data-brackets-id='3935' id="selskaber" href="selskaber.html">
+                    <li data-brackets-id='3936' id="selskaber_billede">Skal du holde selskab?</li>
                 </a>
-                <a id="om" href="omfood8.html">
-                    <li id="om_billede">Om Food8</li>
+                <a data-brackets-id='3937' id="om" href="omfood8.html">
+                    <li data-brackets-id='3938' id="om_billede">Om Food8</li>
                 </a>
 
             </ul>
@@ -47,18 +47,18 @@
 
     </section>
 
-    <div id="cirkelboks">
-        <div id="cirkel"></div>
+    <div data-brackets-id='3939' id="cirkelboks">
+        <div data-brackets-id='3940' id="cirkel"></div>
     </div>
 
-    <main>
-        <section id="filter_kategorier" data-kategorier>
+    <main data-brackets-id='3941'>
+        <section data-brackets-id='3942' id="filter_kategorier" data-kategorier>
 
         </section>
 
-        <template id="kategori_temp" data-template>
+        <template data-brackets-id='3943' id="kategori_temp" data-template>
 
-            <button id="kategori" data-kategori>
+            <button data-brackets-id='3944' id="kategori" data-kategori>
 
             </button>
 
@@ -68,13 +68,13 @@
 
     </main>
 
-    <section id="footer">
+    <section data-brackets-id='3946' id="footer">
 
     </section>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="javascript.js"></script>
-    <script>
+    <script data-brackets-id='3947' src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script data-brackets-id='3948' src="javascript.js"></script>
+    <script data-brackets-id='3949'>
         let jSonUrl = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/kategori_restaurant";
 
         let kategorier = [];
@@ -83,15 +83,10 @@
         let template = document.querySelector("[data-template]");
         document.addEventListener("DOMContentLoaded", hentJson);
 
-        let filternavn;
-        let filtertype;
-
         async function hentJson() {
             let dataJson = await fetch(jSonUrl);
 
             kategorier = await dataJson.json();
-
-
 
             console.log(kategorier);
             visKategorier();
@@ -108,18 +103,10 @@
                 klon.querySelector("[data-kategori]").style.backgroundImage = "url('" + kategori.acf.kategori_billede.url + "')";
 
                 klon.querySelector("[data-kategori]").alt = "Billede af" + kategori.acf.kategori_billede.alt;
-
                 klon.querySelector("[data-kategori]").textContent = kategori.acf.kategori_titel;
 
-                //                        lavFiltrering();
-
-                console.log(filternavn);
-
+                display.appendChild(klon);
             });
         }
-
-        //                    function lavFiltrering() {
-        //                        document.querySelector("[data-tekst]").textContent = filternavn;
-        //                    }
 
     </script>
