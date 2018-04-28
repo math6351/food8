@@ -134,6 +134,7 @@ img {
     width: 50vw;
     height: 20vw;
     margin: 2vw;
+    transition: 0.3s ease-in-out;
 }
 
 .logo_om {
@@ -146,8 +147,8 @@ img {
 }
 
 .logo:hover {
-    transform: scale(1.04);
-    transition: ease-in-out;
+    transform: scale(1.03);
+
 }
 
 a {
