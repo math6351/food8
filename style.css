@@ -278,13 +278,19 @@ a {
     padding-top: 20vw;
 }
 
+
+
 #hovedmenu li {
     display: block;
     margin: 20px 0;
     color: #fff;
     font-size: 5vw;
+    transition: 0.2s ease-in;
 }
 
+#hovedmenu li:hover {
+    color: #3456a6;
+}
 
 /*** FOOTER ***/
 
@@ -630,9 +636,16 @@ input[type=submit] {
 
     #hovedmenu li {
         display: inline;
-        padding: 3vw 3vw;
-        font-size: 1.7vw;
+        padding: 0vw 3vw;
+        font-size: 1.8vw;
         color: #334151;
+    }
+
+    #hovedmenu li:hover {
+        border: solid 4px #f1ede4;
+        transition: 0s;
+        color: #334151;
+
     }
 
     .burgermenu {
@@ -646,6 +659,7 @@ input[type=submit] {
         width: 825px;
         height: 240px;
         overflow: hidden;
+
     }
 
     #nyhedsslides {
@@ -660,6 +674,7 @@ input[type=submit] {
         list-style-type: none;
         width: 825px;
         height: 300px;
+        cursor: pointer;
     }
 
     /*MENUKORT SLIDER*/
