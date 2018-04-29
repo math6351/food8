@@ -710,15 +710,20 @@ input[type=submit] {
         cursor: pointer;
     }
 
-    /*MENUKORT SLIDER*/
-    #slider {
-        width: 600px;
-        height: 400px;
+    /* RESTAURANT + MENUKORT SLIDER*/
+    #slider.images {
+        width: 950px;
+        height: 600px;
         overflow: hidden;
-        grid-column: 4/11;
+        grid-column: 2/11;
+        max-width: 950px;
     }
 
-
+    /*
+    #slider.menukort {
+        width: 700px;
+    }
+*/
     #slides {
         display: block;
         width: 8000px;
@@ -727,6 +732,15 @@ input[type=submit] {
     }
 
     .slide {
+        width: 950px;
+        height: 600px;
+    }
+
+    #slider {
+        grid-column: 4/11;
+    }
+
+    .menukort_slide {
         float: left;
         list-style-type: none;
         width: 650px;
