@@ -712,18 +712,20 @@ input[type=submit] {
 
     /* RESTAURANT + MENUKORT SLIDER*/
     #slider.images {
-        width: 950px;
-        height: 600px;
+        width: 800px;
+        height: 400px;
         overflow: hidden;
-        grid-column: 2/11;
-        max-width: 950px;
+        margin: 0 auto;
+        max-width: 1200px;
+
     }
 
-    /*
+
     #slider.menukort {
         width: 700px;
+        grid-column: 4/11;
     }
-*/
+
     #slides {
         display: block;
         width: 8000px;
@@ -732,12 +734,8 @@ input[type=submit] {
     }
 
     .slide {
-        width: 950px;
-        height: 600px;
-    }
-
-    #slider {
-        grid-column: 4/11;
+        width: 800px;
+        height: 400px;
     }
 
     .menukort_slide {
