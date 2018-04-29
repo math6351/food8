@@ -736,9 +736,41 @@ input[type=submit] {
     /*RESTAURANT*/
     #sted_adresse,
     #sted_hours,
+    #sted_hours_header,
     #sted_header {
-        grid-column: 1/7;
+        grid-column: 4/7;
     }
+
+    #smiley {
+        grid-column: 8/10;
+        margin: 2vw 2vw 0 2vw;
+    }
+
+    #se_kontrolrapport {
+        grid-column: 8/11;
+    }
+
+    #map {
+        width: 67vw;
+        height: 67vw;
+        grid-column: 3/10;
+    }
+
+    .menukort_slide img {
+        width: 50vw;
+    }
+
+    .prev {
+        top: 30vw;
+        left: 1vw;
+    }
+
+    .next {
+        top: 30vw;
+        left: 39vw;
+    }
+
+
 
     /*OM*/
     form {
@@ -790,10 +822,11 @@ input[type=submit] {
 }
 
 @media screen and (min-width: 600px) {
+    /*
     #slider {
         grid-column: 3/12;
     }
-
+*/
     .change .bar1 {
         transform: rotate(-45deg) translate(-6px, 5px);
         background-color: #6fc6b4;

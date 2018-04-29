@@ -384,7 +384,7 @@
         function startSliderImages() {
 
             var width = 565;
-            var widthStor = 750;
+            var widthStor = 650;
             var animationSpeed = 1200;
             var pause = 5000;
             var currentSlide = 1;
@@ -452,7 +452,7 @@
             //            console.log("der slides");
 
             var width = 700;
-            var widthStor = 750;
+            var widthStor = 850;
             var animationSpeed = 1200;
             var currentSlide = 1;
 
@@ -464,8 +464,16 @@
 
             var mq = window.matchMedia('all and (min-width: 900px)');
 
-            document.querySelector(".next").addEventListener("click", sliderSlider);
-            document.querySelector(".prev").addEventListener("click", sliderSliderTilbage);
+            if (mq.matches) {
+
+                document.querySelector(".next").addEventListener("click", sliderSliderStor);
+                document.querySelector(".prev").addEventListener("click", sliderSliderStorTilbage);
+
+            } else {
+                document.querySelector(".next").addEventListener("click", sliderSlider);
+
+                document.querySelector(".prev").addEventListener("click", sliderSliderTilbage);
+            }
 
 
             function sliderSlider() {
@@ -493,20 +501,26 @@
                     //                    console.log("currentSlide = length");
                     currentSlide = 1;
                     $slideContainer.css({
-                        "margin-left": "0"
+                        "margin-top": "0"
                     });
                 }
             }
-
 
             /** MEDIA QUIERY **/
 
             function sliderSliderStor() {
                 console.log("sliderSliderStor");
                 console.log("animationspeed er " + animationSpeed);
-                console.log("pause er" + pause)
                 $($slideContainer).animate({
-                    "margin-left": "-=" + widthStor
+                    "margin-top": "-=" + widthStor
+                }, animationSpeed, reset);
+            }
+
+            function sliderSliderStorTilbage() {
+                console.log("sliderSliderStorTilbage");
+                console.log("animationspeed er " + animationSpeed);
+                $($slideContainer).animate({
+                    "margin-top": "+=" + widthStor
                 }, animationSpeed, reset);
             }
 
