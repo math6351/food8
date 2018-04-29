@@ -113,7 +113,7 @@
                     <p id="sted_adresse" data-adresse></p>
                     <p id="sted_hours" data-hours></p>
                     <img id="smiley" data-smiley src="" alt="">
-                    <!--                    <div id="map" data-map></div>-->
+                    <div id="map" data-map></div>
                 </div>
             </article>
         </section>
@@ -137,15 +137,15 @@
         let sliderImagesMenukort = [];
         let sliderImagesAlt = [];
 
-        //        let map;
-
+        let map;
+        let adresse;
 
         document.addEventListener("DOMContentLoaded", hentJson);
 
         async function hentJson() {
             let dataJson = await fetch(jSonUrl);
             restaurant = await dataJson.json();
-            console.log("It's so fetch to be single, Gretchen!");
+            //            console.log("It's so fetch to be single, Gretchen!");
             visRestaurant();
             hentInfo();
 
@@ -156,6 +156,12 @@
             hentSliderImagesMenukort();
             placerSliderImagesMenukort();
             startSliderImagesMenukort();
+
+            initMap();
+
+            adresse = restaurant.acf.adresse;
+
+            console.log(adresse);
         };
 
 
@@ -166,7 +172,7 @@
             // indsæt alt
             display.querySelector("[data-manchet]").innerHTML = restaurant.acf.manchet;
             display.querySelector("[data-beskrivelse]").innerHTML = restaurant.acf.restaurant_beskrivelse;
-            console.log("You're now in singleview!")
+            //            console.log("You're now in singleview!")
 
         };
 
@@ -177,42 +183,44 @@
             display.querySelector("[data-hours]").innerHTML = restaurant.acf.aabningstider;
             display.querySelector("[data-smiley]").src = restaurant.acf.kontrolrapport_billede;
             //            display.querySelector("data-link").href = restaurant.acf.kontrolrapport_link;
-
         }
 
 
-        //        function initMap() {
-        //            let adresse = restaurant.acf.adresse;
-        //            var centrum = {
-        //                lat: 55.675914,
-        //                lng: 12.569129
-        //            };
-        //            map = new google.maps.Map(document.querySelector)("#map"), {
-        //                zoom: 11,
-        //                center: centrum
-        //            };
-        //            codeAdress();
-        //        }
-        //
-        //        function codeAdress() {
-        //            let geocoder = new google.maps.Geocoder();
-        //            geocoder.geocode({
-        //                'adress': adresse
-        //            }, function(results, status) {
-        //                if (status == 'OK') {
-        //                    var marker = new google.maps.Marker({
-        //                        map: map,
-        //                        position: results[0].geometry.location
-        //                    });
-        //                } else {
-        //                    alert('Geocode was not succesful for the following reason:' + status);
-        //                }
-        //            });
-        //        }
+        function initMap() {
+
+            map = new google.maps.Map(document.querySelector("#map"), {
+                zoom: 11,
+                center: centrum
+            });
+
+            var centrum = {
+                lat: 55.675914,
+                lng: 12.569129
+            };
+
+            codeAdress();
+        }
+
+        function codeAdress() {
+
+            let geocoder = new google.maps.Geocoder();
+            geocoder.geocode({
+                'address': adresse
+            }, function(results, status) {
+                if (status == 'OK') {
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location
+                    });
+                } else {
+                    alert('Geocode was not succesful for the following reason:' + status);
+                }
+            });
+        }
 
 
         function hentSliderImages() {
-            console.log(sliderImages);
+            //            console.log(sliderImages);
             if (restaurant.acf.billedemateriale.url) {
                 sliderImages.push(restaurant.acf.billedemateriale.url),
                     sliderImagesAlt.push(restaurant.acf.billedemateriale.alt);
@@ -292,11 +300,11 @@
 
             let template = document.querySelector("[data-template]");
 
-            console.log(sliderImages);
+            //            console.log(sliderImages);
 
             sliderImages.forEach(sliderImage => {
                 let klon = template.cloneNode(true).content;
-                console.log(sliderImage);
+                //                console.log(sliderImage);
 
                 klon.querySelector("[data-slide] img").src = sliderImage;
 
@@ -311,7 +319,7 @@
         // SLIDER MENUKORT
 
         function hentSliderImagesMenukort() {
-            console.log(sliderImagesMenukort);
+            //            console.log(sliderImagesMenukort);
             if (restaurant.acf.morgenmad_og_brunch_menu_1.url) {
                 sliderImagesMenukort.push(restaurant.acf.morgenmad_og_brunch_menu_1.url),
                     sliderImagesAlt.push(restaurant.acf.morgenmad_og_brunch_menu_1.alt);
@@ -351,11 +359,11 @@
 
             let template = document.querySelector("[data-menutemplate]");
 
-            console.log(sliderImagesMenukort);
+            //            console.log(sliderImagesMenukort);
 
             sliderImagesMenukort.forEach(sliderImageMenukort => {
                 let klon = template.cloneNode(true).content;
-                console.log(sliderImageMenukort);
+                //                console.log(sliderImageMenukort);
 
                 klon.querySelector("[data-menuslide] img").src = sliderImageMenukort;
 
@@ -395,9 +403,9 @@
             }, pause);
 
             function sliderSlider() {
-                console.log("sliderSlider");
-                console.log("animationspeed er " + animationSpeed);
-                console.log("pause er " + pause)
+                //                console.log("sliderSlider");
+                //                console.log("animationspeed er " + animationSpeed);
+                //                console.log("pause er " + pause);
                 $($slideContainer).animate({
                     "margin-left": "-=" + width
                 }, animationSpeed, reset);
@@ -408,7 +416,7 @@
 
                 currentSlide++;
                 if (currentSlide === $slides.length) {
-                    console.log("currentSlide = length");
+                    //                    console.log("currentSlide = length");
                     currentSlide = 1;
                     $slideContainer.css({
                         "margin-left": "0"
@@ -420,9 +428,9 @@
             /** MEDIA QUIERY **/
 
             function sliderSliderStor() {
-                console.log("sliderSliderStor");
-                console.log("animationspeed er " + animationSpeed);
-                console.log("pause er" + pause)
+                //                console.log("sliderSliderStor");
+                //                console.log("animationspeed er " + animationSpeed);
+                //                console.log("pause er" + pause);
                 $($slideContainer).animate({
                     "margin-left": "-=" + widthStor
                 }, animationSpeed, reset);
@@ -436,7 +444,7 @@
 
         function startSliderImagesMenukort() {
 
-            console.log("der slides");
+            //            console.log("der slides");
 
             var width = 700;
             var widthStor = 750;
@@ -465,8 +473,7 @@
             }
 
             function sliderSliderTilbage() {
-                console.log("sliderSlider");
-                console.log("animationspeed er " + animationSpeed);
+                //                console.log("sliderSlider"); // console.log("animationspeed er " + animationSpeed);
 
                 $($slideContainer).animate({
                     "margin-top": "+=" + width
@@ -478,7 +485,7 @@
 
                 currentSlide++;
                 if (currentSlide === $slides.length) {
-                    console.log("currentSlide = length");
+                    //                    console.log("currentSlide = length");
                     currentSlide = 1;
                     $slideContainer.css({
                         "margin-left": "0"
@@ -499,9 +506,12 @@
             }
 
         }
+
     </script>
 
-    <!--    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxHk7lwMVRAwWJDH2HPzjN4RJs6ta3k3s&callback=initMap" async defer></script>-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyT4tZKVLoOzjcKheBYCS2fQvFHwKDhlA&callback=initMap" async defer></script>
+
+
 </body>
 
 </html>

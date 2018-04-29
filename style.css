@@ -497,6 +497,11 @@ footer {
     margin: 0;
 }
 
+#map {
+    width: 50vw;
+    height: 50vw;
+}
+
 /*** RESTAURANT ***/
 
 /*** BUTIK ***/
