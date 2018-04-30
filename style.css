@@ -80,9 +80,6 @@ body {
     background-color: #fbfaf2;
     width: 100vw;
     height: 100vh;
-    display: grid;
-    grid-template-columns: repeat(13, 1fr);
-    grid-template-rows: repeat(13, 1fr);
     color: #334151;
 }
 
@@ -92,18 +89,11 @@ body {
     margin: 0;
 }
 
-main {
-    grid-column: 1/14;
-    grid-row: 3;
-    display: grid;
-    grid-template-columns: repeat(13, 1fr);
-}
-
 section {
-    grid-column: 1/14;
     display: grid;
     grid-template-columns: repeat(13, 1fr);
     margin: 1vw;
+    /*        grid-column: 2/13;*/
 }
 
 #footer {
@@ -373,7 +363,8 @@ footer {
 
 /*MENUKORT + IMAGE SLIDER*/
 
-#slider {
+#slider,
+#slider_menukort {
     grid-column: 2/13;
     max-width: 560px;
     height: 500px;
@@ -384,7 +375,7 @@ footer {
     height: 300px;
 }
 
-#slider.menukort {
+#slider_menukort {
     height: 680px;
 }
 
@@ -428,7 +419,8 @@ footer {
     left: 61vw;
 }
 
-#slides {
+#slides,
+#slides_menukort {
     display: block;
     width: 8000px;
     margin: 0;
@@ -461,27 +453,28 @@ footer {
 }
 
 .liste {
-    display: grid;
-    grid-template-columns: repeat(13, 1fr);
-    grid-gap: 1.5vw;
-    grid-column: 2/13;
+    grid-template-columns: 1fr;
+    width: 80%;
+    margin: 0 auto;
 }
-
-/*
-.billede {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}*/
 
 .butik,
 .restaurant,
 .restaurant_single {
-    grid-column: 1/14;
     cursor: pointer;
 }
 
+
+/*** RESTAURANT ***/
+
+/*** BUTIK ***/
+
+.restaurant_single {
+    grid-column: 1/14;
+}
+
 #restaurant_single_container {
+
     display: grid;
     grid-template-columns: repeat(13, 1fr);
     grid-gap: 2vw;
@@ -530,9 +523,23 @@ footer {
     height: 83vw;
 }
 
-/*** RESTAURANT ***/
+#book_her {
+    width: 10vw;
+    height: 10vw;
+    border-radius: 50%;
+    background-color: #ec9dad;
+    color: #fff;
+    font-size: 2vw;
+    font-family: "hk_groteskbold_legacy";
+    grid-column: 7;
+    grid-row: 4;
+    transition: 0.2s ease-in-out;
+}
 
-/*** BUTIK ***/
+#book_her:hover {
+    opacity: 0.9;
+    transform: scale(1.1);
+}
 
 /*** NYHED ***/
 
@@ -581,6 +588,7 @@ form h2 {
 
 form p {
     margin: 0 6.5vw 2vw 6.5vw;
+    font-size: 3vw;
 }
 
 #kontakt {
@@ -721,12 +729,13 @@ input[type=submit] {
     }
 
 
-    #slider.menukort {
+    #slider_menukort {
         width: 700px;
         grid-column: 4/11;
     }
 
-    #slides {
+    #slides,
+    #slider_menukort {
         display: block;
         width: 8000px;
         margin: 0;
@@ -738,11 +747,11 @@ input[type=submit] {
         height: 400px;
     }
 
-    .menukort_slide {
-        float: left;
-        list-style-type: none;
-        width: 650px;
-        height: 400px;
+
+    /* KATEGORI */
+    .liste {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 2vw;
     }
 
     /*RESTAURANT*/
@@ -754,8 +763,10 @@ input[type=submit] {
     }
 
     #smiley {
-        grid-column: 8/10;
-        margin: 2vw 2vw 0 2vw;
+        width: 12vw;
+        height: 14vw;
+        grid-column: 8;
+        margin: 2vw 3.5vw 0 3.5vw;
     }
 
     #se_kontrolrapport {
@@ -789,11 +800,17 @@ input[type=submit] {
         margin: 1vw;
         color: #fff;
         height: 55vw;
+        font-size: 2.8vw;
     }
 
     #kontakt {
         grid-column: 2/7;
         grid-row: 2;
+    }
+
+    #kontakt p,
+    #nyhedsbrev p {
+        font-size: 2vw;
     }
 
     #nyhedsbrev {

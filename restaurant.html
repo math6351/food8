@@ -53,17 +53,13 @@
 
     <main>
 
-        <section class="liste" data-liste>
+        <section class="liste_single" data-liste>
             <article class="restaurant_single">
                 <img class="billede" data-banner src="" alt="">
                 <h2 data-manchet></h2>
                 <p data-beskrivelse></p>
             </article>
         </section>
-
-
-
-
 
 
         <section id="images">
@@ -86,12 +82,12 @@
         <section id="menukort">
             <h1 id="header" data-menuheader>Menukort</h1>
 
-            <div id="slider" class="menukort" data-menuslider>
+            <div id="slider_menukort" data-menuslider>
 
                 <a class="prev">&#10094;</a>
                 <a class="next">&#10095;</a>
 
-                <ul id="slides" data-menuslides>
+                <ul id="slides_menukort" data-menuslides>
 
                 </ul>
             </div>
@@ -113,6 +109,7 @@
                     <p id="sted_adresse" data-adresse></p>
                     <p id="se_kontrolrapport">Se vores kontrolrapport her: </p>
                     <img id="smiley" data-smiley src="" alt="">
+                    <button id="book_her">Book her</button>
                     <h3 id="sted_hours_header">Åbningstider</h3>
                     <p id="sted_hours" data-hours></p>
                     <h3>Find os her</h3>
@@ -162,11 +159,9 @@
             placerSliderImagesMenukort();
             startSliderImagesMenukort();
 
-            initMap();
-
             adresse = restaurant.acf.adresse;
 
-            console.log(adresse);
+            codeAdress();
         };
 
 
@@ -192,18 +187,18 @@
 
 
         function initMap() {
-
-            map = new google.maps.Map(document.querySelector("#map"), {
-                zoom: 11,
-                center: centrum
-            });
-
             var centrum = {
                 lat: 55.675914,
                 lng: 12.569129
             };
+            map = new google.maps.Map(document.querySelector("#map"), {
+                zoom: 13,
+                center: centrum
+            });
 
-            codeAdress();
+
+            console.log(adresse);
+
         }
 
         function codeAdress() {
@@ -491,7 +486,6 @@
                 $($slideContainer).animate({
                     "margin-top": "+=" + width
                 }, animationSpeed, reset);
-
             }
 
             function reset() {

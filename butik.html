@@ -83,6 +83,9 @@
                 <p id="sted_adresse" data-adresse></p>
                 <p id="sted_hours" data-hours></p>
                 <!--                    <a href="" data-link><img id="smiley" data-smiley src="" alt=""></a>-->
+
+                <h3>Find os her</h3>
+                <div id="map" data-map></div>
             </div>
         </article>
     </section>
@@ -101,6 +104,10 @@
         let sliderImages = [];
         let sliderImagesAlt = [];
 
+
+        let map;
+        let adresse;
+
         document.addEventListener("DOMContentLoaded", hentJson);
 
         async function hentJson() {
@@ -114,7 +121,46 @@
             hentSliderImages();
             placerSliderImages();
             startSliderImages();
+
+            adresse = butik.acf.adresse;
+
+            codeAdress();
+
         };
+
+        function initMap() {
+            var centrum = {
+                lat: 55.675914,
+                lng: 12.569129
+            };
+            map = new google.maps.Map(document.querySelector("#map"), {
+                zoom: 13,
+                center: centrum
+            });
+
+
+            console.log(adresse);
+
+        }
+
+        function codeAdress() {
+
+            let geocoder = new google.maps.Geocoder();
+            geocoder.geocode({
+                'address': adresse
+            }, function(results, status) {
+                if (status == 'OK') {
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location
+                    });
+                } else {
+                    alert('Geocode was not succesful for the following reason:' + status);
+                }
+            });
+        }
+
+
 
         function hentSliderImages() {
             console.log(sliderImages);
@@ -314,6 +360,8 @@
 
         }
     </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyT4tZKVLoOzjcKheBYCS2fQvFHwKDhlA&callback=initMap" async defer></script>
 
 </body>
 
