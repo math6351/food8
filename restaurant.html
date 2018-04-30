@@ -449,6 +449,7 @@ Oplev Københavns kulinariske perler hos Food8
 
             //            console.log("der slides");
 
+            var widthMobil = 490;
             var width = 700;
             var widthStor = 850;
             var animationSpeed = 1200;
@@ -460,7 +461,14 @@ Oplev Københavns kulinariske perler hos Food8
 
             //           var $tekst = $("#preview-tekst");
 
+            var mqMobil = window.matchMedia('all and (min-width: 400px)');
+
             var mq = window.matchMedia('all and (min-width: 900px)');
+
+            if (mqMobil.matches) {
+                document.querySelector(".next").addEventListener("click", sliderSliderMobil);
+                document.querySelector(".prev").addEventListener("click", sliderSliderMobilTilbage);
+            }
 
             if (mq.matches) {
 
@@ -518,6 +526,22 @@ Oplev Københavns kulinariske perler hos Food8
                 console.log("animationspeed er " + animationSpeed);
                 $($slideContainer).animate({
                     "margin-top": "+=" + widthStor
+                }, animationSpeed, reset);
+            }
+
+
+            function sliderSliderMobil() {
+                console.log("sliderSliderMobil");
+                console.log("animationspeed er " + animationSpeed);
+                $($slideContainer).animate({
+                    "margin-top": "-=" + widthMobil
+                }, animationSpeed, reset);
+            }
+
+            function sliderSliderMobilTilbage() {
+                console.log("sliderSliderMobil");
+                $($slideContainer).animate({
+                    "margin-top": "-=" + widthMobil
                 }, animationSpeed, reset);
             }
 
