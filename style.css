@@ -92,7 +92,7 @@ body {
 section {
     display: grid;
     grid-template-columns: repeat(13, 1fr);
-    margin: 1vw;
+    margin: 3vw 1vw 3vw 1vw;
     /*        grid-column: 2/13;*/
 }
 
@@ -211,7 +211,7 @@ a {
 /* ROTERING */
 
 .change .bar1 {
-    transform: rotate(-45deg) translate(-7px, 6px);
+    transform: rotate(-45deg) translate(-3px, 4px);
     background-color: #6fc6b4;
 }
 
@@ -300,7 +300,7 @@ footer {
 
 #adresse {
     font-style: normal;
-    grid-column: 2/6;
+    grid-column: 2/7;
 }
 
 #links {
@@ -312,7 +312,7 @@ footer {
     background-size: cover;
     width: 25vw;
     height: 3vw;
-    margin: 2vw 0;
+    margin: 4vw 0;
 }
 
 .linkshover:hover {
@@ -376,7 +376,15 @@ footer {
 }
 
 #slider_menukort {
-    height: 680px;
+    height: 490px;
+}
+
+#slides,
+#slides_menukort {
+    display: block;
+    width: 8000px;
+    margin: 0;
+    padding: 0;
 }
 
 /*
@@ -416,16 +424,10 @@ footer {
 
 .next {
     top: 57vw;
-    left: 61vw;
+    left: 52vw;
 }
 
-#slides,
-#slides_menukort {
-    display: block;
-    width: 8000px;
-    margin: 0;
-    padding: 0;
-}
+
 
 .slide {
     float: left;
@@ -468,6 +470,7 @@ footer {
 .restaurant,
 .restaurant_single {
     cursor: pointer;
+    margin: 1vw;
 }
 
 
@@ -503,7 +506,7 @@ footer {
 #sted_hours {
     grid-column: 2/7;
     grid-row: 3/3;
-    padding: 4vw 0 4vw 0;
+    padding: 6vw 0 6vw 0;
 }
 
 #sted_hours_header {
@@ -520,7 +523,7 @@ footer {
 #smiley {
     grid-column: 8/12;
     grid-row: 2/4;
-    margin: 1vw;
+    margin: 8vw 2vw 2vw 2vw;
 }
 
 #map {
@@ -530,14 +533,14 @@ footer {
 }
 
 #book_her {
-    width: 10vw;
-    height: 10vw;
+    width: 30vw;
+    height: 30vw;
     border-radius: 50%;
     background-color: #ec9dad;
     color: #fff;
-    font-size: 2vw;
+    font-size: 6vw;
     font-family: "hk_groteskbold_legacy";
-    grid-column: 8;
+    grid-column: 5/9;
     margin: 0 auto;
     grid-row: 4;
     transition: 0.2s ease-in-out;
@@ -858,11 +861,9 @@ input[type=submit] {
 }
 
 @media screen and (min-width: 600px) {
-    /*
-    #slider {
-        grid-column: 3/12;
+    #slider_menukort {
+        height: 680px;
     }
-*/
     .change .bar1 {
         transform: rotate(-45deg) translate(-6px, 5px);
         background-color: #6fc6b4;

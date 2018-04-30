@@ -81,9 +81,10 @@
             <div id="restaurant_single_container">
                 <h2 id="sted_header" data-header></h2>
                 <p id="sted_adresse" data-adresse></p>
+                <p id="se_kontrolrapport">Se vores kontrolrapport her: </p>
+                <img id="smiley" data-smiley src="" alt="">
+                <h3 id="sted_hours_header">Åbningstider</h3>
                 <p id="sted_hours" data-hours></p>
-                <!--                    <a href="" data-link><img id="smiley" data-smiley src="" alt=""></a>-->
-
                 <h3>Find os her</h3>
                 <div id="map" data-map></div>
             </div>
@@ -137,9 +138,6 @@
                 zoom: 13,
                 center: centrum
             });
-
-
-            console.log(adresse);
 
         }
 
@@ -276,6 +274,7 @@
             display.querySelector("[data-header]").textContent = butik.acf.butik_navn;
             display.querySelector("[data-adresse]").innerHTML = butik.acf.adresse;
             display.querySelector("[data-hours]").innerHTML = butik.acf.åbningstider;
+            display.querySelector("[data-smiley]").src = butik.acf.kontrolrapport;
             //            display.querySelector("[data-smiley]").src = butik.acf.kontrolrapport;
 
         }
@@ -359,6 +358,7 @@
             }
 
         }
+
     </script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyT4tZKVLoOzjcKheBYCS2fQvFHwKDhlA&callback=initMap" async defer></script>
