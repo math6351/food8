@@ -458,6 +458,12 @@ footer {
     margin: 0 auto;
 }
 
+.liste_single {
+    grid-template-columns: 1fr;
+    width: 80%;
+    margin: 0 auto;
+}
+
 .butik,
 .restaurant,
 .restaurant_single {
@@ -531,7 +537,8 @@ footer {
     color: #fff;
     font-size: 2vw;
     font-family: "hk_groteskbold_legacy";
-    grid-column: 7;
+    grid-column: 8;
+    margin: 0 auto;
     grid-row: 4;
     transition: 0.2s ease-in-out;
 }
@@ -774,8 +781,8 @@ input[type=submit] {
     }
 
     #map {
-        width: 67vw;
-        height: 67vw;
+        width: 75vw;
+        height: 75vw;
         grid-column: 3/10;
     }
 
