@@ -342,7 +342,7 @@ footer {
 #nyhedsslider {
     margin: 0 auto;
     grid-column: 2/13;
-    width: 530px;
+    width: 300px;
     height: 150px;
     overflow: hidden;
 }
@@ -361,18 +361,24 @@ footer {
     height: 150px;
 }
 
+.nyhedsslide img {
+        width: 90%;
+}
+
 /*MENUKORT + IMAGE SLIDER*/
 
-#slider,
+#slider.images {
+    grid-column: 2/13;
+    height: 200px;
+    max-width: 560px;
+    overflow: hidden;
+}
+
 #slider_menukort {
     grid-column: 2/13;
     max-width: 560px;
     height: 500px;
     overflow: hidden;
-}
-
-#slider.images {
-    height: 300px;
 }
 
 #slider_menukort {
@@ -385,6 +391,10 @@ footer {
     width: 8000px;
     margin: 0;
     padding: 0;
+}
+
+.slide img {
+    width: 60%;
 }
 
 /*
@@ -541,7 +551,7 @@ footer {
     font-size: 6vw;
     font-family: "hk_groteskbold_legacy";
     grid-column: 5/9;
-    margin: 0 auto;
+    margin: 2vw;
     grid-row: 4;
     transition: 0.2s ease-in-out;
 }

@@ -196,9 +196,6 @@
                 center: centrum
             });
 
-
-            console.log(adresse);
-
         }
 
         function codeAdress() {
@@ -212,10 +209,23 @@
                         map: map,
                         position: results[0].geometry.location
                     });
+
+
+                    let infowindow = new google.maps.InfoWindow({
+                        content: "<h2>" + adresse + "</h2>"
+
+                    });
+
+                    marker.addListener("click", () => {
+                        infowindow.open(map, marker);
+                        console.log("test");
+                    });
+
                 } else {
                     alert('Geocode was not succesful for the following reason:' + status);
                 }
             });
+
         }
 
 
@@ -293,6 +303,11 @@
                     sliderImagesAlt.push(restaurant.acf.supplerende_billedemateriale_15.alt);
             }
 
+            if (restaurant.acf.billedemateriale.url) {
+                sliderImages.push(restaurant.acf.billedemateriale.url),
+                    sliderImagesAlt.push(restaurant.acf.billedemateriale.alt);
+            }
+
         }
 
         function placerSliderImages() {
@@ -300,7 +315,7 @@
 
             let template = document.querySelector("[data-template]");
 
-            //            console.log(sliderImages);
+            console.log(sliderImages);
 
             sliderImages.forEach(sliderImage => {
                 let klon = template.cloneNode(true).content;
@@ -458,16 +473,14 @@
 
             //           var $tekst = $("#preview-tekst");
 
-            var mqMobil = window.matchMedia('all and (min-width: 400px)');
+            var mqMobil = window.matchMedia('all and (max-width: 400px)');
 
             var mq = window.matchMedia('all and (min-width: 900px)');
 
             if (mqMobil.matches) {
                 document.querySelector(".next").addEventListener("click", sliderSliderMobil);
                 document.querySelector(".prev").addEventListener("click", sliderSliderMobilTilbage);
-            }
-
-            if (mq.matches) {
+            } else if (mq.matches) {
 
                 document.querySelector(".next").addEventListener("click", sliderSliderStor);
                 document.querySelector(".prev").addEventListener("click", sliderSliderStorTilbage);

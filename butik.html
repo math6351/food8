@@ -238,6 +238,11 @@
                 sliderImages.push(butik.acf.indholds_billeder_15.url),
                     sliderImagesAlt.push(butik.acf.indholds_billeder_15.alt);
             }
+
+            if (butik.acf.indholds_billeder.url) {
+                sliderImages.push(butik.acf.indholds_billeder.url),
+                    sliderImagesAlt.push(butik.acf.indholds_billeder.alt);
+            }
         }
 
         function placerSliderImages() {
@@ -357,8 +362,23 @@
                 }, animationSpeed, reset);
             }
 
-        }
 
+            function sliderSliderMobil() {
+                console.log("sliderSliderMobil");
+                console.log("animationspeed er " + animationSpeed);
+                $($slideContainer).animate({
+                    "margin-top": "-=" + widthMobil
+                }, animationSpeed, reset);
+            }
+
+            function sliderSliderMobilTilbage() {
+                console.log("sliderSliderMobil");
+                $($slideContainer).animate({
+                    "margin-top": "-=" + widthMobil
+                }, animationSpeed, reset);
+            }
+
+        }
     </script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyT4tZKVLoOzjcKheBYCS2fQvFHwKDhlA&callback=initMap" async defer></script>
