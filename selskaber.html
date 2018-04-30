@@ -66,10 +66,15 @@ Oplev Københavns kulinariske perler hos Food8
 
     <template class="butikker" data-template>
         <article class="butik" data-butik>
-            <p data-menu_genre></p>
-            <p data-kapacitet></p>
-            <p data-kuvert_pris></p>
-            <img class="billede" src="" alt="" data-billede>
+           <img class="billede" src="" alt="" data-billede>
+           <div class="selskabsbeskrivelse_container">
+              <p class="selskabsbeskrivelse emner">Mad Genre</p>
+              <p class="selskabsbeskrivelse beskrivelse" data-menu_genre></p>
+              <p class="selskabsbeskrivelse emner">Kapacitet</p>
+              <p class="selskabsbeskrivelse beskrivelse" data-kapacitet></p>
+              <p class="selskabsbeskrivelse emner">Kurvertpris</p>
+              <p class="selskabsbeskrivelse beskrivelse" data-kuvert_pris></p>
+            </div>
         </article>
     </template>
 
@@ -102,11 +107,11 @@ Oplev Københavns kulinariske perler hos Food8
                 let template = document.querySelector("[data-template]");
                 let klon = template.cloneNode(true).content;
                 console.log(selskab);
-                klon.querySelector("[data-menu_genre]").textContent = selskab.acf.menu_genre;
+                klon.querySelector("[data-menu_genre]").textContent = selskab.acf.mad_genre;
                 klon.querySelector("[data-kapacitet]").textContent = selskab.acf.kapacitet;
                 klon.querySelector("[data-kuvert_pris]").textContent = selskab.acf.kuvert_pris;
-                klon.querySelector("[data-billede]").src = selskab.acf.splash_billed;
-                klon.querySelector("[data-billede]").alt = "Billede af " + selskab.acf.butik_navn + "'s logo";
+                klon.querySelector("[data-billede]").src = selskab.acf.splash_billed.url;
+                klon.querySelector("[data-billede]").alt = "Billede af " + selskab.acf.splash_billed.alt + "'s logo";
                 klon.querySelector("[data-billede]").addEventListener("click", () => {
                     location.href = "selskab.html?id=" + selskab.id;
                 });

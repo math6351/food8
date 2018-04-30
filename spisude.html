@@ -108,6 +108,10 @@ Oplev Københavns kulinariske perler hos Food8
                 klon.querySelector("[data-kategori]").alt = "Billede af" + kategori.acf.kategori_billede.alt;
                 klon.querySelector("[data-kategori]").textContent = kategori.acf.kategori_titel;
 
+                klon.querySelector("[data-kategori]").addEventListener("click", () => {
+                    location.href = "spisude_kategori.html?kategori=" + kategori.slug;
+                });
+
                 display.appendChild(klon);
             });
         }

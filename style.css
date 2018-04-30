@@ -362,7 +362,7 @@ footer {
 }
 
 .nyhedsslide img {
-        width: 90%;
+    width: 90%;
 }
 
 /*MENUKORT + IMAGE SLIDER*/
@@ -665,6 +665,25 @@ input[type=radio] {
 input[type=submit] {
     cursor: pointer;
     /*    width: 10vw;*/
+}
+
+
+
+.selskabsbeskrivelse_container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.selskabsbeskrivelse {
+    width: 50%;
+    font-size: 0.8em;
+}
+
+.beskrivelse {
+    text-align: right;
+    color: gray;
 }
 
 
