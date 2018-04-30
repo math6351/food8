@@ -377,12 +377,8 @@ footer {
 #slider_menukort {
     grid-column: 2/13;
     max-width: 560px;
-    height: 500px;
+    height: 450px;
     overflow: hidden;
-}
-
-#slider_menukort {
-    height: 490px;
 }
 
 #slides,
@@ -499,6 +495,10 @@ footer {
     grid-gap: 2vw;
 }
 
+.single_header {
+    font-size: 5vw;
+}
+
 #sted_header {
     grid-column: 2/14;
 }
@@ -511,12 +511,13 @@ footer {
 #sted_adresse {
     grid-column: 2/7;
     grid-row: 2/2;
+    padding: 0 0 3vw 0;
 }
 
 #sted_hours {
     grid-column: 2/7;
     grid-row: 3/3;
-    padding: 6vw 0 6vw 0;
+    padding: 8vw 0 8vw 0;
 }
 
 #sted_hours_header {
@@ -533,7 +534,7 @@ footer {
 #smiley {
     grid-column: 8/12;
     grid-row: 2/4;
-    margin: 8vw 2vw 2vw 2vw;
+    margin: 13vw 2vw 2vw 2vw;
 }
 
 #map {
@@ -693,6 +694,78 @@ input[type=submit] {
 
 /* MEDIAQUIERIES */
 
+@media screen and (min-width: 400px) {
+
+    h3 {
+        font-size: 5vw;
+    }
+
+    /** BURGERMENU **/
+    .change .bar1 {
+        transform: rotate(-45deg) translate(-6px, 5px);
+        background-color: #6fc6b4;
+    }
+
+    .change .bar3 {
+        transform: rotate(45deg) translate(-6px, -5px);
+        background-color: #6fc6b4;
+    }
+
+    /** SLIDERE **/
+    #slider.images {
+        grid-column: 2/13;
+        height: 400px;
+        max-width: 700px;
+        overflow: hidden;
+    }
+
+    #slider_menukort {
+        grid-column: 2/13;
+        max-width: 700px;
+        height: 800px;
+        overflow: hidden;
+    }
+
+    #slides,
+    #slides_menukort {
+        display: block;
+        width: 8000px;
+    }
+
+    .slide {
+        width: 700px;
+    }
+
+    .slide img {
+        width: 100%;
+    }
+
+    .single_beskrivelse {
+        font-size: 4vw;
+    }
+
+    .menukort_slide img {
+        width: 80vw;
+    }
+
+    .next {
+        top: 57vw;
+        left: 64vw;
+    }
+    #sted_hours_header,
+    #sted_header {
+        font-size: 4vw;
+        ;
+    }
+
+    #sted_adresse,
+    #sted_hours {
+        font-size: 3vw;
+    }
+
+}
+
+
 @media screen and (min-width: 900px) {
 
     /*HOVEDMENU*/
@@ -760,21 +833,20 @@ input[type=submit] {
     /* RESTAURANT + MENUKORT SLIDER*/
     #slider.images {
         width: 800px;
-        height: 400px;
+        height: 500px;
         overflow: hidden;
         margin: 0 auto;
         max-width: 1200px;
 
     }
 
-
     #slider_menukort {
-        width: 700px;
+        width: 900px;
         grid-column: 4/11;
     }
 
     #slides,
-    #slider_menukort {
+    #slides_menukort {
         display: block;
         width: 8000px;
         margin: 0;
@@ -783,9 +855,8 @@ input[type=submit] {
 
     .slide {
         width: 800px;
-        height: 400px;
+        height: 500px;
     }
-
 
     /* KATEGORI */
     .liste {
@@ -887,19 +958,4 @@ input[type=submit] {
         margin: 1.5vw 0 0 0;
     }
 
-}
-
-@media screen and (min-width: 600px) {
-    #slider_menukort {
-        height: 680px;
-    }
-    .change .bar1 {
-        transform: rotate(-45deg) translate(-6px, 5px);
-        background-color: #6fc6b4;
-    }
-
-    .change .bar3 {
-        transform: rotate(45deg) translate(-6px, -5px);
-        background-color: #6fc6b4;
-    }
 }

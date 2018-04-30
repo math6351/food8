@@ -53,8 +53,8 @@
     <section class="liste" data-liste>
         <article class="restaurant_single">
             <img class="billede" data-banner src="" alt="">
-            <h2 data-manchet></h2>
-            <p data-beskrivelse></p>
+            <h2 class="single_header" data-manchet></h2>
+            <p class="single_beskrivelse" data-beskrivelse></p>
         </article>
     </section>
 
@@ -129,6 +129,26 @@
 
         };
 
+
+        function visButik() {
+            let display = document.querySelector("[data-liste]");
+            display.querySelector("[data-banner]").src = butik.acf.splash_billed.url;
+            display.querySelector("[data-banner]").alt = butik.acf.splash_billed.alt;
+            display.querySelector("[data-manchet]").innerHTML = butik.acf.manchet;
+            display.querySelector("[data-beskrivelse]").innerHTML = butik.acf.butik_beskrivelse;
+            console.log("You're now in singleview!")
+        };
+
+        function hentInfo() {
+            let display = document.querySelector("[data-info]");
+            display.querySelector("[data-header]").textContent = butik.acf.butik_navn;
+            display.querySelector("[data-adresse]").innerHTML = butik.acf.adresse + "<br>" + butik.acf.telefonnummer_1 + "<br>" + butik.acf.telefonnummer_2;
+            display.querySelector("[data-hours]").innerHTML = butik.acf.åbningstider;
+            display.querySelector("[data-smiley]").src = butik.acf.kontrolrapport;
+            //            display.querySelector("[data-smiley]").src = butik.acf.kontrolrapport;
+
+        }
+
         function initMap() {
             var centrum = {
                 lat: 55.675914,
@@ -152,6 +172,18 @@
                         map: map,
                         position: results[0].geometry.location
                     });
+
+
+                    let infowindow = new google.maps.InfoWindow({
+                        content: "<h2>" + butik.acf.butik_navn + "</h2>" + "<p>" + adresse + "</p>"
+
+                    });
+
+                    marker.addListener("click", () => {
+                        infowindow.open(map, marker);
+                        console.log("test");
+                    });
+
                 } else {
                     alert('Geocode was not succesful for the following reason:' + status);
                 }
@@ -265,46 +297,11 @@
             });
         }
 
-        function visButik() {
-            let display = document.querySelector("[data-liste]");
-            display.querySelector("[data-banner]").src = butik.acf.splash_billed.url;
-            display.querySelector("[data-banner]").alt = butik.acf.splash_billed.alt;
-            display.querySelector("[data-manchet]").innerHTML = butik.acf.manchet;
-            display.querySelector("[data-beskrivelse]").innerHTML = butik.acf.butik_beskrivelse;
-            console.log("You're now in singleview!")
-        };
-
-        function hentInfo() {
-            let display = document.querySelector("[data-info]");
-            display.querySelector("[data-header]").textContent = butik.acf.butik_navn;
-            display.querySelector("[data-adresse]").innerHTML = butik.acf.adresse;
-            display.querySelector("[data-hours]").innerHTML = butik.acf.åbningstider;
-            display.querySelector("[data-smiley]").src = butik.acf.kontrolrapport;
-            //            display.querySelector("[data-smiley]").src = butik.acf.kontrolrapport;
-
-        }
-
-
-        //        function visMenukort() {
-        //            console.log(restauranter);
-        //
-        //            let display = document.querySelector("[data-menukortslides]");
-        //            let template = document.querySelector("[data-menukorttemplate]");
-        //            restauranter.forEach(restaurant => {
-        //                let klon = template.cloneNode(true).content;
-        //                console.log(restaurant);
-        //                klon.querySelector("[data-header]").textContent = nyhed.acf.nyheds_title;
-        //                klon.querySelector("[data-menukortslide] img").src = restaurant.acf.supplerende_billedemateriale2;
-        //                console.log(klon.querySelector("[data-menukortslide]"));
-        //                klon.querySelector("[data-menukortslide]").alt = "Billede af " + restaurant.acf.menukategorier;
-        //                display.appendChild(klon);
-        //            });
-        //        }
-
         function startSliderImages() {
 
-            var width = 565;
+            var width = 700;
             var widthStor = 750;
+            var widthMobil = 570;
             var animationSpeed = 1200;
             var pause = 5000;
             var currentSlide = 1;
@@ -315,6 +312,8 @@
 
             //           var $tekst = $("#preview-tekst");
 
+            var mqMobil = window.matchMedia('all and (max-width: 400px)');
+
             var mq = window.matchMedia('all and (min-width: 900px)');
 
 
@@ -322,9 +321,13 @@
 
                 if (mq.matches) {
                     sliderSliderStor();
+                } else if (mqMobil.matches) {
+                    sliderSliderMobil();
+                    console.log("Slider Mobil");
                 } else {
                     sliderSlider();
                 }
+
 
 
             }, pause);
@@ -364,17 +367,11 @@
 
 
             function sliderSliderMobil() {
-                console.log("sliderSliderMobil");
-                console.log("animationspeed er " + animationSpeed);
+                //                console.log("sliderSliderStor");
+                //                console.log("animationspeed er " + animationSpeed);
+                //                console.log("pause er" + pause);
                 $($slideContainer).animate({
-                    "margin-top": "-=" + widthMobil
-                }, animationSpeed, reset);
-            }
-
-            function sliderSliderMobilTilbage() {
-                console.log("sliderSliderMobil");
-                $($slideContainer).animate({
-                    "margin-top": "-=" + widthMobil
+                    "margin-left": "-=" + widthMobil
                 }, animationSpeed, reset);
             }
 

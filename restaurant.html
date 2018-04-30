@@ -59,8 +59,8 @@ Oplev Københavns kulinariske perler hos Food8
         <section class="liste_single" data-liste>
             <article class="restaurant_single">
                 <img class="billede" data-banner src="" alt="">
-                <h2 data-manchet></h2>
-                <p data-beskrivelse></p>
+                <h2 class="single_header" data-manchet></h2>
+                <p class="single_beskrivelse" data-beskrivelse></p>
             </article>
         </section>
 
@@ -182,12 +182,13 @@ Oplev Københavns kulinariske perler hos Food8
         function hentInfo() {
             let display = document.querySelector("[data-info]");
             display.querySelector("[data-header]").textContent = restaurant.acf.restaurant_navn;
-            display.querySelector("[data-adresse]").innerHTML = restaurant.acf.adresse;
+            display.querySelector("[data-adresse]").innerHTML = restaurant.acf.adresse + "<br>" + restaurant.acf.telefonnummer_1 + "<br>" + restaurant.acf.telefonnummer_2;
             display.querySelector("[data-hours]").innerHTML = restaurant.acf.aabningstider;
             display.querySelector("[data-smiley]").src = restaurant.acf.kontrolrapport_billede;
             //            display.querySelector("data-link").href = restaurant.acf.kontrolrapport_link;
         }
 
+        // GEOCODING - GOOGLE MAPS
 
         function initMap() {
             var centrum = {
@@ -215,7 +216,7 @@ Oplev Københavns kulinariske perler hos Food8
 
 
                     let infowindow = new google.maps.InfoWindow({
-                        content: "<h2>" + adresse + "</h2>"
+                        content: "<h2>" + restaurant.acf.restaurant_navn + "</h2>" + "<p>" + adresse + "</p>"
 
                     });
 
@@ -231,6 +232,8 @@ Oplev Københavns kulinariske perler hos Food8
 
         }
 
+
+        // SLIDER IMAGES
 
         function hentSliderImages() {
             //            console.log(sliderImages);
@@ -332,6 +335,84 @@ Oplev Københavns kulinariske perler hos Food8
             });
         }
 
+        function startSliderImages() {
+
+            var width = 700;
+            var widthStor = 800;
+            var widthMobil = 570;
+            var animationSpeed = 1200;
+            var pause = 5000;
+            var currentSlide = 1;
+
+            var $slider = $("[data-slider]");
+            var $slideContainer = $slider.find("[data-slides]");
+            var $slides = $slideContainer.find("[data-slide]");
+
+
+            var mqMobil = window.matchMedia('all and (max-width: 400px)');
+
+            var mq = window.matchMedia('all and (min-width: 900px)');
+
+
+            setInterval(function() {
+
+                if (mq.matches) {
+                    sliderSliderStor();
+                } else if (mqMobil.matches) {
+                    sliderSliderMobil();
+                    console.log("Slider Mobil");
+                } else {
+                    sliderSlider();
+                }
+
+            }, pause);
+
+
+            function sliderSlider() {
+                //                console.log("sliderSlider");
+                //                console.log("animationspeed er " + animationSpeed);
+                //                console.log("pause er " + pause);
+                $($slideContainer).animate({
+                    "margin-left": "-=" + width
+                }, animationSpeed, reset);
+            }
+
+
+            function reset() {
+
+                currentSlide++;
+                if (currentSlide === $slides.length) {
+                    //                    console.log("currentSlide = length");
+                    currentSlide = 1;
+                    $slideContainer.css({
+                        "margin-left": "0"
+                    });
+                }
+            }
+
+
+            /** MEDIA QUIERY **/
+
+            function sliderSliderStor() {
+                //                console.log("sliderSliderStor");
+                //                console.log("animationspeed er " + animationSpeed);
+                //                console.log("pause er" + pause);
+                $($slideContainer).animate({
+                    "margin-left": "-=" + widthStor
+                }, animationSpeed, reset);
+            }
+
+
+            function sliderSliderMobil() {
+                //                console.log("sliderSliderStor");
+                //                console.log("animationspeed er " + animationSpeed);
+                //                console.log("pause er" + pause);
+                $($slideContainer).animate({
+                    "margin-left": "-=" + widthMobil
+                }, animationSpeed, reset);
+            }
+
+        }
 
 
         // SLIDER MENUKORT
@@ -392,81 +473,13 @@ Oplev Københavns kulinariske perler hos Food8
             });
         }
 
-
-
-        function startSliderImages() {
-
-            var width = 565;
-            var widthStor = 800;
-            var animationSpeed = 1200;
-            var pause = 5000;
-            var currentSlide = 1;
-
-            var $slider = $("[data-slider]");
-            var $slideContainer = $slider.find("[data-slides]");
-            var $slides = $slideContainer.find("[data-slide]");
-
-            var mq = window.matchMedia('all and (min-width: 900px)');
-
-
-            setInterval(function() {
-
-                if (mq.matches) {
-                    sliderSliderStor();
-                } else {
-                    sliderSlider();
-                }
-
-
-            }, pause);
-
-            function sliderSlider() {
-                //                console.log("sliderSlider");
-                //                console.log("animationspeed er " + animationSpeed);
-                //                console.log("pause er " + pause);
-                $($slideContainer).animate({
-                    "margin-left": "-=" + width
-                }, animationSpeed, reset);
-            }
-
-
-            function reset() {
-
-                currentSlide++;
-                if (currentSlide === $slides.length) {
-                    //                    console.log("currentSlide = length");
-                    currentSlide = 1;
-                    $slideContainer.css({
-                        "margin-left": "0"
-                    });
-                }
-            }
-
-
-            /** MEDIA QUIERY **/
-
-            function sliderSliderStor() {
-                //                console.log("sliderSliderStor");
-                //                console.log("animationspeed er " + animationSpeed);
-                //                console.log("pause er" + pause);
-                $($slideContainer).animate({
-                    "margin-left": "-=" + widthStor
-                }, animationSpeed, reset);
-            }
-
-        }
-
-
-
-
-
         function startSliderImagesMenukort() {
 
             //            console.log("der slides");
 
-            var widthMobil = 490;
-            var width = 700;
-            var widthStor = 850;
+            var widthMobil = 450;
+            var width = 910;
+            var widthStor = 1080;
             var animationSpeed = 1200;
             var currentSlide = 1;
 
@@ -496,7 +509,7 @@ Oplev Københavns kulinariske perler hos Food8
 
 
             function sliderSlider() {
-                console.log("sliderSlider");
+                console.log("sliderSlider Menukort");
                 console.log("animationspeed er " + animationSpeed);
 
                 $($slideContainer).animate({
