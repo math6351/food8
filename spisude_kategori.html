@@ -91,7 +91,6 @@ Oplev Københavns kulinariske perler hos Food8
         async function hentJson() {
             let dataJson = await fetch(jSonUrl);
             restauranter = await dataJson.json();
-            console.log("fetching happened");
 
             kat = restauranter.filter(function(e) {
                 return e.acf.menu_kategorier.includes(kategori);
@@ -102,7 +101,6 @@ Oplev Københavns kulinariske perler hos Food8
 
         function visRestauranter(rests) {
             rests.forEach(restaurant => {
-                console.log("restauranter");
                 let display = document.querySelector("[data-liste]");
                 let template = document.querySelector("[data-template]");
                 let klon = template.cloneNode(true).content;

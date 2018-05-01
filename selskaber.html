@@ -96,13 +96,12 @@ Oplev Københavns kulinariske perler hos Food8
             let dataJsonSelskaber = await fetch(jSonUrlSelskaber);
             selskaber = await dataJsonSelskaber.json();
 
-            console.log("fetching happened");
             visSelskaber();
         }
 
         function visSelskaber() {
             selskaber.forEach(selskab => {
-                console.log(selskaber);
+
                 let display = document.querySelector("[data-liste]");
                 let template = document.querySelector("[data-template]");
                 let klon = template.cloneNode(true).content;

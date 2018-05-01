@@ -222,7 +222,6 @@ Oplev Københavns kulinariske perler hos Food8
 
                     marker.addListener("click", () => {
                         infowindow.open(map, marker);
-                        console.log("test");
                     });
 
                 } else {
@@ -236,7 +235,6 @@ Oplev Københavns kulinariske perler hos Food8
         // SLIDER IMAGES
 
         function hentSliderImages() {
-            //            console.log(sliderImages);
             if (restaurant.acf.billedemateriale.url) {
                 sliderImages.push(restaurant.acf.billedemateriale.sizes.large),
                     sliderImagesAlt.push(restaurant.acf.billedemateriale.alt);
@@ -325,7 +323,6 @@ Oplev Københavns kulinariske perler hos Food8
 
             sliderImages.forEach(sliderImage => {
                 let klon = template.cloneNode(true).content;
-                //                console.log(sliderImage);
 
                 klon.querySelector("[data-slide] img").src = sliderImage;
 
@@ -418,7 +415,7 @@ Oplev Københavns kulinariske perler hos Food8
         // SLIDER MENUKORT
 
         function hentSliderImagesMenukort() {
-            //            console.log(sliderImagesMenukort);
+            console.log(sliderImagesMenukort);
             if (restaurant.acf.morgenmad_og_brunch_menu_1.url) {
                 sliderImagesMenukort.push(restaurant.acf.morgenmad_og_brunch_menu_1.sizes.large),
                     sliderImagesAlt.push(restaurant.acf.morgenmad_og_brunch_menu_1.alt);
@@ -458,11 +455,9 @@ Oplev Københavns kulinariske perler hos Food8
 
             let template = document.querySelector("[data-menutemplate]");
 
-            //            console.log(sliderImagesMenukort);
-
             sliderImagesMenukort.forEach(sliderImageMenukort => {
                 let klon = template.cloneNode(true).content;
-                //                console.log(sliderImageMenukort);
+                console.log(sliderImageMenukort);
 
                 klon.querySelector("[data-menuslide] img").src = sliderImageMenukort;
 
@@ -474,9 +469,6 @@ Oplev Københavns kulinariske perler hos Food8
         }
 
         function startSliderImagesMenukort() {
-
-            //            console.log("der slides");
-
             var widthMobil = 450;
             var width = 910;
             var widthStor = 1080;
@@ -486,8 +478,6 @@ Oplev Københavns kulinariske perler hos Food8
             var $slider = $("[data-menuslider]");
             var $slideContainer = $slider.find("[data-menuslides]");
             var $slides = $slideContainer.find("[data-menuslide]");
-
-            //           var $tekst = $("#preview-tekst");
 
             var mqMobil = window.matchMedia('all and (max-width: 400px)');
 
@@ -540,32 +530,24 @@ Oplev Københavns kulinariske perler hos Food8
             /** MEDIA QUIERY **/
 
             function sliderSliderStor() {
-                console.log("sliderSliderStor");
-                console.log("animationspeed er " + animationSpeed);
                 $($slideContainer).animate({
                     "margin-top": "-=" + widthStor
                 }, animationSpeed, reset);
             }
 
             function sliderSliderStorTilbage() {
-                console.log("sliderSliderStorTilbage");
-                console.log("animationspeed er " + animationSpeed);
                 $($slideContainer).animate({
                     "margin-top": "+=" + widthStor
                 }, animationSpeed, reset);
             }
 
-
             function sliderSliderMobil() {
-                console.log("sliderSliderMobil");
-                console.log("animationspeed er " + animationSpeed);
                 $($slideContainer).animate({
                     "margin-top": "-=" + widthMobil
                 }, animationSpeed, reset);
             }
 
             function sliderSliderMobilTilbage() {
-                console.log("sliderSliderMobil");
                 $($slideContainer).animate({
                     "margin-top": "-=" + widthMobil
                 }, animationSpeed, reset);

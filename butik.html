@@ -114,7 +114,6 @@
         async function hentJson() {
             let dataJson = await fetch(jSonUrl);
             butik = await dataJson.json();
-            console.log("It's so fetch to be single, Gretchen!");
             visButik();
             hentInfo();
             //            visMenukort();
@@ -181,7 +180,6 @@
 
                     marker.addListener("click", () => {
                         infowindow.open(map, marker);
-                        console.log("test");
                     });
 
                 } else {
@@ -193,7 +191,6 @@
 
 
         function hentSliderImages() {
-            console.log(sliderImages);
             if (butik.acf.indholds_billeder.url) {
                 sliderImages.push(butik.acf.indholds_billeder.sizes.large),
                     sliderImagesAlt.push(butik.acf.indholds_billeder.alt);
@@ -282,8 +279,6 @@
 
             let template = document.querySelector("[data-template]");
 
-            console.log(sliderImages);
-
             sliderImages.forEach(sliderImage => {
                 let klon = template.cloneNode(true).content;
                 console.log(sliderImage);
@@ -333,9 +328,6 @@
             }, pause);
 
             function sliderSlider() {
-                console.log("sliderSlider");
-                console.log("animationspeed er " + animationSpeed);
-                console.log("pause er " + pause)
                 $($slideContainer).animate({
                     "margin-left": "-=" + width
                 }, animationSpeed, reset);
@@ -357,9 +349,6 @@
             /** MEDIA QUIERY **/
 
             function sliderSliderStor() {
-                console.log("sliderSliderStor");
-                console.log("animationspeed er " + animationSpeed);
-                console.log("pause er" + pause)
                 $($slideContainer).animate({
                     "margin-left": "-=" + widthStor
                 }, animationSpeed, reset);
@@ -367,9 +356,6 @@
 
 
             function sliderSliderMobil() {
-                //                console.log("sliderSliderStor");
-                //                console.log("animationspeed er " + animationSpeed);
-                //                console.log("pause er" + pause);
                 $($slideContainer).animate({
                     "margin-left": "-=" + widthMobil
                 }, animationSpeed, reset);
