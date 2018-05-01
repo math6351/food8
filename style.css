@@ -40,6 +40,15 @@
 
 }
 
+@font-face {
+    font-family: 'rusticoregular';
+    src: url('rustico-regular-webfont.woff2') format('woff2'),
+         url('rustico-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 h1 {
     font-size: 8vw;
     font-family: 'hk_groteskregular_legacy';
