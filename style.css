@@ -48,14 +48,23 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'wishregular';
+    src: url('font/wish-webfont.woff2') format('woff2'),
+         url('wish-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
 h1 {
     font-size: 8vw;
-    font-family: 'surfing_capitalregular';
+    font-family: 'wishregular';
     /*    text-transform: uppercase;*/
     text-align: center;
     grid-column: 1/14;
     margin: 7vw 0 10vw 0;
     color: rgba(111, 198, 180, 0.74);
+    text-transform: uppercase;
     /*    color: #ec9dad;*/
 }
 
