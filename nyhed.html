@@ -58,10 +58,68 @@ Oplev Københavns kulinariske perler hos Food8
         <div id="cirkel"></div>
     </div>
 
+    <main>
+
+        <section class="liste_single" data-liste>
+            <articel id="nyhed_single_container">
+                <h2 id="nyhedstitel" data-titel></h2>
+                <img id="nyhedsbilled" data-billed>
+                <p id="nyhedsmanchet" data-manchet></p>
+                <h3 id="underoverskrift_1" data-underoverskrift_1></h3>
+                <p id="rubrik_1" data-rubrik_1></p>
+                <h3 id="underoverskrift_2" data-underoverskrift_2></h3>
+                <p id="rubrik_2" data-rubrik_2></p>
+                <h3 id="underoverskrift_3" data-underoverskrift_3></h3>
+                <p id="rubrik_3" data-rubrik_3></p>
+                <h3 id="underoverskrift_4" data-underoverskrift_4></h3>
+                <p id="rubrik_4" data-rubrik_4></p>
+
+            </articel>
+        </section>
+
+    </main>
+
     <section id="footer"></section>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="javascript.js"></script>
+
+    <script>
+        let url = new URL(window.location.href);
+        let searchParams = new URLSearchParams(url.search);
+        let id = searchParams.get("id");
+        let jSonUrl = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/nyheder/" + id;
+        let nyheder = {};
+
+        document.addEventListener("DOMContentLoaded", hentJson);
+
+        async function hentJson() {
+            let dataJson = await fetch(jSonUrl);
+            nyheder = await dataJson.json();
+
+            visNyheder();
+        };
+
+        function visNyheder() {
+
+            let display = document.querySelector("[data-liste]");
+            display.querySelector("[data-titel]").textContent = nyheder.acf.nyheds_title;
+            display.querySelector("[data-billed]").src = nyheder.acf.billede_materiale.sizes.large;
+            display.querySelector("[data-manchet]").innerHTML = nyheder.acf.manchet;
+            display.querySelector("[data-underoverskrift_1]").innerHTML = nyheder.acf.underoverskrift_1;
+            display.querySelector("[data-rubrik_1]").innerHTML = nyheder.acf.rubrik_1;
+            display.querySelector("[data-underoverskrift_2]").innerHTML = nyheder.acf.underoverskrift_2;
+            display.querySelector("[data-rubrik_2]").innerHTML = nyheder.acf.rubrik_2;
+            display.querySelector("[data-underoverskrift_3]").innerHTML = nyheder.acf.underoverskrift_3;
+            display.querySelector("[data-rubrik_3]").innerHTML = nyheder.acf.rubrik_3;
+            display.querySelector("[data-underoverskrift_4]").innerHTML = nyheder.acf.underoverskrift_4;
+            display.querySelector("[data-rubrik_4]").innerHTML = nyheder.acf.rubrik_4;
+
+        }
+
+
+    </script>
+
 </body>
 
 </html>
