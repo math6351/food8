@@ -71,10 +71,12 @@ Oplev Københavns kulinariske perler hos Food8
         </section>
 
         <template id="nyheder" data-nyheder>
-<!--<p class="nyhedstitel" data-header></p>-->
+<!--        <p class="nyhedstitel" data-header></p>-->
 <!--           Skal linkes til den specifikke nyhedsside + ordnes at den blinker til sidst-->
             <li class="nyhedsslide" data-nyhedsslide>
+               <p class="nyhedsoverskrift" data-nyhedsoverskrift></p>
                 <img src="" alt="">
+
             </li>
         </template>
 
@@ -91,8 +93,6 @@ Oplev Københavns kulinariske perler hos Food8
     </section>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js">
-
-
     </script>
     <script src="javascript.js"></script>
     <script>
@@ -130,7 +130,7 @@ Oplev Københavns kulinariske perler hos Food8
             nyheder.forEach(nyhed => {
                 let klon = template.cloneNode(true).content;
                 console.log(nyhed.acf.nyheds_title);
-                //                klon.querySelector("[data-header]").textContent = nyhed.acf.nyheds_title;
+                klon.querySelector("[data-nyhedsslide] p").textContent = nyhed.acf.nyheds_title;
 
 
                 klon.querySelector("[data-nyhedsslide] img").src = nyhed.acf.billede_materiale.url;
@@ -196,7 +196,6 @@ Oplev Københavns kulinariske perler hos Food8
             }
 
         }
-
     </script>
 
 </body>
