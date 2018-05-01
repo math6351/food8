@@ -512,19 +512,7 @@ Oplev Københavns kulinariske perler hos Food8
 
                 $($slideContainer).animate({
                     "margin-top": "+=" + width
-                }, animationSpeed, reset);
-            }
-
-            function reset() {
-
-                currentSlide++;
-                if (currentSlide === $slides.length) {
-                    //                    console.log("currentSlide = length");
-                    currentSlide = 1;
-                    $slideContainer.css({
-                        "margin-top": "0"
-                    });
-                }
+                }, animationSpeed);
             }
 
             /** MEDIA QUIERY **/
@@ -554,7 +542,6 @@ Oplev Københavns kulinariske perler hos Food8
             }
 
         }
-
     </script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyT4tZKVLoOzjcKheBYCS2fQvFHwKDhlA&callback=initMap" async defer></script>
