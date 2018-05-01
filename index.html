@@ -70,7 +70,6 @@ Oplev Københavns kulinariske perler hos Food8
         </section>
 
         <template id="nyheder" data-nyheder>
-<!--        <p class="nyhedstitel" data-header></p>-->
 <!--           Skal linkes til den specifikke nyhedsside + ordnes at den blinker til sidst-->
             <li class="nyhedsslide" data-nyhedsslide>
                <p class="nyhedsoverskrift" data-nyhedsoverskrift></p>
@@ -81,7 +80,9 @@ Oplev Københavns kulinariske perler hos Food8
 
         <section id="ugensudvalgte">
             <h1>Ugens udvalgte</h1>
-            <div id="ugensudvalgte_container"></div>
+            <div id="ugensudvalgte_container" data-ugensudvalgte>
+                <img src="" alt="">
+            </div>
         </section>
 
     </main>
@@ -97,8 +98,13 @@ Oplev Københavns kulinariske perler hos Food8
     <script>
         let jSonUrlNyheder = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/nyheder";
         let jSonUrlOm = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/om/354";
+        let jSonUrlRestauranter = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/restaurant";
 
         let nyheder = [];
+
+        let restauranter = [];
+        let restaurantBilleder = [];
+        //        restauranter[0] = ;
 
         let om = {};
 
@@ -109,19 +115,35 @@ Oplev Københavns kulinariske perler hos Food8
         async function hentJson() {
             let dataJsonNyheder = await fetch(jSonUrlNyheder);
             let dataJsonOm = await fetch(jSonUrlOm);
+            let dataJsonRestauranter = await fetch(jSonUrlRestauranter);
 
             nyheder = await dataJsonNyheder.json();
 
             om = await dataJsonOm.json();
 
+            restauranter = await dataJsonRestauranter.json();
+
+
+
             console.log(nyheder);
             visNyheder();
             hentIndhold();
+            visUgensUdvalgte();
         }
 
         function hentIndhold() {
             console.log(om);
             document.querySelector("[data-om]").innerHTML = om.acf.om_kortbeskrivelse;
+        }
+
+        function visUgensUdvalgte() {
+            restauranter.forEach(restaurant => {
+
+                restaurantBilleder[restaurantBilleder.length] = restaurant.acf.splash_billed.url;
+            })
+            console.log(restaurantBilleder);
+            document.querySelector("[data-ugensudvalgte]").style.backgroundImage = "url('" + restaurantBilleder[Math.floor(Math.random() * restaurantBilleder.length)]
+            "')";
         }
 
         function visNyheder() {

@@ -368,7 +368,7 @@ button {
 #ugensudvalgte_container {
     grid-column: 2/13;
     height: 400px;
-    border-style: solid;
+    background-size: cover;
 }
 
 /*** SLIDERE ***/
@@ -851,6 +851,11 @@ input[type=submit] {
         display: none;
     }
 
+    /* FORSIDE */
+    .om_header {
+        font-size: 2.5vw;
+    }
+
     /* SLIDERE */
     /*NYHEDSLIDER*/
     #nyhedsslider {
@@ -874,6 +879,12 @@ input[type=submit] {
         width: 825px;
         height: 300px;
         cursor: pointer;
+    }
+
+    .nyhedsoverskrift {
+        position: relative;
+        top: 14vw;
+        padding: 1vw 0 1vw 45vw;
     }
 
     /* RESTAURANT + MENUKORT SLIDER*/
