@@ -41,22 +41,21 @@
 }
 
 @font-face {
-    font-family: 'rusticoregular';
-    src: url('rustico-regular-webfont.woff2') format('woff2'),
-         url('rustico-regular-webfont.woff') format('woff');
+    font-family: 'surfing_capitalregular';
+    src: url('font/surfing_capital-webfont.woff2') format('woff2'),
+    url('surfing_capital-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
 
 h1 {
     font-size: 8vw;
-    font-family: 'hk_groteskregular_legacy';
+    font-family: 'surfing_capitalregular';
     /*    text-transform: uppercase;*/
     text-align: center;
     grid-column: 1/14;
-    margin-bottom: 2vw;
-    color: #b9ab8d;
+    margin: 7vw 0 10vw 0;
+    color: rgba(111, 198, 180, 0.74);
     /*    color: #ec9dad;*/
 }
 
@@ -95,7 +94,7 @@ body {
 #header {
     grid-column: 1/14;
     grid-row: 1;
-    margin: 0;
+    /*    margin: 0;*/
 }
 
 section {
@@ -211,6 +210,7 @@ a {
 /** BURGERMENU **/
 
 .burgermenu {
+    position: fixed;
     display: block;
     cursor: pointer;
     background-color: #6fc6b4;
@@ -219,7 +219,7 @@ a {
     height: 10vw;
     border-radius: 50%;
     z-index: 4;
-    position: absolute;
+    position: fixed;
     top: 4vw;
     left: 85vw;
     transition: 0.5s ease-in-out;
@@ -341,10 +341,12 @@ footer {
 #adresse {
     font-style: normal;
     grid-column: 2/7;
+    font-size: 3.5vw;
 }
 
 #links {
     grid-column: 9/13;
+    font-size: 3.5vw;
 }
 
 #stroemagency {
@@ -371,7 +373,8 @@ button {
 
 .om_header {
     font-family: 'hk_groteskregular_legacy';
-    font-size: 4vw;
+    font-size: 3.5vw;
+    margin: 5vw 0 7vw 0;
 }
 
 #ugensudvalgte_container {
@@ -380,6 +383,7 @@ button {
     background-size: cover;
     background-position: -5vw;
     cursor: pointer;
+    margin: 7vw 0 0 0;
 }
 
 /*** SLIDERE ***/
@@ -387,7 +391,7 @@ button {
 /*NYHEDSSLIDER*/
 
 #nyhedsslider {
-    margin: 0 auto;
+    margin: 0 auto 10vw auto;
     grid-column: 2/13;
     width: 300px;
     height: 180px;
@@ -417,7 +421,7 @@ button {
 
 .nyhedsoverskrift {
     position: relative;
-    top: 33vw;
+    top: 35vw;
     padding: 1vw 0 1vw 15vw;
     color: #fff;
     z-index: 0;
@@ -425,6 +429,10 @@ button {
 }
 
 /*MENUKORT + IMAGE SLIDER*/
+
+#menu_header {
+    margin: 8vw 0 0 0;
+}
 
 #slider.images {
     grid-column: 2/13;
@@ -451,12 +459,6 @@ button {
 .slide img {
     width: 400px;
 }
-
-/*
-.menukort_slide {
-    display: inline;
-}
-*/
 
 .menukort_slide img {
     width: 80vw;
@@ -552,10 +554,15 @@ button {
     display: grid;
     grid-template-columns: repeat(13, 1fr);
     grid-gap: 2vw;
+    font-size: 3.5vw;
 }
 
 .single_header {
-    font-size: 5vw;
+    font-size: 4vw;
+}
+
+.single_beskrivelse {
+    font-size: 3.5vw;
 }
 
 #sted_header {
@@ -752,11 +759,17 @@ input[type=submit] {
 .selskabsbeskrivelse {
     width: 50%;
     font-size: 0.8em;
+
+}
+
+.emner {
+    font-family: "hk_grotesksemibold_legacy";
+    color: #4d5966;
 }
 
 .beskrivelse {
     text-align: right;
-    color: gray;
+    color: #4d5966;
 }
 
 
