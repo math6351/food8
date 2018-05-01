@@ -486,6 +486,7 @@ Oplev Københavns kulinariske perler hos Food8
             if (mqMobil.matches) {
                 document.querySelector(".next").addEventListener("click", sliderSliderMobil);
                 document.querySelector(".prev").addEventListener("click", sliderSliderMobilTilbage);
+//                document.querySelector(".next").addEventListener("click", reset);
             } else if (mq.matches) {
 
                 document.querySelector(".next").addEventListener("click", sliderSliderStor);
@@ -493,7 +494,6 @@ Oplev Københavns kulinariske perler hos Food8
 
             } else {
                 document.querySelector(".next").addEventListener("click", sliderSlider);
-
                 document.querySelector(".prev").addEventListener("click", sliderSliderTilbage);
             }
 
@@ -504,7 +504,7 @@ Oplev Københavns kulinariske perler hos Food8
 
                 $($slideContainer).animate({
                     "margin-top": "-=" + width
-                }, animationSpeed);
+                }, animationSpeed, reset);
             }
 
             function sliderSliderTilbage() {
@@ -512,7 +512,23 @@ Oplev Københavns kulinariske perler hos Food8
 
                 $($slideContainer).animate({
                     "margin-top": "+=" + width
-                }, animationSpeed);
+                }, animationSpeed, reset);
+            }
+
+            function reset() {
+
+                currentSlide++;
+
+                console.log(currentSlide);
+//             console.log($slides.length);
+
+                if (currentSlide === $slides.length) {
+                    //                    console.log("currentSlide = length");
+                    currentSlide = 1;
+                    $slideContainer.css({
+                        "margin-top": "0"
+                    });
+                }
             }
 
             /** MEDIA QUIERY **/
@@ -520,28 +536,29 @@ Oplev Københavns kulinariske perler hos Food8
             function sliderSliderStor() {
                 $($slideContainer).animate({
                     "margin-top": "-=" + widthStor
-                }, animationSpeed);
+                }, animationSpeed, reset);
             }
 
             function sliderSliderStorTilbage() {
                 $($slideContainer).animate({
                     "margin-top": "+=" + widthStor
-                }, animationSpeed);
+                }, animationSpeed, reset);
             }
 
             function sliderSliderMobil() {
                 $($slideContainer).animate({
                     "margin-top": "-=" + widthMobil
-                }, animationSpeed);
+                }, animationSpeed, reset);
             }
 
             function sliderSliderMobilTilbage() {
                 $($slideContainer).animate({
                     "margin-top": "+=" + widthMobil
-                }, animationSpeed);
+                }, animationSpeed, reset);
             }
 
         }
+
     </script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyT4tZKVLoOzjcKheBYCS2fQvFHwKDhlA&callback=initMap" async defer></script>
