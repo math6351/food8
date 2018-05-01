@@ -120,7 +120,7 @@ Oplev Københavns kulinariske perler hos Food8
             console.log(info.acf.om_kortbeskrivelse);
             document.querySelector("[data-beskrivelse]").innerHTML = info.acf.om_kortbeskrivelse;
             document.querySelector("[data-langbeskrivelse]").innerHTML = info.acf.om_langbeskrivelse;
-            document.querySelector("[data-billede]").src = info.acf.food8_billede.sizes.large;
+            document.querySelector("[data-billede]").src = info.acf.food8_billede.sizes.large.url;
             document.querySelector("[data-billede]").alt = info.acf.om_kortbeskrivelse;
         }
     </script>
