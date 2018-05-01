@@ -107,7 +107,7 @@ Oplev Københavns kulinariske perler hos Food8
                 let template = document.querySelector("[data-template]");
                 let klon = template.cloneNode(true).content;
                 console.log(restaurant);
-                klon.querySelector("[data-billede]").src = restaurant.acf.splash_billed.sizes.medium;
+                klon.querySelector("[data-billede]").src = restaurant.acf.splash_billed.sizes.twentyseventeen - featured - image;
                 klon.querySelector("[data-billede]").alt = "Billede af " + restaurant.acf.restaurant_navn + "'s logo";
                 klon.querySelector("[data-billede]").addEventListener("click", () => {
                     location.href = "restaurant.html?id=" + restaurant.id;
