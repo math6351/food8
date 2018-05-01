@@ -2,6 +2,8 @@
 
  document.addEventListener("DOMContentLoaded", sidenErLoadet);
 
+// document.addEventListener("DOMContentLoaded", cirkel);
+
  function sidenErLoadet() {
      //           hentHeader();
      hentFooter();
@@ -14,6 +16,11 @@
      let footer = await footerData.text();
      document.querySelector("#footer").innerHTML = footer;
  }
+
+
+// function cirkel() {
+//     document.querySelector("#cirkel").classList.add("intro");
+// }
 
 
  // BURGERMENU
