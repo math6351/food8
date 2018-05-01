@@ -119,10 +119,9 @@ Oplev Københavns kulinariske perler hos Food8
         function visInfo() {
             document.querySelector("[data-beskrivelse]").innerHTML = info.acf.om_kortbeskrivelse;
             document.querySelector("[data-langbeskrivelse]").innerHTML = info.acf.om_langbeskrivelse;
-            document.querySelector("[data-billede]").src = info.acf.food8_billede.url;
+            document.querySelector("[data-billede]").src = info.acf.food8_billede.sizes.medium;
             document.querySelector("[data-billede]").alt = info.acf.om_kortbeskrivelse;
         }
-
     </script>
 </body>
 
