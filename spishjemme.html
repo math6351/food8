@@ -55,7 +55,7 @@ Oplev Københavns kulinariske perler hos Food8
             </button>
         </section>
 
-
+        <!---->
         <!--<h1 id="overskrift" data-overskrift>
         </h1>-->
         <section class="liste" data-liste>
@@ -112,6 +112,10 @@ Oplev Københavns kulinariske perler hos Food8
             document.querySelector("[data-kategori]").alt = "Billede af" + kategorier.acf.kategori_billede.alt;
 
             document.querySelector("[data-tekst]").textContent = kategorier.acf.kategori_titel;
+
+            document.querySelector("[data-kategori]").addEventListener("click", () => {
+                location.href = "spisude_kategori.html?kategori=" + kategorier.slug;
+            });
         }
 
         function visButikker() {
