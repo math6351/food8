@@ -775,7 +775,7 @@ input[type=submit] {
     /** SLIDERE **/
     #slider.images {
         grid-column: 2/13;
-        height: 400px;
+        height: 300px;
         max-width: 700px;
         overflow: hidden;
     }
@@ -801,8 +801,12 @@ input[type=submit] {
         width: 100%;
     }
 
-    .single_beskrivelse {
+    .single_header {
         font-size: 4vw;
+    }
+
+    .single_beskrivelse {
+        font-size: 3vw;
     }
 
     .menukort_slide img {
