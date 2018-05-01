@@ -60,8 +60,8 @@ Oplev Københavns kulinariske perler hos Food8
             <h1 data-header>Velkommen hos</h1>
             <div class="logo_om"></div>
             <h2 class="h2_om">En verden af <span style="color: #6fc6b4">madoplevelser</span></h2>
-            <img src="" alt="" data-billede>
             <p id="om_beskrivelse" data-beskrivelse></p>
+            <img id="om_billede" src="" alt="" data-billede>
             <p id="om_langbeskrivelse" data-langbeskrivelse></p>
         </section>
 
@@ -120,9 +120,10 @@ Oplev Københavns kulinariske perler hos Food8
             console.log(info.acf.om_kortbeskrivelse);
             document.querySelector("[data-beskrivelse]").innerHTML = info.acf.om_kortbeskrivelse;
             document.querySelector("[data-langbeskrivelse]").innerHTML = info.acf.om_langbeskrivelse;
-            document.querySelector("[data-billede]").src = info.acf.food8_billede.sizes.large.url;
+            document.querySelector("[data-billede]").src = info.acf.food8_billede.sizes.large;
             document.querySelector("[data-billede]").alt = info.acf.om_kortbeskrivelse;
         }
+
     </script>
 </body>
 

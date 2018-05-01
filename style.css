@@ -642,6 +642,19 @@ select {
 
 #om_beskrivelse {
     grid-column: 3/12;
+    text-align: center;
+    padding: 3vw;
+    font-size: 3.5vw;
+}
+
+#om_langbeskrivelse {
+    grid-column: 3/12;
+    font-size: 3.5vw;
+    padding: 3vw;
+}
+
+#om_billede {
+    grid-column: 2/13;
 }
 
 form {
