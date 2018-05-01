@@ -472,7 +472,7 @@ Oplev Københavns kulinariske perler hos Food8
             var widthMobil = 450;
             var width = 910;
             var widthStor = 1080;
-            var animationSpeed = 1200;
+            var animationSpeed = 100;
             var currentSlide = 1;
 
             var $slider = $("[data-menuslider]");
@@ -486,7 +486,7 @@ Oplev Københavns kulinariske perler hos Food8
             if (mqMobil.matches) {
                 document.querySelector(".next").addEventListener("click", sliderSliderMobil);
                 document.querySelector(".prev").addEventListener("click", sliderSliderMobilTilbage);
-//                document.querySelector(".next").addEventListener("click", reset);
+                //                document.querySelector(".next").addEventListener("click", reset);
             } else if (mq.matches) {
 
                 document.querySelector(".next").addEventListener("click", sliderSliderStor);
@@ -519,10 +519,10 @@ Oplev Københavns kulinariske perler hos Food8
 
                 currentSlide++;
 
-                console.log(currentSlide);
-//             console.log($slides.length);
+                //                console.log(currentSlide);
+                //             console.log($slides.length);
 
-                if (currentSlide === $slides.length) {
+                if (currentSlide === $slides.length + 1) {
                     //                    console.log("currentSlide = length");
                     currentSlide = 1;
                     $slideContainer.css({
@@ -546,12 +546,14 @@ Oplev Københavns kulinariske perler hos Food8
             }
 
             function sliderSliderMobil() {
+                console.log(currentSlide);
                 $($slideContainer).animate({
                     "margin-top": "-=" + widthMobil
                 }, animationSpeed, reset);
             }
 
             function sliderSliderMobilTilbage() {
+                console.log(currentSlide);
                 $($slideContainer).animate({
                     "margin-top": "+=" + widthMobil
                 }, animationSpeed, reset);
