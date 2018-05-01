@@ -285,7 +285,8 @@ a {
     transition: 0.8s ease;
     text-transform: uppercase;
     font-family: 'hk_grotesksemibold_legacy';
-    text-align: center;
+    /*    text-align: center;*/
+    z-index: 1;
 }
 
 #hovedmenu.show {
@@ -320,7 +321,7 @@ footer {
     grid-template-columns: repeat(13, 1fr);
 }
 
-#footerlogo {
+.footerlogo {
     background-image: url(http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-content/uploads/2018/04/logo.png);
     background-size: contain;
     background-repeat: no-repeat;
@@ -370,6 +371,7 @@ button {
     height: 50vw;
     background-size: cover;
     background-position: -5vw;
+    cursor: pointer;
 }
 
 /*** SLIDERE ***/
@@ -382,6 +384,7 @@ button {
     width: 300px;
     height: 180px;
     overflow: hidden;
+    cursor: pointer;
 }
 
 #nyhedsslides {
@@ -409,6 +412,7 @@ button {
     top: 33vw;
     padding: 1vw 0 1vw 15vw;
     color: #fff;
+    z-index: 0;
     background-color: rgba(111, 198, 180, 0.6);
 }
 
@@ -756,6 +760,16 @@ input[type=submit] {
     .change .bar3 {
         transform: rotate(45deg) translate(-6px, -5px);
         background-color: #6fc6b4;
+    }
+
+
+    /** FORSIDE **/
+    .nyhedsoverskrift {
+        top: 22vw;
+        padding: 1vw 0 1vw 10vw;
+        color: #fff;
+        z-index: 0;
+        background-color: rgba(111, 198, 180, 0.6);
     }
 
     /** SLIDERE **/

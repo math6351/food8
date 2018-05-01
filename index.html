@@ -41,7 +41,7 @@ Oplev Københavns kulinariske perler hos Food8
                     <li id="selskaber_billede">Skal du holde selskab?</li>
                 </a>
                 <a id="om" href="omfood8.html">
-                    <li id="om_billede">Om Food8</li>
+                    <li id="om_billede">Om food8</li>
                 </a>
 
             </ul>
@@ -104,6 +104,8 @@ Oplev Københavns kulinariske perler hos Food8
 
         let restauranter = [];
         let restaurantBilleder = [];
+
+        //        let restaurantUrl = [];
         //        restauranter[0] = ;
 
         let om = {};
@@ -123,41 +125,44 @@ Oplev Københavns kulinariske perler hos Food8
 
             restauranter = await dataJsonRestauranter.json();
 
-
-
-            console.log(nyheder);
             visNyheder();
             hentIndhold();
             visUgensUdvalgte();
         }
 
         function hentIndhold() {
-            console.log(om);
             document.querySelector("[data-om]").innerHTML = om.acf.om_kortbeskrivelse;
         }
 
         function visUgensUdvalgte() {
-            restauranter.forEach(restaurant => {
 
+
+            restauranter.forEach(restaurant => {
                 restaurantBilleder[restaurantBilleder.length] = restaurant.acf.splash_billed.url;
+                //                restaurantUrl[restaurantUrl.length] = restaurant.id;
+                console.log(restaurant.id);
+
             })
+
             console.log(restaurantBilleder);
-            document.querySelector("[data-ugensudvalgte]").style.backgroundImage = "url('" + restaurantBilleder[Math.floor(Math.random() * restaurantBilleder.length)]
+            let random = Math.floor(Math.random() * restaurantBilleder.length);
+
+            document.querySelector("[data-ugensudvalgte]").style.backgroundImage = "url('" + restaurantBilleder[random]
             "')";
+
+            document.querySelector("[data-ugensudvalgte]").addEventListener("click", () => {
+                location.href = "restaurant.html?id=" + restauranter[random].id;
+            });
         }
 
         function visNyheder() {
-            console.log(nyheder);
             nyheder.forEach(nyhed => {
                 let klon = template.cloneNode(true).content;
                 console.log(nyhed.acf.nyheds_title);
                 klon.querySelector("[data-nyhedsslide] p").textContent = nyhed.acf.nyheds_title;
 
-
                 klon.querySelector("[data-nyhedsslide] img").src = nyhed.acf.billede_materiale.url;
-                console.log(klon.querySelector("[data-nyhedsslide]"));
                 klon.querySelector("[data-nyhedsslide] img").alt = "Billede af " + nyhed.acf.billede_materiale.alt;
-                //                klon.querySelector("[data-nyhedsoverskrift]").textContent = nyhed.acf.nyheds_title;
                 display.appendChild(klon);
             });
 
@@ -185,9 +190,6 @@ Oplev Københavns kulinariske perler hos Food8
                 }, pause);
 
                 function sliderSlider() {
-                    console.log("sliderSlider");
-                    console.log("animationspeed er " + animationSpeed);
-                    console.log("pause er " + pause);
                     $($slideContainer).animate({
                         "margin-left": "-=" + width
                     }, animationSpeed, reset);
@@ -207,9 +209,6 @@ Oplev Københavns kulinariske perler hos Food8
                 /** MEDIA QUIERY **/
 
                 function sliderSliderStor() {
-                    console.log("sliderSliderStor");
-                    console.log("animationspeed er " + animationSpeed);
-                    console.log("pause er" + pause);
                     $($slideContainer).animate({
                         "margin-left": "-=" + widthStor
                     }, animationSpeed, reset);
