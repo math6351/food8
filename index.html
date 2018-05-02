@@ -131,6 +131,9 @@ Oplev Københavns kulinariske perler hos Food8
 
             restauranter = await dataJsonRestauranter.json();
 
+            let stateObj = "";
+	        history.pushState(stateObj, "", "forside");
+
             visNyheder();
             hentIndhold();
             visUgensUdvalgte();

@@ -91,6 +91,9 @@ Oplev Københavns kulinariske perler hos Food8
 
             kategorier = await dataJson.json();
 
+            let stateObj = "";
+	        history.pushState(stateObj, "", "spisude");
+
             visKategorier();
 
         }
