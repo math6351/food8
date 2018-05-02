@@ -165,9 +165,15 @@ Oplev Københavns kulinariske perler hos Food8
         document.addEventListener("DOMContentLoaded", hentJson);
 
         async function hentJson() {
+
             let dataJson = await fetch(jSonUrl);
             restaurant = await dataJson.json();
             //            console.log("It's so fetch to be single, Gretchen!");
+
+            let stateObj = "";
+	        history.pushState(stateObj, "restaurant", restaurant.slug);
+
+
             visRestaurant();
             hentInfo();
 
@@ -182,8 +188,8 @@ Oplev Københavns kulinariske perler hos Food8
             adresse = restaurant.acf.adresse;
 
             codeAdress();
-        };
 
+        };
 
 
         function visRestaurant() {
@@ -195,6 +201,8 @@ Oplev Københavns kulinariske perler hos Food8
             //            console.log("You're now in singleview!")
 
         };
+
+
 
         function hentInfo() {
             let display = document.querySelector("[data-info]");

@@ -126,6 +126,16 @@
 
             codeAdress();
 
+            urlRemaker();
+
+
+        };
+
+        function urlRemaker () {
+
+            let stateObj = "";
+	        history.pushState(stateObj, "", butik.slug);
+
         };
 
 
