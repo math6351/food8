@@ -86,7 +86,7 @@ Oplev Københavns kulinariske perler hos Food8
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="javascript.js"></script>
     <script>
-        let jSonUrlSelskaber = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/selskaber";
+        let jSonUrlSelskaber = "http://mathildeoldorf.dk/kea/07-contentmanagement/food8/wordpress/wp-json/wp/v2/restaurant";
         let selskaber = [];
 
         document.addEventListener("DOMContentLoaded", hentJson);
@@ -95,13 +95,19 @@ Oplev Københavns kulinariske perler hos Food8
         async function hentJson() {
             let dataJsonSelskaber = await fetch(jSonUrlSelskaber);
             selskaber = await dataJsonSelskaber.json();
+
+            kat = selskaber.filter(function(e) {
+                return e.acf.selskaber.includes("Ja");
+
+            });
+
             let stateObj = "";
 	        history.pushState(stateObj, "", "selskaber");
 
-            visSelskaber();
+            visSelskaber(kat);
         }
 
-        function visSelskaber() {
+        function visSelskaber(selskaber) {
             selskaber.forEach(selskab => {
 
                 let display = document.querySelector("[data-liste]");
@@ -114,7 +120,7 @@ Oplev Københavns kulinariske perler hos Food8
                 klon.querySelector("[data-billede]").src = selskab.acf.splash_billed.sizes.large;
                 klon.querySelector("[data-billede]").alt = "Billede af " + selskab.acf.splash_billed.alt + "'s logo";
                 klon.querySelector("[data-billede]").addEventListener("click", () => {
-                    location.href = "selskab.html?id=" + selskab.id;
+                    location.href = "restaurant.html?id=" + selskab.id;
                 });
                 display.appendChild(klon);
 
