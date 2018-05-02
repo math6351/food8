@@ -56,6 +56,23 @@ Oplev Københavns kulinariske perler hos Food8
 
     <main>
 
+        <div class="popup" data-popup>
+
+            <div class="popup-content" data-popup-content>
+                <div class="popup-billedecontainer">
+                    <img src="" alt="" class="popup-billede" data-billede>
+                </div>
+            </div>
+            <button class="close-button" data-close-button>
+                <div class="close_bar1"></div>
+                <div class="close_bar2"></div>
+            </button>
+
+        </div>
+
+
+
+
         <section class="liste_single" data-liste>
             <article class="restaurant_single">
                 <img class="billede" data-banner src="" alt="">
@@ -465,8 +482,30 @@ Oplev Københavns kulinariske perler hos Food8
                 klon.querySelector("[data-menuslide] img").alt = "Billede af " + sliderImageMenukort.alt;
 
                 display.appendChild(klon);
+
+                document.querySelector("[data-menuslide]").addEventListener("click", openPopup);
+
+                //Åben modal/popup
+
+                function openPopup() {
+
+                    document.querySelector(".popup").style.visibility = "visible";
+                    // igen bruges class istedet for data-, da man skal ændre stylingen
+
+                    document.querySelector("[data-billede]").src = sliderImageMenukort;
+                    document.querySelector("[data-billede]").alt = "billede af" + " " + sliderImageMenukort;
+                }
             });
         }
+
+        document.querySelector("[data-close-button]").addEventListener("click", closePopup);
+
+        function closePopup() {
+            document.querySelector(".popup").style.visibility = "hidden";
+
+
+        }
+
 
         function startSliderImagesMenukort() {
             var widthMobil = 450;
@@ -482,6 +521,9 @@ Oplev Københavns kulinariske perler hos Food8
             var mqMobil = window.matchMedia('all and (max-width: 400px)');
 
             var mq = window.matchMedia('all and (min-width: 900px)');
+
+
+
 
             if (mqMobil.matches) {
                 document.querySelector(".next").addEventListener("click", sliderSliderMobil);
@@ -558,7 +600,6 @@ Oplev Københavns kulinariske perler hos Food8
                     "margin-top": "+=" + widthMobil
                 }, animationSpeed, reset);
             }
-
         }
 
     </script>
