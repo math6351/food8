@@ -91,13 +91,18 @@ Oplev Københavns kulinariske perler hos Food8
         async function hentJson() {
             let dataJson = await fetch(jSonUrl);
             restauranter = await dataJson.json();
-
             kat = restauranter.filter(function(e) {
                 return e.acf.menu_kategorier.includes(kategori);
 
             });
+
+
             visRestauranter(kat);
-        }
+
+        };
+
+
+
 
         function visRestauranter(rests) {
             rests.forEach(restaurant => {
