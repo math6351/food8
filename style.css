@@ -346,7 +346,7 @@ footer {
 }
 
 #links {
-    grid-column: 9/13;
+    grid-column: 9/14;
     font-size: 3.5vw;
 }
 
@@ -376,6 +376,30 @@ button {
     font-family: 'hk_groteskregular_legacy';
     font-size: 3.5vw;
     margin: 5vw 0 7vw 0;
+}
+
+.prev_forside,
+.next_forside {
+    cursor: pointer;
+    color: #fff;
+    position: relative;
+    padding: 20px;
+    transform: scale(2);
+}
+
+.prev_forside:hover,
+.next_forside:hover {
+    background-color: rgba(255, 255, 255, 0.50);
+}
+
+.prev_forside {
+    top: 26vw;
+    left: 0;
+}
+
+.next_forside {
+    top: 26vw;
+    left: 51vw;
 }
 
 #ugensudvalgte_container {
@@ -422,7 +446,7 @@ button {
 
 .nyhedsoverskrift {
     position: relative;
-    top: 35vw;
+    top: 31vw;
     padding: 1vw 0 1vw 15vw;
     color: #fff;
     z-index: 0;
@@ -472,10 +496,6 @@ button {
     color: #000;
     position: relative;
     padding: 20px;
-    /*
-
-    background-color: rgba(255, 255, 255, 0.50);
-*/
     transform: scale(2);
 }
 
@@ -800,8 +820,8 @@ input[type=submit] {
 
     /** FORSIDE **/
     .nyhedsoverskrift {
-        top: 22vw;
-        padding: 1vw 0 1vw 10vw;
+        top: 29vw;
+        padding: 1vw 0 1vw 15vw;
         color: #fff;
         z-index: 0;
         background-color: rgba(111, 198, 180, 0.6);
@@ -903,6 +923,11 @@ input[type=submit] {
 
     .burgermenu {
         display: none;
+    }
+
+    /* FOOTER */
+    #links {
+        grid-column: 9/13;
     }
 
     /* FORSIDE */

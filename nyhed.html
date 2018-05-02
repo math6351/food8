@@ -61,20 +61,29 @@ Oplev Københavns kulinariske perler hos Food8
     <main>
 
         <section class="liste_single" data-liste>
-            <articel id="nyhed_single_container">
-                <h2 id="nyhedstitel" data-titel></h2>
-                <img id="nyhedsbilled" data-billed>
-                <p id="nyhedsmanchet" data-manchet></p>
-                <h3 id="underoverskrift_1" data-underoverskrift_1></h3>
-                <p id="rubrik_1" data-rubrik_1></p>
-                <h3 id="underoverskrift_2" data-underoverskrift_2></h3>
-                <p id="rubrik_2" data-rubrik_2></p>
-                <h3 id="underoverskrift_3" data-underoverskrift_3></h3>
-                <p id="rubrik_3" data-rubrik_3></p>
-                <h3 id="underoverskrift_4" data-underoverskrift_4></h3>
-                <p id="rubrik_4" data-rubrik_4></p>
+            <article id="nyhed_single_container">
+                <h2 id="rubrik" data-rubrik></h2>
+                <img id="nyhedsbillede" data-billede>
+                <h3 id="manchet" data-manchet></h3>
+                <h3 id="underrubrik_1" data-underrubrik_1></h3>
+                <p id="tekst_1" data-tekst_1></p>
+                <h3 id="underrubrik_2" data-underrubrik_2></h3>
+                <p id="tekst_2" data-tekst_2></p>
+                <h3 id="underrubrik_3" data-underrubrik_1></h3>
+                <p id="tekst_3" data-tekst_1></p>
+                <h3 id="underrubrik_4" data-underrubrik_2></h3>
+                <p id="tekst_3" data-tekst_2></p>
+            </article>
+        </section>
 
-            </articel>
+        <section class="nyhedsbrev">
+            <form id="nyhedsbrev" action="sendmail.php">
+                <h2 id="header_kontakt">Få nyheder fra Food8</h2>
+                <p>Så er du altid opdateret på hvad der rør sig på Københavns kulinariske scene</p>
+                <input type="text" name="navn" placeholder="Navn" required><br>
+                <input type="email" name="email" placeholder="E-mail" required>
+                <input type="submit" value="Send">
+            </form>
         </section>
 
     </main>
@@ -103,20 +112,19 @@ Oplev Københavns kulinariske perler hos Food8
         function visNyheder() {
 
             let display = document.querySelector("[data-liste]");
-            display.querySelector("[data-titel]").textContent = nyheder.acf.nyheds_title;
-            display.querySelector("[data-billed]").src = nyheder.acf.billede_materiale.sizes.large;
+            display.querySelector("[data-rubrik]").textContent = nyheder.acf.rubrik_title;
+            display.querySelector("[data-billede]").src = nyheder.acf.billede_materiale.sizes.large;
             display.querySelector("[data-manchet]").innerHTML = nyheder.acf.manchet;
-            display.querySelector("[data-underoverskrift_1]").innerHTML = nyheder.acf.underoverskrift_1;
-            display.querySelector("[data-rubrik_1]").innerHTML = nyheder.acf.rubrik_1;
-            display.querySelector("[data-underoverskrift_2]").innerHTML = nyheder.acf.underoverskrift_2;
-            display.querySelector("[data-rubrik_2]").innerHTML = nyheder.acf.rubrik_2;
-            display.querySelector("[data-underoverskrift_3]").innerHTML = nyheder.acf.underoverskrift_3;
-            display.querySelector("[data-rubrik_3]").innerHTML = nyheder.acf.rubrik_3;
-            display.querySelector("[data-underoverskrift_4]").innerHTML = nyheder.acf.underoverskrift_4;
-            display.querySelector("[data-rubrik_4]").innerHTML = nyheder.acf.rubrik_4;
+            display.querySelector("[data-underrubrik_1]").innerHTML = nyheder.acf.underrubrik_1;
+            display.querySelector("[data-tekst_1]").innerHTML = nyheder.acf.text_1;
+            display.querySelector("[data-underrubrik_2]").innerHTML = nyheder.acf.underrubrik_2;
+            display.querySelector("[data-tekst_2]").innerHTML = nyheder.acf.text_2;
+            display.querySelector("[data-underrubrik_3]").innerHTML = nyheder.acf.underrubrik_3;
+            display.querySelector("[data-tekst_3]").innerHTML = nyheder.acf.text_3;
+            display.querySelector("[data-underrubrik_4]").innerHTML = nyheder.acf.underrubrik_4;
+            display.querySelector("[data-tekst_4]").innerHTML = nyheder.acf.text_4;
 
         }
-
 
     </script>
 

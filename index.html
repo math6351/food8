@@ -66,6 +66,9 @@ Oplev Københavns kulinariske perler hos Food8
         <section id="nyhedsfeed" data-nyhedsfeed>
             <h1>Nyheder</h1>
             <div id="nyhedsslider" data-nyhedsslider>
+
+                <a class="prev_forside">&#10094;</a>
+                <a class="next_forside">&#10095;</a>
                 <ul id="nyhedsslides" data-nyhedsslides>
 
                 </ul>
@@ -142,12 +145,8 @@ Oplev Københavns kulinariske perler hos Food8
 
             restauranter.forEach(restaurant => {
                 restaurantBilleder[restaurantBilleder.length] = restaurant.acf.splash_billed.url;
-                //                restaurantUrl[restaurantUrl.length] = restaurant.id;
-                console.log(restaurant.id);
-
             })
 
-            console.log(restaurantBilleder);
             let random = Math.floor(Math.random() * restaurantBilleder.length);
 
             document.querySelector("[data-ugensudvalgte]").style.backgroundImage = "url('" + restaurantBilleder[random]
@@ -161,8 +160,7 @@ Oplev Københavns kulinariske perler hos Food8
         function visNyheder() {
             nyheder.forEach(nyhed => {
                 let klon = template.cloneNode(true).content;
-                console.log(nyhed.acf.nyheds_title);
-                klon.querySelector("[data-nyhedsslide] p").textContent = nyhed.acf.nyheds_title;
+                klon.querySelector("[data-nyhedsslide] p").textContent = nyhed.acf.rubrik_title;
 
                 klon.querySelector("[data-nyhedsslide] img").src = nyhed.acf.billede_materiale.url;
                 klon.querySelector("[data-nyhedsslide] img").alt = "Billede af " + nyhed.acf.billede_materiale.alt;
@@ -182,24 +180,39 @@ Oplev Københavns kulinariske perler hos Food8
                 var width = 530;
                 var widthStor = 825;
                 var animationSpeed = 1200;
-                var pause = 4500;
+                var pause = 5200;
                 var currentSlide = 1;
                 var $slider = $("#nyhedsslider");
                 var $slideContainer = $slider.find("#nyhedsslides");
                 var $slides = $slideContainer.find(".nyhedsslide");
                 var $tekst = $("#preview-tekst");
+
+
                 var mq = window.matchMedia('all and (min-width: 900px)');
+
+
                 setInterval(function() {
                     if (mq.matches) {
                         sliderSliderStor();
+                        document.querySelector(".next_forside").addEventListener("click", sliderSliderStor);
+                        document.querySelector(".prev_forside").addEventListener("click", sliderSliderTilbage);
+
                     } else {
                         sliderSlider();
+                        document.querySelector(".next_forside").addEventListener("click", sliderSlider);
+                        document.querySelector(".prev_forside").addEventListener("click", sliderSliderTilbage);
                     }
                 }, pause);
 
                 function sliderSlider() {
                     $($slideContainer).animate({
                         "margin-left": "-=" + width
+                    }, animationSpeed, reset);
+                }
+
+                function sliderSliderTilbage() {
+                    $($slideContainer).animate({
+                        "margin-left": "+=" + width
                     }, animationSpeed, reset);
                 }
 
@@ -219,6 +232,12 @@ Oplev Københavns kulinariske perler hos Food8
                 function sliderSliderStor() {
                     $($slideContainer).animate({
                         "margin-left": "-=" + widthStor
+                    }, animationSpeed, reset);
+                }
+
+                function sliderSliderStorTilbage() {
+                    $($slideContainer).animate({
+                        "margin-left": "+=" + widthStor
                     }, animationSpeed, reset);
                 }
             }
