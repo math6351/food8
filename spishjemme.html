@@ -99,6 +99,9 @@ Oplev Københavns kulinariske perler hos Food8
             let dataJsonKategori = await fetch(jSonUrlKategori);
             kategorier = await dataJsonKategori.json();
 
+            let stateObj = "";
+	        history.pushState(stateObj, "", "spishjemme");
+
             visButikker();
             hentIndhold();
         }
