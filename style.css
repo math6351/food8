@@ -8,7 +8,7 @@
 @font-face {
     font-family: 'hk_grotesksemibold_legacy';
     src: url('font/hkgrotesk-semiboldlegacy-webfont.woff2') format('woff2'),
-    url('hkgrotesk-semiboldlegacy-webfont.woff') format('woff');
+    url('font/hkgrotesk-semiboldlegacy-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -16,7 +16,7 @@
 @font-face {
     font-family: 'hk_groteskregular_legacy';
     src: url('font/hkgrotesk-regularlegacy-webfont.woff2') format('woff2'),
-    url('hkgrotesk-regularlegacy-webfont.woff') format('woff');
+    url('font/hkgrotesk-regularlegacy-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -25,7 +25,7 @@
 @font-face {
     font-family: 'hk_grotesklegacy_italic';
     src: url('font/hkgrotesk-legacyitalic-webfont.woff2') format('woff2'),
-    url('hkgrotesk-legacyitalic-webfont.woff') format('woff');
+    url('font/hkgrotesk-legacyitalic-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -34,37 +34,30 @@
 @font-face {
     font-family: 'hk_groteskbold_legacy';
     src: url('font/hkgrotesk-boldlegacy-webfont.woff2') format('woff2'),
-    url('hkgrotesk-boldlegacy-webfont.woff') format('woff');
+    url('font/hkgrotesk-boldlegacy-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
 }
 
 @font-face {
-    font-family: 'surfing_capitalregular';
-    src: url('font/surfing_capital-webfont.woff2') format('woff2'),
-    url('surfing_capital-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'wishregular';
-    src: url('font/wish-webfont.woff2') format('woff2'),
-         url('wish-webfont.woff') format('woff');
+    font-family: 'sibylle_demoregular';
+    src: url('font/sibylle_demo-webfont.woff2') format('woff2'),
+    url('font/sibylle_demo-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
 }
+
 h1 {
     font-size: 8vw;
-    font-family: 'wishregular';
-    /*    text-transform: uppercase;*/
+    font-family: 'sibylle_demoregular';
+    font-kerning: 10px;
     text-align: center;
     grid-column: 1/14;
     margin: 7vw 0 10vw 0;
     color: rgba(111, 198, 180, 0.74);
-    text-transform: uppercase;
+    /*    text-transform: uppercase;*/
     /*    color: #ec9dad;*/
 }
 
